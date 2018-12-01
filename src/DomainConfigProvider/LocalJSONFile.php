@@ -67,7 +67,7 @@ class LocalJSONFile implements IDomainConfigProvider {
 	/**
 	 *
 	 * @param Config $ldapConfig The config to be used
-	 * @return JSonfile
+	 * @return LocalJSONFile
 	 */
 	public static function newInstance( $ldapConfig ) {
 		return new self( $ldapConfig->get( Config::DOMAIN_CONFIGS ) );

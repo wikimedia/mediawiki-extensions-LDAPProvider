@@ -168,7 +168,7 @@ class Client {
 	 * @return array
 	 */
 	public function search( $match, $basedn = null, $attrs = [ "*" ] ) {
-		$this->init();
+		$this->establishBinding();
 		if ( $basedn === null ) {
 			$basedn = $this->config->get( ClientConfig::BASE_DN );
 		}
