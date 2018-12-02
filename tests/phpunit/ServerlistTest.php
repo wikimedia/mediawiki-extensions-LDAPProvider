@@ -6,15 +6,15 @@ use HashConfig;
 use MediaWiki\Extension\LDAPProvider\ClientConfig;
 use MediaWiki\Extension\LDAPProvider\EncType;
 use MediaWiki\Extension\LDAPProvider\Serverlist;
-use PHPUnit_Framework_TestCase;
 
-class ServerlistTest extends PHPUnit_Framework_TestCase {
+class ServerlistTest extends \PHPUnit\Framework\TestCase {
 
 	/**
 	 *
 	 * @param \Config $config
 	 * @param string $expected
 	 *
+	 * @covers MediaWiki\Extension\LDAPProvider\Serverlist::__toString
 	 * @dataProvider provideConfigs
 	 */
 	public function testToString( $config, $expected ) {

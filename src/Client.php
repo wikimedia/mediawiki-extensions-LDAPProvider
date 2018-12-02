@@ -163,7 +163,7 @@ class Client {
 	/**
 	 * Perform an LDAP search
 	 * @param string $match desired in ldap search format
-	 * @param string $basedn The base DN to search in
+	 * @param string|null $basedn The base DN to search in
 	 * @param array $attrs list of attributes to get, default to '*'
 	 * @return array
 	 */

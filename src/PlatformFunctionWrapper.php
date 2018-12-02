@@ -59,14 +59,14 @@ class PlatformFunctionWrapper {
 	/**
 	 * Bind to LDAP directory
 	 * @link http://php.net/manual/en/function.ldap-bind.php
-	 * @param string $bindRDN [optional]
-	 * @param string $bindPassword [optional]
+	 * @param string|null $bindRDN [optional]
+	 * @param string|null $bindPassword [optional]
 	 * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
 	 * @since 4.0
 	 * @since 5.0
 	 */
 	public function bind( $bindRDN = null, $bindPassword = null ) {
-		if( !$this->linkID ) {
+		if ( !$this->linkID ) {
 			throw new Exception( "Nothing to bind with!" );
 		}
 		wfDebugLog(
@@ -131,18 +131,18 @@ class PlatformFunctionWrapper {
 	 * advanced, using boolean operators in the format described in
 	 * the LDAP documentation (see the Netscape Directory SDK for full
 	 * information on filters).
-	 * @param array $attributes An array of the required attributes,
+	 * @param array|null $attributes An array of the required attributes,
 	 * e.g. array("mail", "sn", "cn").  Note that the "dn" is always
 	 * returned irrespective of which attributes types are
 	 * requested. Using this parameter is much more efficient than the
 	 * default action (which is to return all attributes and their
 	 * associated values).  The use of this parameter should therefore
 	 * be considered good practice.
-	 * @param int $attrsonly [optional] Should be set to 1 if only
+	 * @param int|null $attrsonly [optional] Should be set to 1 if only
 	 * attribute types are wanted. If set to 0 both attributes types
 	 * and attribute values are fetched which is the default
 	 * behaviour.
-	 * @param int $sizelimit [optional] Enables you to limit the count
+	 * @param int|null $sizelimit [optional] Enables you to limit the count
 	 * of entries fetched. Setting this to 0 means no limit.  This
 	 * parameter can NOT override server-side preset sizelimit. You
 	 * can set it lower though.  Some directory server hosts will be
@@ -150,11 +150,11 @@ class PlatformFunctionWrapper {
 	 * entries. If this occurs, the server will indicate that it has
 	 * only returned a partial results set. This also occurs if you
 	 * use this parameter to limit the count of fetched entries.
-	 * @param int $timelimit [optional] Sets the number of seconds how
+	 * @param int|null $timelimit [optional] Sets the number of seconds how
 	 * long is spend on the search. Setting this to 0 means no limit.
 	 * This parameter can NOT override server-side preset
 	 * timelimit. You can set it lower though.
-	 * @param int $deref [optional] Specifies how aliases should be
+	 * @param int|null $deref [optional] Specifies how aliases should be
 	 * handled during the search. It can be one of the following:
 	 * LDAP_DEREF_NEVER - (default) aliases are never
 	 * dereferenced.
@@ -215,7 +215,7 @@ class PlatformFunctionWrapper {
 	/**
 	 * Connect to an LDAP server
 	 * @link http://php.net/manual/en/function.ldap-connect.php
-	 * @param string $hostname [optional] This field supports using a
+	 * @param string|null $hostname [optional] This field supports using a
 	 * hostname or, with OpenLDAP 2.x.x and later, a full LDAP URI of
 	 * the form ldap://hostname:port or ldaps://hostname:port for SSL
 	 * encryption.  Note that hostname:port is not a supported LDAP
@@ -247,6 +247,13 @@ class PlatformFunctionWrapper {
 	}
 
 	private static $conn = [];
+
+	/**
+	 *
+	 * @param string|null $hostname
+	 * @param int $port
+	 * @return PlatformFunctionWrapper
+	 */
 	public static function getConnection( $hostname = null, $port = 389 ) {
 		$host = $hostname ? $hostname : '';
 		if ( !isset( $conn[$host][$port] ) ) {
@@ -261,7 +268,7 @@ class PlatformFunctionWrapper {
 	 * Escape a string for use in an LDAP filter or DN
 	 *
 	 * @param string $value to escape
-	 * @param string $ignore characters to ignore
+	 * @param string|null $ignore characters to ignore
 	 * @param int $flags context: LDAP_ESCAPE_FILTER or LDAP_ESCAPE_DN
 	 * @return string
 	 */
@@ -278,7 +285,6 @@ class PlatformFunctionWrapper {
 	/**
 	 * Count the number of entries in a search.
 	 *
-	 * @param resource $link identifier for ldap
 	 * @param resource $result ldap result to count
 	 * @return int
 	 */

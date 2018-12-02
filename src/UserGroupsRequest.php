@@ -48,5 +48,5 @@ abstract class UserGroupsRequest {
 	 * @param string $username to get the groups for
 	 * @return GroupList
 	 */
-	abstract function getUserGroups( $username );
+	abstract public function getUserGroups( $username );
 }

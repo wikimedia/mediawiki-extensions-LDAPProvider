@@ -8,12 +8,19 @@ use MediaWiki\Extension\LDAPProvider\ClientConfig;
 use MediaWiki\Extension\LDAPProvider\ClientFactory;
 use MediaWikiTestCase;
 
+/**
+* @group Broken
+ */
 class ClientTest extends MediaWikiTestCase {
-	public function testUserCanBind() {
-		$mockBulder = $this->getMockBuilder(
+
+	/**
+	 * @covers MediaWiki\Extension\LDAPProvider\Client::canBindAs
+	 */
+	public function testCanBindAs() {
+		$mockBuilder = $this->getMockBuilder(
 			'\MediaWiki\Extension\LDAPProvider\PlatformFunctionWrapper'
 		);
-		$mockFunctionWrapper = $mockBulder->setMethods(
+		$mockFunctionWrapper = $mockBuilder->setMethods(
 			[ 'ldap_bind', 'ldap_connect', 'ldap_set_option' ]
 		)->getMock();
 		$mockFunctionWrapper->expects( $this->any() )
@@ -26,9 +33,11 @@ class ClientTest extends MediaWikiTestCase {
 		$result = $client->canBindAs( 'SomeUserName', 'SomePassword' );
 
 		$this->assertEquals( 'MockBindResponse', $result );
-
 	}
 
+	/**
+	 * @covers MediaWiki\Extension\LDAPProvider\Client::search
+	 */
 	public function testSearch() {
 		$this->maybeDefineLDAPConstants();
 
@@ -76,13 +85,12 @@ class ClientTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @SuppressWarnings(PHPMD.CamelCaseVariableName)
+	 * @covers MediaWiki\Extension\LDAPProvider\ClientFactory::getInstance
 	 */
-	public function testClientFactory() {
-		// @codingStandardsIgnoreStart
-		global $LDAPProviderDomainConfigs;
-		// @codingStandardsIgnoreEnd
-		$LDAPProviderDomainConfigs = __DIR__ . '/data/testconfig.json';
+	public function testClientFactoryGetInstance() {
+		$this->setMwGlobals( [
+			'LDAPProviderDomainConfigs' => __DIR__ . '/data/testconfig.json'
+		] );
 
 		$factory = ClientFactory::getInstance();
 		$this->assertinstanceof(

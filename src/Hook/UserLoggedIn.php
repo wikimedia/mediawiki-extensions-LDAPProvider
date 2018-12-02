@@ -84,9 +84,9 @@ abstract class UserLoggedIn {
 	 */
 	public function process() {
 		if ( !$this->findDomainForUser() ) {
-			return true;
+			# return true;
 		};
-		$this->createLdapClientForDomain();
+		# $this->createLdapClientForDomain();
 		$this->setSuitableDomainConfig();
 
 		return $this->doProcess();
@@ -110,7 +110,7 @@ abstract class UserLoggedIn {
 	 * @return Config
 	 */
 	protected static function makeConfig() {
-		return new GlobalVarConfig();
+		return new GlobalVarConfig( '' );
 	}
 
 	/**

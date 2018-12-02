@@ -4,7 +4,11 @@ namespace MediaWiki\Extension\LDAPProvider\Tests;
 
 use MediaWiki\Extension\LDAPProvider\GroupList;
 
-class GroupListTest extends \PHPUnit_Framework_TestCase {
+class GroupListTest extends \PHPUnit\Framework\TestCase {
+
+	/**
+	 * @covers MediaWiki\Extension\LDAPProvider\GroupList::getShortNames
+	 */
 	public function testGetShortNames() {
 		$groupList = new GroupList( [
 			'CN=WikiReader,OU=usergroups,OU=Groups,DC=company,DC=local',
@@ -16,6 +20,9 @@ class GroupListTest extends \PHPUnit_Framework_TestCase {
 		);
 	}
 
+	/**
+	 * @covers MediaWiki\Extension\LDAPProvider\GroupList::getFullDNs
+	 */
 	public function testGetFullDNs() {
 		$fullDNs = [
 			'CN=WikiReader,OU=usergroups,OU=Groups,DC=company,DC=local',

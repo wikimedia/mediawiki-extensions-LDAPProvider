@@ -30,7 +30,7 @@ class TestClient extends Client {
 
 	/**
 	 * @param string $match we're making
-	 * @param string $basedn to use
+	 * @param string|null $basedn to use
 	 * @param array $attrs to fetch
 	 * @return array ??
 	 */
@@ -47,7 +47,7 @@ class TestClient extends Client {
 	 */
 	public function getUserGroups( $user, $groupBaseDN = '' ) {
 		return call_user_func(
-			$this->callbacks['getUserGroups'], $user, $groupBaseDN = ''
+			$this->callbacks['getUserGroups'], $user, $groupBaseDN
 		);
 	}
 
@@ -58,7 +58,7 @@ class TestClient extends Client {
 	 */
 	public function getUserInfo( $username, $userBaseDN = '' ) {
 		return call_user_func(
-			$this->callbacks['getUserInfo'], $username, $userBaseDN = ''
+			$this->callbacks['getUserInfo'], $username, $userBaseDN
 		);
 	}
 }

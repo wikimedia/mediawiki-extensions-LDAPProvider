@@ -3,11 +3,12 @@
 namespace MediaWiki\Extension\LDAPProvider\Tests;
 
 use MediaWiki\Extension\LDAPProvider\TestClient;
-use PHPUnit_Framework_TestCase;
 
-class TestClientTest extends PHPUnit_Framework_TestCase {
+class TestClientTest extends \PHPUnit\Framework\TestCase {
+
 	/**
 	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+	 * @covers MediaWiki\Extension\LDAPProvider\TestClient::__constructor
 	 */
 	public function testCallbacks() {
 		$testClient = new TestClient( [

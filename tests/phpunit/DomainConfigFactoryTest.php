@@ -8,6 +8,9 @@ use MediaWiki\Extension\LDAPProvider\DomainConfigProvider\LocalJSONFile;
 
 class DomainConfigFactoryTest extends \MediaWikiTestCase {
 
+	/**
+	 * @covers MediaWiki\Extension\LDAPProvider\DomainConfigFactory::factory
+	 */
 	public function testDefaultConfig() {
 		$dcf = $this->makeDomainConfigFactory();
 		$config = $dcf->factory( 'LDAP', ClientConfig::DOMAINCONFIG_SECTION );
@@ -18,6 +21,9 @@ class DomainConfigFactoryTest extends \MediaWikiTestCase {
 		);
 	}
 
+	/**
+	 * @covers MediaWiki\Extension\LDAPProvider\DomainConfigFactory::factory
+	 */
 	public function testArbitrarySection() {
 		$dcf = $this->makeDomainConfigFactory();
 		$config = $dcf->factory( 'LDAP', 'some-arbitrary-section' );
@@ -28,6 +34,7 @@ class DomainConfigFactoryTest extends \MediaWikiTestCase {
 	/**
 	 * @expectedException \ConfigException
 	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+	 * @covers MediaWiki\Extension\LDAPProvider\DomainConfigFactory::factory
 	 */
 	public function testExceptionOnMissingDefault() {
 		$dcf = $this->makeDomainConfigFactory();

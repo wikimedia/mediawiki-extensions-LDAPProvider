@@ -10,6 +10,7 @@ use MediaWiki\MediaWikiServices;
  * @group Database
  */
 class UserDomainStoreTest extends MediaWikiTestCase {
+
 	protected function setUp() {
 		$this->tablesUsed[] = 'ldap_domains';
 		parent::setUp();
@@ -20,6 +21,9 @@ class UserDomainStoreTest extends MediaWikiTestCase {
 		] );
 	}
 
+	/**
+	 * @covers MediaWiki\Extension\LDAPProvider\UserDomainStore::getDomainForUser
+	 */
 	public function testGetDomainForUser() {
 		$store = new UserDomainStore(
 			MediaWikiServices::getInstance()->getDBLoadBalancer()
@@ -31,6 +35,9 @@ class UserDomainStoreTest extends MediaWikiTestCase {
 		);
 	}
 
+	/**
+	 * @covers MediaWiki\Extension\LDAPProvider\UserDomainStore::setDomainForUser
+	 */
 	public function testSetDomainForUser() {
 		$store = new UserDomainStore(
 			MediaWikiServices::getInstance()->getDBLoadBalancer()
