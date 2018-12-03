@@ -68,7 +68,7 @@
 					"userbasedn": "",
 					"searchattribute": "",
 					"searchstring": "",
-					"grouprequest":"MediaWiki\\Extension\\LDAPProvider\\UserGroupRequest\\GroupUniqueMember::factory"
+					"grouprequest":"MediaWiki\\Extension\\LDAPProvider\\UserGroupsRequest\\GroupUniqueMember::factory"
 				}
 			}
 		}
