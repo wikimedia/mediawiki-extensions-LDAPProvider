@@ -10,8 +10,6 @@ use User;
 
 class Client {
 
-	const VERSION = "1.0.0-alpha";
-
 	/**
 	 *
 	 * @var PlatformFunctionWrapper
@@ -30,7 +28,16 @@ class Client {
 	 */
 	protected $logger = null;
 
+	/**
+	 *
+	 * @var BagOStuff
+	 */
 	protected $cache = null;
+
+	/**
+	 *
+	 * @var int
+	 */
 	protected $cacheTime = null;
 
 	/**
@@ -310,12 +317,5 @@ class Client {
 				return $request->getUserGroups( $username );
 			}
 		);
-	}
-
-	/**
-	 * @return string
-	 */
-	public static function getVersion() {
-		return self::VERSION;
 	}
 }
