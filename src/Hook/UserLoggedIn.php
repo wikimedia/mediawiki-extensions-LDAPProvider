@@ -84,9 +84,9 @@ abstract class UserLoggedIn {
 	 */
 	public function process() {
 		if ( !$this->findDomainForUser() ) {
-			# return true;
+			return true;
 		};
-		# $this->createLdapClientForDomain();
+		$this->createLdapClientForDomain();
 		$this->setSuitableDomainConfig();
 
 		return $this->doProcess();
