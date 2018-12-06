@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\LDAPProvider\UserGroupsRequest;
 use MediaWiki\Extension\LDAPProvider\UserGroupsRequest;
 use MediaWiki\Extension\LDAPProvider\ClientConfig;
 use MediaWiki\Extension\LDAPProvider\GroupList;
+use MediaWiki\Extension\LDAPProvider\EscapedString;
 
 class GroupMember extends UserGroupsRequest {
 
@@ -13,7 +14,7 @@ class GroupMember extends UserGroupsRequest {
 	 * @return GroupList
 	 */
 	public function getUserGroups( $username ) {
-		$userDN = $this->ldapClient->getUserDN( $username );
+		$userDN = new EscapedString( $this->ldapClient->getUserDN( $username ) );
 		$baseDN = $this->config->get( ClientConfig::GROUP_BASE_DN );
 		$dn = 'dn';
 
