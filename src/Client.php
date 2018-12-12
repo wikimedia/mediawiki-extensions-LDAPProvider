@@ -73,7 +73,6 @@ class Client {
 		$this->setConnectionOptions();
 		$this->maybeStartTLS();
 		$this->establishBinding();
-		$this->setupCache();
 	}
 
 	/**
