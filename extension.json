@@ -71,7 +71,8 @@
 					"userbasedn": "",
 					"searchattribute": "",
 					"searchstring": "",
-					"grouprequest":"MediaWiki\\Extension\\LDAPProvider\\UserGroupsRequest\\GroupUniqueMember::factory"
+					"grouprequest":"MediaWiki\\Extension\\LDAPProvider\\UserGroupsRequest\\GroupUniqueMember::factory",
+					"nestedgroups": false
 				}
 			}
 		}
