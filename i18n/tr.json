@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hedda"
+		]
+	},
+	"ldapprovider-desc": "LDAP kaynağına bağlanmak ve buna karşı sorgu çalıştırmak için ortak bir altyapı sağlar",
+	"ldapprovider-config-clientregistry": "Özel alıcıların kaydedilmesine izin verir",
+	"ldapprovider-domain-config-not-found": "\n\n'$1' yapılandırma dosyasına erişilemedi!!\n\nLütfen LDAPProvider uzantısı için bir etki alanı yapılandırma dosyası ayarlayın.",
+	"ldapprovider-more-than-one": "'$1' için birden fazla kullanıcı bulundu"
+}

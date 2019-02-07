@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"ldapprovider-desc": "Предоставляет общие средства для подключения к ресурсу LDAP и подачу запросов к нему",
+	"ldapprovider-config-clientregistry": "Позволяет регистрировать персональных клиентов",
+	"ldapprovider-config-domainconfigs": "Хранится согласно доменной конфигурации",
+	"ldapprovider-domain-config-not-found": "\n\nНе удалось получить доступ к файлу конфигурации «$1»!\n\nНастройте такой файл для расширения «LDAPProvider».",
+	"ldapprovider-more-than-one": "Найдено более одного пользователя для «$1»",
+	"ldapprovider-config-domainconfigprovider": "Указывает механизм получения доменной конфигурации"
+}
