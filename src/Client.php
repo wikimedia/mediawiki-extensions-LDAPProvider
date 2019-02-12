@@ -235,7 +235,7 @@ class Client {
 		} else {
 			$userdn = $this->getUserDN( $username );
 		}
-		wfDebugLog( "LDAPProvider", "userdn is: $userdn" );
+		$this->logger->debug( __METHOD__ . ": User DN is: '$userdn'" );
 		return $userdn;
 	}
 
@@ -254,17 +254,27 @@ class Client {
 				ClientConfig::USER_DN_SEARCH_ATTR
 			);
 		}
+		$escapedUsername = new EscapedString( $username );
 		// we need to do a subbase search for the entry
-		$filter = "(" . $searchattr . "=" . $this->connection->escape( $username ) . ")";
+		$filter = "(" . $searchattr . "=" . $escapedUsername . ")";
 
 		// We explicitly put memberof here because it's an operational
 		// attribute in some servers.
 		$attributes = [ "*", "memberof" ];
 		$base = $this->config->get( ClientConfig::BASE_DN );
+		$this->logger->debug(
+			__METHOD__ . ': search with ' . var_export( [
+				'base' => $base,
+				'filter' => $filter,
+				'attributes' => $attributes
+			], true )
+		);
 		$entry = $this->connection->search( $base, $filter, $attributes );
 		if ( $this->connection->count( $entry ) == 0 ) {
 			$this->fetchedUserInfo = false;
 			$this->userInfo = null;
+			$this->logger->debug( "Could not get user DN!" );
+
 			return '';
 		}
 		$this->userInfo = $this->connection->getEntries( $entry );
@@ -273,7 +283,9 @@ class Client {
 			$username = $this->userInfo[0][$searchattr][0];
 			$this->LDAPUsername = $username;
 		}
+
 		$userdn = $this->userInfo[0]["dn"];
+		$this->logger->debug( "Found user DN: '$userdn'" );
 		return $userdn;
 	}
 
