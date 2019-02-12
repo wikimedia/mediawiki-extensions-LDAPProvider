@@ -13,7 +13,7 @@ class GroupMember extends UserGroupsRequest {
 	 * @return GroupList
 	 */
 	public function getUserGroups( $username ) {
-		$userDN = $this->ldapClient->getUserDN( $username );
+		$userDN = new EscapedString( $this->ldapClient->getUserDN( $username ) );
 		$baseDN = $this->config->get( ClientConfig::GROUP_BASE_DN );
 		$dn = 'dn';
 
