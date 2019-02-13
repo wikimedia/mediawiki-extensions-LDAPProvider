@@ -73,9 +73,9 @@ class PlatformFunctionWrapper {
 			"LDAP", "ldap_bind( \$linkID, \$bindRDN = '$bindRDN', "
 			. "\$bindPassword = 'XXXX' );"
 		);
-		\MediaWiki\suppressWarnings();
+		\Wikimedia\suppressWarnings();
 		$ret = \ldap_bind( $this->linkID, $bindRDN, $bindPassword );
-		\MediaWiki\restoreWarnings();
+		\Wikimedia\restoreWarnings();
 		wfDebugLog( "LDAP", "# returns $ret" );
 		return $ret;
 	}
@@ -173,12 +173,12 @@ class PlatformFunctionWrapper {
 			. "\$sizelimit = $sizelimit, \$timelimit = $timelimit, "
 			. "\$deref = $deref ); "
 		);
-		\MediaWiki\suppressWarnings();
+		\Wikimedia\suppressWarnings();
 		$ret = \ldap_search(
 			$this->linkID, $baseDN, $filter, $attributes, $attrsonly,
 			$sizelimit, $timelimit, $deref
 		);
-		\MediaWiki\restoreWarnings();
+		\Wikimedia\restoreWarnings();
 		wfDebugLog( "LDAP", "# returns $ret" );
 		return $ret;
 	}
