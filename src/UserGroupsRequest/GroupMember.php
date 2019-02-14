@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\LDAPProvider\UserGroupsRequest;
 use MediaWiki\Extension\LDAPProvider\UserGroupsRequest;
 use MediaWiki\Extension\LDAPProvider\ClientConfig;
 use MediaWiki\Extension\LDAPProvider\GroupList;
+use MediaWiki\Extension\LDAPProvider\EscapedString;
 
 class GroupMember extends UserGroupsRequest {
 
