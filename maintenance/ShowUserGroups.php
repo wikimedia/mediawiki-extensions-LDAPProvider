@@ -15,7 +15,7 @@ if ( !file_exists( $maintPath ) ) {
 }
 require_once $maintPath;
 
-class ShowUserInfo extends Maintenance {
+class ShowUserGroups extends Maintenance {
 
 	public function __construct() {
 		parent::__construct();
@@ -45,27 +45,27 @@ class ShowUserInfo extends Maintenance {
 
 		$factory = ClientFactory::getInstance();
 		$client = $factory->getForDomain( $domain );
-		$userInfo = $client->getUserInfo( $username );
+		$userGroups = $client->getUserGroups( $username );
 
-		$this->showValue( $userInfo );
+		$this->showValue( $userGroups );
 	}
 
-	private function showValue( array $obj, $recursion = 0 ) {
-		foreach ( $obj as $key => $value ) {
-			for ( $i = 0; $i < $recursion; $i++ ) {
-				$this->output( '  ' );
-			}
+	/**
+	 *
+	 * @param \MediaWiki\Extension\LDAPProvider\GroupList $groupList
+	 */
+	private function showValue( $groupList ) {
+		$this->output( "Full DNs:\n" );
+		foreach( $groupList->getFullDNs() as $fullDN ) {
+			$this->output( "\t$fullDN\n" );
+		}
 
-			if ( is_array( $value ) ) {
-				$this->output( $key . ' =>' . "\n" );
-				$this->showValue( $value, ++$recursion );
-				continue;
-			}
-
-			$this->output( $key . ' => ' . $value . "\n" );
+		$this->output( "Short names:\n" );
+		foreach( $groupList->getShortNames() as $shortName ) {
+			$this->output( "\t$shortName\n" );
 		}
 	}
 }
 
-$maintClass = __NAMESPACE__ . '\\ShowUserInfo';
+$maintClass = __NAMESPACE__ . '\\ShowUserGroups';
 require_once RUN_MAINTENANCE_IF_MAIN;
