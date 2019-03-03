@@ -5,5 +5,6 @@
 		]
 	},
 	"ldapprovider-desc": "Забясьпечвае агульную інфраструктуру для злучэньня з LDAP-рэсурсам і запуску запытаў да яго",
-	"ldapprovider-config-clientregistry": "Дазваляе рэгістрацыю пэрсанальных кліентаў"
+	"ldapprovider-config-clientregistry": "Дазваляе рэгістрацыю пэрсанальных кліентаў",
+	"ldapprovider-config-domainconfigs": "Захоўвае канфігурацыі для дамэнаў"
 }
