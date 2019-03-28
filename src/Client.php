@@ -10,6 +10,10 @@ use User;
 
 class Client {
 
+	const BOUND_NONE  = 0;
+	const BOUND_ADMIN = 1;
+	const BOUND_USER  = 2;
+
 	/**
 	 *
 	 * @var PlatformFunctionWrapper
@@ -49,6 +53,8 @@ class Client {
 			$this->connection = new PlatformFunctionWrapper();
 		}
 		$this->logger = LoggerFactory::getInstance( __CLASS__ );
+		$this->boundTo = self::BOUND_NONE;
+		$this->adminUserProvided = false;
 	}
 
 	/**
@@ -130,6 +136,10 @@ class Client {
 	 * Make sure we can bind properly
 	 */
 	protected function establishBinding() {
+		if ( $this->boundTo == self::BOUND_ADMIN ||
+			$this->boundTo == self::BOUND_USER && !$this->adminUserProvided ) {
+			return;
+		}
 		$this->init();
 		$username = null;
 		if ( $this->config->has( ClientConfig::USER ) ) {
@@ -139,6 +149,7 @@ class Client {
 		if ( $this->config->has( ClientConfig::PASSWORD ) ) {
 			$password = $this->config->get( ClientConfig::PASSWORD );
 		}
+		$this->adminUserProvided = ( $username != null );
 
 		$ret = $this->connection->bind( $username, $password );
 		if ( $ret === false ) {
@@ -148,7 +159,7 @@ class Client {
 				"Could not bind to LDAP: ($errno) $error"
 			);
 		}
-		$this->isBound = true;
+		$this->boundTo = BOUND_ADMIN;
 	}
 
 	/**
@@ -305,7 +316,11 @@ class Client {
 		if ( $username === '' ) {
 			return false;
 		}
-		return $this->connection->bind( $username, $password );
+		$res = $this->connection->bind( $username, $password );
+		if ( $res ) {
+			$this->boundTo = self::BOUND_USER;
+		}
+		return $res;
 	}
 
 	/**
