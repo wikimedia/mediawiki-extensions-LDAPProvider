@@ -56,12 +56,12 @@ class ShowUserGroups extends Maintenance {
 	 */
 	private function showValue( $groupList ) {
 		$this->output( "Full DNs:\n" );
-		foreach( $groupList->getFullDNs() as $fullDN ) {
+		foreach ( $groupList->getFullDNs() as $fullDN ) {
 			$this->output( "\t$fullDN\n" );
 		}
 
 		$this->output( "Short names:\n" );
-		foreach( $groupList->getShortNames() as $shortName ) {
+		foreach ( $groupList->getShortNames() as $shortName ) {
 			$this->output( "\t$shortName\n" );
 		}
 	}

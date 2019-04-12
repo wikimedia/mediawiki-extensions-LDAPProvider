@@ -6,7 +6,6 @@ use Config;
 use MediaWiki\Extension\LDAPProvider\Config as LDAPConfig;
 use MediaWiki\Logger\LoggerFactory;
 use MWException;
-use User;
 
 class Client {
 
@@ -249,7 +248,7 @@ class Client {
 	 */
 	public function getUserDN( $username, $searchattr = '' ) {
 		$this->init();
-		if ( ! $searchattr ) {
+		if ( !$searchattr ) {
 			$searchattr = $this->config->get(
 				ClientConfig::USER_DN_SEARCH_ATTR
 			);

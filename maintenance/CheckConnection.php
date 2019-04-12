@@ -44,7 +44,7 @@ class CheckConnection extends Maintenance {
 	}
 
 	private function showResult( array $res ) {
-		$this->output( "Found ". $res['count'] ." match(es).\n" );
+		$this->output( "Found " . $res['count'] . " match(es).\n" );
 
 		foreach ( $res as $index => $val ) {
 			if ( is_int( $index ) ) {
