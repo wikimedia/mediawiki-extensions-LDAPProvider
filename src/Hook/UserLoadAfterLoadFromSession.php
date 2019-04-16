@@ -12,7 +12,7 @@ use MediaWiki\MediaWikiServices;
 use RequestContext;
 use User;
 
-abstract class UserLoggedIn {
+abstract class UserLoadAfterLoadFromSession {
 
 	/**
 	 *
@@ -49,6 +49,18 @@ abstract class UserLoggedIn {
 	 * @var Config
 	 */
 	protected $domainConfig = null;
+
+	/**
+	 * How long period between sync processes
+	 *
+	 * @var int
+	 */
+	protected $sessionExpirationPeriod = 3600;
+
+	/**
+	 * @var string
+	 */
+	protected $sessionDataKey = null;
 
 	/**
 	 *
@@ -91,11 +103,6 @@ abstract class UserLoggedIn {
 
 		return $this->doProcess();
 	}
-
-	/**
-	 * @return boolean
-	 */
-	abstract protected function doProcess();
 
 	/**
 	 * Can be overriden by subclass
@@ -154,6 +161,35 @@ abstract class UserLoggedIn {
 	public function setDomain( $domain ) {
 		$this->domain = $domain;
 	}
+
+	/**
+	 *
+	 * This method manages the frequency of launching sync processes.
+	 * We don't need to sync data every user request
+	 *
+	 * @return bool
+	 */
+	protected function doProcess() {
+		if( $this->user->isAnon() ) {
+			return true;
+		}
+
+		$webRequest = \RequestContext::getMain()->getRequest();
+		$session = $webRequest->getSession();
+
+		$lastSyncTS = $session->get( $this->sessionDataKey, null );
+		$nextSyncTS = $lastSyncTS + $this->sessionExpirationPeriod;
+		$nowTS = time();
+
+		if( $nowTS >= $nextSyncTS ) {
+			$session->set( $this->sessionDataKey, $nowTS );
+			return $this->doSync();
+		}
+
+		return true;
+	}
+
+	abstract protected function doSync();
 
 	/**
 	 * @return string
