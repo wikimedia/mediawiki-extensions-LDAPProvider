@@ -159,7 +159,7 @@ class Client {
 				"Could not bind to LDAP: ($errno) $error"
 			);
 		}
-		$this->boundTo = BOUND_ADMIN;
+		$this->boundTo = self::BOUND_ADMIN;
 	}
 
 	/**
