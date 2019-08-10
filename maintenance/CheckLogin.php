@@ -33,6 +33,7 @@ class CheckLogin extends Maintenance {
 			true,
 			'd'
 		);
+		$this->requireExtension( 'LDAPProvider' );
 	}
 
 	/**

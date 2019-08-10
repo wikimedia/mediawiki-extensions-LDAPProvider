@@ -33,6 +33,7 @@ class ShowUserInfo extends Maintenance {
 			true,
 			'd'
 		);
+		$this->requireExtension( 'LDAPProvider' );
 	}
 
 	/**

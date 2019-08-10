@@ -23,6 +23,7 @@ class ConvertLdapAuthenticationConfig extends Maintenance {
 		$this->addOption(
 			'output', 'Where to put the json file', true, true
 		);
+		$this->requireExtension( 'LDAPProvider' );
 	}
 
 	protected $newConfig = [];

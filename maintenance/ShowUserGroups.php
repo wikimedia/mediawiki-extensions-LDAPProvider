@@ -33,6 +33,7 @@ class ShowUserGroups extends Maintenance {
 			true,
 			'd'
 		);
+		$this->requireExtension( 'LDAPProvider' );
 	}
 
 	/**

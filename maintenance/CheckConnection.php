@@ -24,6 +24,7 @@ class CheckConnection extends Maintenance {
 		);
 		$this->addOption( 'domain', 'The domain to test', true, true, "d" );
 		$this->addArg( 'search', 'Search to execute.', true );
+		$this->requireExtension( 'LDAPProvider' );
 	}
 
 	/**
