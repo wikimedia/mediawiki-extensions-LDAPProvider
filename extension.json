@@ -69,7 +69,9 @@
 					"searchattribute": "",
 					"searchstring": "",
 					"grouprequest":"MediaWiki\\Extension\\LDAPProvider\\UserGroupsRequest\\GroupUniqueMember::factory",
-					"nestedgroups": false
+					"nestedgroups": false,
+					"groupobjectclass": "",
+					"groupattribute": "member"
 				}
 			}
 		}

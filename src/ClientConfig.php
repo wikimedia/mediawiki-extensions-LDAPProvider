@@ -19,4 +19,6 @@ class ClientConfig {
 	const USERINFO_REALNAME_ATTR = 'realnameattribute';
 	const USERINFO_EMAIL_ATTR = 'emailattribute';
 	const NESTED_GROUPS = 'nestedgroups';
+	const GROUP_OBJECT_CLASS = 'groupobjectclass';
+	const GROUP_ATTRIBUTE = 'groupattribute';
 }
