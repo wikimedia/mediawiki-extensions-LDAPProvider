@@ -11,7 +11,7 @@ use MediaWiki\MediaWikiServices;
  */
 class UserDomainStoreTest extends MediaWikiTestCase {
 
-	protected function setUp() {
+	protected function setUp() : void {
 		$this->tablesUsed[] = 'ldap_domains';
 		parent::setUp();
 

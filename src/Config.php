@@ -6,11 +6,11 @@ use GlobalVarConfig;
 
 class Config extends GlobalVarConfig {
 
-	const CLIENT_REGISTRY = 'ClientRegistry';
-	const DOMAIN_CONFIGS = 'DomainConfigs';
-	const CACHE_TYPE = 'CacheType';
-	const CACHE_TIME = 'CacheTime';
-	const DOMAIN_CONFIG_PROVIDER = 'DomainConfigProvider';
+	public const CLIENT_REGISTRY = 'ClientRegistry';
+	public const DOMAIN_CONFIGS = 'DomainConfigs';
+	public const CACHE_TYPE = 'CacheType';
+	public const CACHE_TIME = 'CacheTime';
+	public const DOMAIN_CONFIG_PROVIDER = 'DomainConfigProvider';
 
 	public function __construct() {
 		parent::__construct( 'LDAPProvider' );

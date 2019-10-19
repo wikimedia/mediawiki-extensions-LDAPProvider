@@ -28,7 +28,7 @@ use MultiConfig;
 
 class DomainConfigFactory {
 
-	const DEFAULT_CONF_ATTR = 'LDAPProviderDefaultSettings';
+	private const DEFAULT_CONF_ATTR = 'LDAPProviderDefaultSettings';
 
 	/**
 	 *

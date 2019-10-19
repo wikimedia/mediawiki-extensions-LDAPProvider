@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\LDAPProvider\Tests;
 
+use ConfigException;
 use MediaWiki\Extension\LDAPProvider\DomainConfigFactory;
 use MediaWiki\Extension\LDAPProvider\ClientConfig;
 use MediaWiki\Extension\LDAPProvider\DomainConfigProvider\LocalJSONFile;
@@ -32,13 +33,13 @@ class DomainConfigFactoryTest extends \MediaWikiTestCase {
 	}
 
 	/**
-	 * @expectedException \ConfigException
 	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
 	 * @covers MediaWiki\Extension\LDAPProvider\DomainConfigFactory::factory
 	 */
 	public function testExceptionOnMissingDefault() {
 		$dcf = $this->makeDomainConfigFactory();
 		$config = $dcf->factory( 'LDAP', 'some-arbitrary-section' );
+		$this->expectException( ConfigException::class );
 		$configWithNoDefault = $config->get( 'conf2' );
 	}
 

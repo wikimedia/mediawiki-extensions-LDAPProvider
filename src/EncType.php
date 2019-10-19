@@ -3,8 +3,8 @@
 namespace MediaWiki\Extension\LDAPProvider;
 
 class EncType {
-	const LDAPI = 'ldapi';
-	const SSL = 'ssl';
-	const TLS = 'tls';
-	const CLEAR = 'clear';
+	public const LDAPI = 'ldapi';
+	public const SSL = 'ssl';
+	public const TLS = 'tls';
+	public const CLEAR = 'clear';
 }

@@ -9,9 +9,9 @@ use MWException;
 
 class Client {
 
-	const BOUND_NONE  = 0;
-	const BOUND_ADMIN = 1;
-	const BOUND_USER  = 2;
+	private const BOUND_NONE  = 0;
+	private const BOUND_ADMIN = 1;
+	private const BOUND_USER  = 2;
 
 	/**
 	 *
