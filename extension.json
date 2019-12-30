@@ -19,9 +19,11 @@
 		]
 	},
 	"AutoloadNamespaces": {
-		"MediaWiki\\Extension\\LDAPProvider\\Tests\\" : "tests/phpunit/",
 		"MediaWiki\\Extension\\LDAPProvider\\Maintenance\\" : "maintenance/",
 		"MediaWiki\\Extension\\LDAPProvider\\" : "src/"
+	},
+	"TestAutoloadNamespaces": {
+		"MediaWiki\\Extension\\LDAPProvider\\Tests\\" : "tests/phpunit/"
 	},
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "MediaWiki\\Extension\\LDAPProvider\\Hook\\LoadExtensionSchemaUpdates::callback"
