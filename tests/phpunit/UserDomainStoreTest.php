@@ -3,8 +3,8 @@
 namespace MediaWiki\Extension\LDAPProvider\Tests;
 
 use MediaWiki\Extension\LDAPProvider\UserDomainStore;
-use MediaWikiTestCase;
 use MediaWiki\MediaWikiServices;
+use MediaWikiTestCase;
 
 /**
  * @group Database

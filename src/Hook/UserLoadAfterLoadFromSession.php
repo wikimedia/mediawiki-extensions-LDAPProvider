@@ -97,7 +97,7 @@ abstract class UserLoadAfterLoadFromSession {
 	public function process() {
 		if ( !$this->findDomainForUser() ) {
 			return true;
-		};
+		}
 		$this->createLdapClientForDomain();
 		$this->setSuitableDomainConfig();
 

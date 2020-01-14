@@ -20,10 +20,10 @@
 
 namespace MediaWiki\Extension\LDAPProvider\DomainConfigProvider;
 
-use MediaWiki\Extension\LDAPProvider\IDomainConfigProvider;
-use MediaWiki\Extension\LDAPProvider\Config;
-use MWException;
 use FormatJson;
+use MediaWiki\Extension\LDAPProvider\Config;
+use MediaWiki\Extension\LDAPProvider\IDomainConfigProvider;
+use MWException;
 
 class LocalJSONFile implements IDomainConfigProvider {
 

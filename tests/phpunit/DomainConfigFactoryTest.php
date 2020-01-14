@@ -3,8 +3,8 @@
 namespace MediaWiki\Extension\LDAPProvider\Tests;
 
 use ConfigException;
-use MediaWiki\Extension\LDAPProvider\DomainConfigFactory;
 use MediaWiki\Extension\LDAPProvider\ClientConfig;
+use MediaWiki\Extension\LDAPProvider\DomainConfigFactory;
 use MediaWiki\Extension\LDAPProvider\DomainConfigProvider\LocalJSONFile;
 
 class DomainConfigFactoryTest extends \MediaWikiTestCase {

@@ -9,7 +9,7 @@ use MediaWiki\Extension\LDAPProvider\ClientFactory;
 use MediaWikiTestCase;
 
 /**
-* @group Broken
+ * @group Broken
  */
 class ClientTest extends MediaWikiTestCase {
 

@@ -192,7 +192,7 @@ class PlatformFunctionWrapper {
 	 * structure of the array is as follows.  The attribute index is
 	 * converted to lowercase. (Attributes are case-insensitive for
 	 * directory servers, but not when used as array indices.)
-
+	 *
 	 * return_value["count"]     number of entries in the result
 	 * return_value[0]           refers to the details of first entry
 	 * return_value[i]["dn"]     DN of the ith entry in the result

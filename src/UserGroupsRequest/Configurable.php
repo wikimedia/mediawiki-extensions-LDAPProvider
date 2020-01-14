@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\LDAPProvider\UserGroupsRequest;
 
-use MediaWiki\Extension\LDAPProvider\UserGroupsRequest;
 use MediaWiki\Extension\LDAPProvider\ClientConfig;
-use MediaWiki\Extension\LDAPProvider\GroupList;
 use MediaWiki\Extension\LDAPProvider\EscapedString;
+use MediaWiki\Extension\LDAPProvider\GroupList;
+use MediaWiki\Extension\LDAPProvider\UserGroupsRequest;
 use MWException;
 
 class Configurable extends UserGroupsRequest {

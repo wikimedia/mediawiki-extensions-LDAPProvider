@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\LDAPProvider\UserGroupsRequest;
 
+use MediaWiki\Extension\LDAPProvider\GroupList;
 use MediaWiki\Extension\LDAPProvider\UserGroupsRequest;
 use MediaWiki\Extension\LDAPProvider\UserInfoRequest;
-use MediaWiki\Extension\LDAPProvider\GroupList;
 
 class UserMemberOf extends UserGroupsRequest {
 

@@ -22,9 +22,9 @@ namespace MediaWiki\Extension\LDAPProvider;
 
 use ExtensionRegistry;
 use HashConfig;
-use MWException;
 use MediaWiki\MediaWikiServices;
 use MultiConfig;
+use MWException;
 
 class DomainConfigFactory {
 
