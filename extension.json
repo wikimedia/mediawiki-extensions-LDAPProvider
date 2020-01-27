@@ -57,6 +57,12 @@
 			"public": false,
 			"description": "Specifies the mechanism for obtaining the domain configuration",
 			"descriptionmsg": "ldapprovider-config-domainconfigprovider"
+		},
+		"DefaultDomain": {
+			"value": "",
+			"public": false,
+			"description": "Specifies which domain to choose for a user, if no mapping from the database is available",
+			"descriptionmsg": "ldapprovider-config-defaultdomain"
 		}
 	},
 	"ConfigRegistry": {

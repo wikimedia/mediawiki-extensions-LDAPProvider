@@ -11,6 +11,7 @@ class Config extends GlobalVarConfig {
 	public const CACHE_TYPE = 'CacheType';
 	public const CACHE_TIME = 'CacheTime';
 	public const DOMAIN_CONFIG_PROVIDER = 'DomainConfigProvider';
+	public const DEFAULT_DOMAIN = 'DefaultDomain';
 
 	public function __construct() {
 		parent::__construct( 'LDAPProvider' );

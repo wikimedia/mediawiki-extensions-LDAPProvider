@@ -9,5 +9,6 @@
 	"ldapprovider-config-domainconfigs": "Description of the configuration variable that stores per domain configs",
 	"ldapprovider-domain-config-not-found": "Error message in case a configuration for a requested domain is missing",
 	"ldapprovider-more-than-one": "Error message in case more than one domain entry was found for a certain user",
-	"ldapprovider-config-domainconfigprovider": "Description of the configuration variable that specifies the mechanism for obtaining the domain configuration"
+	"ldapprovider-config-domainconfigprovider": "Description of the configuration variable that specifies the mechanism for obtaining the domain configuration",
+	"ldapprovider-config-defaultdomain": "Description of the configuration variable that specifies which domain to choose for a user, if no mapping from the database is available"
 }
