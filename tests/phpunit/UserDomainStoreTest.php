@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\LDAPProvider\Tests;
 use MediaWiki\Extension\LDAPProvider\UserDomainStore;
 use MediaWikiTestCase;
 use MediaWiki\MediaWikiServices;
+use HashConfig;
 
 /**
  * @group Database
@@ -52,6 +53,37 @@ class UserDomainStoreTest extends MediaWikiTestCase {
 			[
 				[ 'ANOTHERDOMAIN' ]
 			]
+		);
+	}
+
+	/**
+	 * @covers MediaWiki\Extension\LDAPProvider\UserDomainStore::getDomainForUser
+	 */
+	public function testGetDomainForUserWithDefaultDomainSuccess() {
+		$store = new UserDomainStore(
+			MediaWikiServices::getInstance()->getDBLoadBalancer(),
+			new HashConfig( [
+				'DefaultDomain' => 'SOMEOTHERDOMAIN'
+			] )
+		);
+		$domain = $store->getDomainForUser( self::getTestUser()->getUser() );
+
+		$this->assertEquals(
+			'SOMEOTHERDOMAIN', $domain, 'Should deliver the default domain'
+		);
+	}
+
+	/**
+	 * @covers MediaWiki\Extension\LDAPProvider\UserDomainStore::getDomainForUser
+	 */
+	public function testGetDomainForUserWithDefaultDomainFail() {
+		$store = new UserDomainStore(
+			MediaWikiServices::getInstance()->getDBLoadBalancer()
+		);
+		$domain = $store->getDomainForUser( self::getTestUser()->getUser() );
+
+		$this->assertEquals(
+			null, $domain, 'Should deliver the `null`'
 		);
 	}
 }

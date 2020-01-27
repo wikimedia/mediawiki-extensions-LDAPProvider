@@ -47,11 +47,10 @@ class CheckLogin extends Maintenance {
 		$factory = ClientFactory::getInstance();
 		$client = $factory->getForDomain( $domain );
 
-		$canBind = $client->canBindAs($username, $password );
-		if( $canBind ) {
+		$canBind = $client->canBindAs( $username, $password );
+		if ( $canBind ) {
 			$this->output( "OK\n" );
-		}
-		else {
+		} else {
 			$this->output( "FAILED\n" );
 		}
 	}

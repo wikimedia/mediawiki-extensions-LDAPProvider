@@ -170,7 +170,7 @@ abstract class UserLoadAfterLoadFromSession {
 	 * @return bool
 	 */
 	protected function doProcess() {
-		if( $this->user->isAnon() ) {
+		if ( $this->user->isAnon() ) {
 			return true;
 		}
 
@@ -181,7 +181,7 @@ abstract class UserLoadAfterLoadFromSession {
 		$nextSyncTS = $lastSyncTS + $this->sessionExpirationPeriod;
 		$nowTS = time();
 
-		if( $nowTS >= $nextSyncTS ) {
+		if ( $nowTS >= $nextSyncTS ) {
 			$session->set( $this->sessionDataKey, $nowTS );
 			return $this->doSync();
 		}
