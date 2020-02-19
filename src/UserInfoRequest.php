@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\LDAPProvider;
 
 use Config;
+use MWException;
 
 class UserInfoRequest {
 
