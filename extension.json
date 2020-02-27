@@ -63,6 +63,17 @@
 			"public": false,
 			"description": "Specifies which domain to choose for a user, if no mapping from the database is available",
 			"descriptionmsg": "ldapprovider-config-defaultdomain"
+		},
+		"PreSearchUsernameModifierRegistry": {
+			"value": {
+				"removespaces": "\\MediaWiki\\Extension\\LDAPProvider\\PreSearchUsernameModifier\\RemoveSpaces::newInstance",
+				"spacetounderscore": "\\MediaWiki\\Extension\\LDAPProvider\\PreSearchUsernameModifier\\SpacesToUnderscores::newInstance",
+				"spacestounderscores": "\\MediaWiki\\Extension\\LDAPProvider\\PreSearchUsernameModifier\\SpacesToUnderscores::newInstance",
+				"strtolower": "\\MediaWiki\\Extension\\LDAPProvider\\PreSearchUsernameModifier\\ToLower::newInstance",
+				"lowercase": "\\MediaWiki\\Extension\\LDAPProvider\\PreSearchUsernameModifier\\ToLower::newInstance"
+			},
+			"description": "Allows registration of pre-search-username-modifiers",
+			"public": false
 		}
 	},
 	"ConfigRegistry": {
@@ -82,7 +93,8 @@
 					"grouprequest":"MediaWiki\\Extension\\LDAPProvider\\UserGroupsRequest\\GroupUniqueMember::factory",
 					"nestedgroups": false,
 					"groupobjectclass": "",
-					"groupattribute": "member"
+					"groupattribute": "member",
+					"presearchusernamemodifiers": []
 				}
 			}
 		}

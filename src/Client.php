@@ -21,7 +21,7 @@ class Client {
 
 	/**
 	 *
-	 * @var $config
+	 * @var Config $config
 	 */
 	protected $config = null;
 
@@ -44,10 +44,21 @@ class Client {
 	protected $cacheTime = null;
 
 	/**
-	 * @param Config $config for fetching
+	 *
+	 * @var PreSearchUsernameModifierProcessor
 	 */
-	public function __construct( Config $config ) {
+	protected $preSearchUsernameModifierProcessor = null;
+
+	/**
+	 * @param Config $config for fetching
+	 * @param PreSearchUsernameModifierProcessor $preSearchUsernameModifierProcessor
+	 */
+	public function __construct(
+			Config $config,
+			PreSearchUsernameModifierProcessor $preSearchUsernameModifierProcessor
+		) {
 		$this->config = $config;
+		$this->preSearchUsernameModifierProcessor = $preSearchUsernameModifierProcessor;
 		if ( $this->connection === null ) {
 			$this->connection = new PlatformFunctionWrapper();
 		}
@@ -87,7 +98,7 @@ class Client {
 		$servers = (string)( new Serverlist( $this->config ) );
 		$this->connection = PlatformFunctionWrapper::getConnection( $servers );
 		if ( !$this->connection ) {
-			throw new Exception( "Couldn't connect with $servers" );
+			throw new MWException( "Couldn't connect with $servers" );
 		}
 		return $this->connection;
 	}
@@ -216,6 +227,8 @@ class Client {
 	 */
 	public function getUserInfo( $username, $userBaseDN = '' ) {
 		$this->init();
+		$username = $this->modifyUsername( $username );
+
 		return $this->cache->getWithSetCallback(
 			$this->cache->makeKey(
 				"ldap-provider", "user-info", $username, $userBaseDN
@@ -240,6 +253,7 @@ class Client {
 	private function getSearchString( $username ) {
 		$searchString = $this->config->get( ClientConfig::SEARCH_STRING );
 		if ( $searchString ) {
+			$username = $this->modifyUsername( $username );
 			// This is a straight bind
 			$userdn = str_replace( "USER-NAME", $username, $searchString );
 		} else {
@@ -264,7 +278,8 @@ class Client {
 				ClientConfig::USER_DN_SEARCH_ATTR
 			);
 		}
-		$escapedUsername = new EscapedString( $username );
+		$modifiedUsername = $this->modifyUsername( $username );
+		$escapedUsername = new EscapedString( $modifiedUsername );
 		// we need to do a subbase search for the entry
 		$filter = "(" . $searchattr . "=" . $escapedUsername . ")";
 
@@ -345,5 +360,19 @@ class Client {
 				return $request->getUserGroups( $username );
 			}
 		);
+	}
+
+	/**
+	 *
+	 * @param string $username
+	 * @return string
+	 */
+	private function modifyUsername( $username ) {
+		$modifiedUsername = $this->preSearchUsernameModifierProcessor->process(
+			$username,
+			$this->config->get( 'presearchusernamemodifiers' )
+		);
+
+		return $modifiedUsername;
 	}
 }

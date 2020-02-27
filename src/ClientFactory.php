@@ -14,13 +14,19 @@ class ClientFactory {
 
 	/**
 	 *
+	 * @var Config
+	 */
+	private $config = null;
+
+	/**
+	 *
 	 * @var callable[]
 	 */
 	protected $domainClientFactories = [];
 
 	protected function __construct() {
-		$this->domainClientFactories
-			= Config::newInstance()->get( "ClientRegistry" );
+		$this->config = Config::newInstance();
+		$this->domainClientFactories = $this->config->get( "ClientRegistry" );
 	}
 
 	/**
@@ -54,7 +60,12 @@ class ClientFactory {
 					$domain,
 					ClientConfig::DOMAINCONFIG_SECTION
 				);
-				$this->clients[$domain] = new Client( $clientConfig );
+				$preSearchUsernameModifierProcessor = new PreSearchUsernameModifierProcessor(
+					$this->config->get( Config::PRE_SEARCH_USERNAME_MODIFIER_REGISTRY )
+				);
+				$this->clients[$domain] = new Client(
+					$clientConfig, $preSearchUsernameModifierProcessor
+				);
 			} else {
 				$callback = $this->domainClientFactories[$domain];
 				$this->clients[$domain] = $callback();

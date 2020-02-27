@@ -12,6 +12,7 @@ class Config extends GlobalVarConfig {
 	public const CACHE_TIME = 'CacheTime';
 	public const DOMAIN_CONFIG_PROVIDER = 'DomainConfigProvider';
 	public const DEFAULT_DOMAIN = 'DefaultDomain';
+	public const PRE_SEARCH_USERNAME_MODIFIER_REGISTRY = 'PreSearchUsernameModifierRegistry';
 
 	public function __construct() {
 		parent::__construct( 'LDAPProvider' );
