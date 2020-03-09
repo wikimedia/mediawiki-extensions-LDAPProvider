@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250"
+			"Vlad5250",
+			"Movses"
 		]
 	},
 	"ldapprovider-desc": "Надає спільну інфраструктуру для підключення з ресурсом LDAP і надання запитів до нього",
@@ -9,5 +10,6 @@
 	"ldapprovider-config-domainconfigs": "Зберігається згідно налаштувань домену",
 	"ldapprovider-domain-config-not-found": "\n\nНе вдалося отримати доступ до конфігураційного файлу «$1»!\n\nБудь ласка, налаштуйте такий файл для розширення LDAPProvider.",
 	"ldapprovider-more-than-one": "Знайдено більше одного користувача для «$1»",
-	"ldapprovider-config-domainconfigprovider": "Вказує механізм отримання доменної конфігурації"
+	"ldapprovider-config-domainconfigprovider": "Вказує механізм отримання доменної конфігурації",
+	"ldapprovider-config-defaultdomain": "Визначає який домен має бути вибраним для користувача, якщо недоступно жодного мапінгу з бази даних."
 }
