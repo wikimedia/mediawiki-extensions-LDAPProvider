@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250",
-			"Movses"
+			"Movses",
+			"Vlad5250"
 		]
 	},
 	"ldapprovider-desc": "Надає спільну інфраструктуру для підключення з ресурсом LDAP і надання запитів до нього",
