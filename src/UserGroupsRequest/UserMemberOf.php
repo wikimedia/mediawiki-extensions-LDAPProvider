@@ -16,7 +16,16 @@ class UserMemberOf extends UserGroupsRequest {
 		$userInfoRequest = new UserInfoRequest( $this->ldapClient, $this->config );
 		$res = $userInfoRequest->getUserInfo( $username );
 
-		return new GroupList( $res['memberof'] );
+		$groupDNs = $res['memberof'];
+		/**
+		 * With some LDAP backends this field may be just a string, if only one
+		 * group is assigned
+		 */
+		if ( !is_array( $groupDNs ) ) {
+			$groupDNs = [ $groupDNs ];
+		}
+
+		return new GroupList( $groupDNs );
 	}
 
 }
