@@ -344,6 +344,7 @@ class Client {
 	 */
 	public function getUserGroups( $username, $groupBaseDN = '' ) {
 		$this->init();
+		$username = $this->modifyUsername( $username );
 		return $this->cache->getWithSetCallback(
 			$this->cache->makeKey(
 				"ldap-provider", "user-groups", $username, $groupBaseDN
