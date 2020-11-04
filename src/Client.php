@@ -21,7 +21,7 @@ class Client {
 
 	/**
 	 *
-	 * @var Config $config
+	 * @var Config
 	 */
 	protected $config = null;
 
