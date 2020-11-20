@@ -62,7 +62,7 @@ class UserDomainStore {
 	}
 
 	/**
-	 * @param string $user to set
+	 * @param User $user to set
 	 * @param string $domain to set user to
 	 * @return bool
 	 */
