@@ -38,6 +38,12 @@ class LocalJSONFile implements IDomainConfigProvider {
 	 * @param string $jsonFilePath The absolute path to the JSON file
 	 */
 	public function __construct( $jsonFilePath ) {
+		if ( defined( 'MW_PHPUNIT_TEST' )
+			&& $jsonFilePath === '/etc/mediawiki/ldapprovider.json' ) {
+				$jsonFilePath === dirname( dirname( __DIR__ ) )
+					. '/tests/phpunit/data/testconfig.json';
+		}
+
 		if ( !is_readable( $jsonFilePath ) ) {
 			throw new MWException(
 				wfMessage( 'ldapprovider-domain-config-not-found' )->params( $jsonFilePath )->plain()
