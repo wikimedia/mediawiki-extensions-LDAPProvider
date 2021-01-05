@@ -43,7 +43,7 @@ class TestClient extends Client {
 	/**
 	 * @param string $user to find groups for
 	 * @param string $groupBaseDN to start searching at
-	 * @return array
+	 * @return GroupList
 	 */
 	public function getUserGroups( $user, $groupBaseDN = '' ) {
 		return call_user_func(

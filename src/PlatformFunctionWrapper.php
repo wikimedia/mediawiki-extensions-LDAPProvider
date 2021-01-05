@@ -13,6 +13,11 @@ class PlatformFunctionWrapper {
 	private $linkID;
 
 	/**
+	 * @var self[]
+	 */
+	private static $conn = [];
+
+	/**
 	 * Set the value of the given option
 	 * @link http://php.net/manual/en/function.ldap-set-option.php
 	 * @param int $option
@@ -52,7 +57,7 @@ class PlatformFunctionWrapper {
 			. "\$newval = $newval );"
 		);
 		$ret = \ldap_set_option( $this->linkID, $option, $newval );
-		wfDebugLog( "LDAP", "# returns $ret" );
+		wfDebugLog( "LDAP", "# returns " . ( $ret ? "true" : "false" ) );
 		return $ret;
 	}
 
@@ -76,7 +81,7 @@ class PlatformFunctionWrapper {
 		\Wikimedia\suppressWarnings();
 		$ret = \ldap_bind( $this->linkID, $bindRDN, $bindPassword );
 		\Wikimedia\restoreWarnings();
-		wfDebugLog( "LDAP", "# returns $ret" );
+		wfDebugLog( "LDAP", "# returns " . ( $ret ? "true" : "false" ) );
 		return $ret;
 	}
 
@@ -119,7 +124,7 @@ class PlatformFunctionWrapper {
 			"LDAP", "ldap_start_tls( \$linkID ); "
 		);
 		$ret = \ldap_start_tls( $this->linkID );
-		wfDebugLog( "LDAP", "# returns $ret" );
+		wfDebugLog( "LDAP", "# returns " . ( $ret ? "true" : "false" ) );
 		return $ret;
 	}
 
@@ -179,7 +184,11 @@ class PlatformFunctionWrapper {
 			$sizelimit, $timelimit, $deref
 		);
 		\Wikimedia\restoreWarnings();
-		wfDebugLog( "LDAP", "# returns $ret" );
+		$retDbg = "a resource";
+		if ( $ret === false ) {
+			$retDbg = "an error (" . \ldap_error( $this->linkID ) . ")";
+		}
+		wfDebugLog( "LDAP", "# returns $retDbg" );
 		return $ret;
 	}
 
@@ -240,11 +249,12 @@ class PlatformFunctionWrapper {
 			"LDAP", "ldap_connect( \$uri = '$uri' ); "
 		);
 		$this->linkID = \ldap_connect( $uri );
-		wfDebugLog( "LDAP", "# __METHOD__ returns {$this->linkID}" );
+		if ( $this->linkID === false ) {
+			throw new Exception( "$uri is not a valid LDAP URI" );
+		}
+		wfDebugLog( "LDAP", "# __METHOD__ returns a link id" );
 		return $this->linkID;
 	}
-
-	private static $conn = [];
 
 	/**
 	 *
@@ -253,7 +263,7 @@ class PlatformFunctionWrapper {
 	 */
 	public static function getConnection( $uri = null ) {
 		$uri = $uri ?: '';
-		if ( !isset( $conn[$uri] ) ) {
+		if ( !isset( self::$conn[$uri] ) ) {
 			$ldap = new self;
 			$ldap->connect( $uri );
 			self::$conn[$uri] = $ldap;
@@ -287,7 +297,7 @@ class PlatformFunctionWrapper {
 	 */
 	public function count( $result ) {
 		wfDebugLog(
-			"LDAP", "ldap_count_entries( \$linkiID, \$result = '$result' );"
+			"LDAP", "ldap_count_entries( \$linkiID, \$result = [resource] );"
 		);
 		$ret = \ldap_count_entries( $this->linkID, $result );
 		wfDebugLog( "LDAP", "# returns $ret" );

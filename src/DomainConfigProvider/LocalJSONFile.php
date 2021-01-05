@@ -40,7 +40,7 @@ class LocalJSONFile implements IDomainConfigProvider {
 	public function __construct( $jsonFilePath ) {
 		if ( defined( 'MW_PHPUNIT_TEST' )
 			&& $jsonFilePath === '/etc/mediawiki/ldapprovider.json' ) {
-				$jsonFilePath === dirname( dirname( __DIR__ ) )
+				$jsonFilePath = dirname( dirname( __DIR__ ) )
 					. '/tests/phpunit/data/testconfig.json';
 		}
 

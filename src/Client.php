@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\LDAPProvider;
 
+use BagOStuff;
 use Config;
 use MediaWiki\Extension\LDAPProvider\Config as LDAPConfig;
 use MediaWiki\Logger\LoggerFactory;
@@ -50,6 +51,31 @@ class Client {
 	protected $preSearchUsernameModifierProcessor = null;
 
 	/**
+	 * @var int
+	 */
+	protected $boundTo;
+
+	/**
+	 * @var bool
+	 */
+	protected $adminUserProvided = false;
+
+	/**
+	 * @var bool
+	 */
+	protected $fetchedUserInfo = false;
+
+	/**
+	 * @var ?array[]
+	 */
+	protected $userInfo = null;
+
+	/**
+	 * @var ?string
+	 */
+	protected $LDAPUsername = null;
+
+	/**
 	 * @param Config $config for fetching
 	 * @param PreSearchUsernameModifierProcessor $preSearchUsernameModifierProcessor
 	 */
@@ -92,7 +118,7 @@ class Client {
 	}
 
 	/**
-	 * @return resource
+	 * @return PlatformFunctionWrapper
 	 */
 	protected function makeNewConnection() {
 		$servers = (string)( new Serverlist( $this->config ) );

@@ -22,7 +22,7 @@ abstract class UserLoadAfterLoadFromSession {
 
 	/**
 	 *
-	 * @var ContextSource
+	 * @var IContextSource
 	 */
 	protected $context = null;
 

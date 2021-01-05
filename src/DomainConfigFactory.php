@@ -54,7 +54,7 @@ class DomainConfigFactory {
 	 * referenced in "$LDAPProviderDomainConfigs"
 	 * @param string $domain to use
 	 * @param string $section to get
-	 * @return Config
+	 * @return \Config
 	 */
 	public function factory( $domain, $section ) {
 		if ( !isset( $this->config[$domain] ) ) {

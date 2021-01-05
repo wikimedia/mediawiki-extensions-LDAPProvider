@@ -22,8 +22,8 @@ class PreSearchUsernameModifierProcessor {
 
 	/**
 	 *
-	 * @param type $username
-	 * @param type $modifierKeys
+	 * @param string $username
+	 * @param string[] $modifierKeys
 	 * @return string
 	 */
 	public function process( $username, $modifierKeys ) {
@@ -37,7 +37,7 @@ class PreSearchUsernameModifierProcessor {
 
 	/**
 	 *
-	 * @param string $modifierKeys
+	 * @param string[] $modifierKeys
 	 * @return IPreSearchUsernameModifier[]
 	 */
 	private function makeModifiers( $modifierKeys ) {

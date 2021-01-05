@@ -4,13 +4,13 @@ namespace MediaWiki\Extension\LDAPProvider;
 
 use MediaWiki\MediaWikiServices;
 use User;
-use Wikimedia\Rdbms\LoadBalancer;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 class UserDomainStore {
 
 	/**
 	 *
-	 * @var LoadBalancer
+	 * @var ILoadBalancer
 	 */
 	protected $loadbalancer = null;
 
@@ -21,10 +21,10 @@ class UserDomainStore {
 	protected $config = null;
 
 	/**
-	 * @param LoadBalancer $loadbalancer to use
+	 * @param ILoadBalancer $loadbalancer to use
 	 * @param Config|null $config
 	 */
-	public function __construct( LoadBalancer $loadbalancer, $config = null ) {
+	public function __construct( ILoadBalancer $loadbalancer, $config = null ) {
 		$this->loadbalancer = $loadbalancer;
 		$this->config = $config;
 		if ( $this->config === null ) {
