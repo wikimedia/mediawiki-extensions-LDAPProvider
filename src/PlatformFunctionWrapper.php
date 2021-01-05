@@ -215,13 +215,11 @@ class PlatformFunctionWrapper {
 	/**
 	 * Connect to an LDAP server
 	 * @link http://php.net/manual/en/function.ldap-connect.php
-	 * @param string|null $hostname [optional] This field supports using a
-	 * hostname or, with OpenLDAP 2.x.x and later, a full LDAP URI of
-	 * the form ldap://hostname:port or ldaps://hostname:port for SSL
-	 * encryption.  Note that hostname:port is not a supported LDAP
-	 * URI as the schema is missing.
-	 * @param int $port [optional] The port to connect to. Not used
-	 * when using LDAP URIs.
+	 * @param string|null $uri [optional] This field supports using a
+	 * full LDAP URI of the form ldap://hostname:port or
+	 * ldaps://hostname:port for SSL encryption.  Note that
+	 * hostname:port is not a supported LDAP URI as the schema is
+	 * missing.
 	 * @return resource a positive LDAP link identifier when the
 	 * provided hostname/port combination or LDAP URI seems
 	 * plausible. It's a syntactic check of the provided parameters
@@ -234,14 +232,14 @@ class PlatformFunctionWrapper {
 	 * arguments are specified then the link identifier of the already
 	 * opened link will be returned.
 	 */
-	public function connect( $hostname = null, $port = 389 ) {
+	public function connect( $uri = null ) {
 		if ( $this->linkID ) {
 			throw new Exception( "already connected" );
 		}
 		wfDebugLog(
-			"LDAP", "ldap_connect( \$hostname = '$hostname', \$port = $port ); "
+			"LDAP", "ldap_connect( \$uri = '$uri' ); "
 		);
-		$this->linkID = \ldap_connect( $hostname, $port );
+		$this->linkID = \ldap_connect( $uri );
 		wfDebugLog( "LDAP", "# __METHOD__ returns {$this->linkID}" );
 		return $this->linkID;
 	}
@@ -250,18 +248,17 @@ class PlatformFunctionWrapper {
 
 	/**
 	 *
-	 * @param string|null $hostname
-	 * @param int $port
+	 * @param string|null $uri
 	 * @return PlatformFunctionWrapper
 	 */
-	public static function getConnection( $hostname = null, $port = 389 ) {
-		$host = $hostname ? $hostname : '';
-		if ( !isset( $conn[$host][$port] ) ) {
+	public static function getConnection( $uri = null ) {
+		$uri = $uri ?: '';
+		if ( !isset( $conn[$uri] ) ) {
 			$ldap = new self;
-			$ldap->connect( $host, $port );
-			self::$conn[$host][$port] = $ldap;
+			$ldap->connect( $uri );
+			self::$conn[$uri] = $ldap;
 		}
-		return self::$conn[$host][$port];
+		return self::$conn[$uri];
 	}
 
 	/**

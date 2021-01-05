@@ -20,11 +20,21 @@ class Serverlist {
 	}
 
 	/**
+	 * Get the uri.
+	 * @return string
+	 */
+	public function __toString() {
+		return $this->getURI();
+	}
+
+	/**
+	 * Produce a URI with necessary connection info (but no user/pw).
+	 *
 	 * Logic taken from "Extension:LdapAuthentication",
 	 * LdapAuthenticationPlugin::connect
 	 * @return string
 	 */
-	public function __toString() {
+	public function getURI() {
 		switch ( $this->getEncType() ) {
 			case EncType::LDAPI:
 				$serverpre = "ldapi://";
