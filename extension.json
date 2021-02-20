@@ -19,11 +19,11 @@
 		]
 	},
 	"AutoloadNamespaces": {
-		"MediaWiki\\Extension\\LDAPProvider\\Maintenance\\" : "maintenance/",
-		"MediaWiki\\Extension\\LDAPProvider\\" : "src/"
+		"MediaWiki\\Extension\\LDAPProvider\\Maintenance\\": "maintenance/",
+		"MediaWiki\\Extension\\LDAPProvider\\": "src/"
 	},
 	"TestAutoloadNamespaces": {
-		"MediaWiki\\Extension\\LDAPProvider\\Tests\\" : "tests/phpunit/"
+		"MediaWiki\\Extension\\LDAPProvider\\Tests\\": "tests/phpunit/"
 	},
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "MediaWiki\\Extension\\LDAPProvider\\Hook\\LoadExtensionSchemaUpdates::callback"
@@ -90,7 +90,7 @@
 					"userbasedn": "",
 					"searchattribute": "",
 					"searchstring": "",
-					"grouprequest":"MediaWiki\\Extension\\LDAPProvider\\UserGroupsRequest\\GroupUniqueMember::factory",
+					"grouprequest": "MediaWiki\\Extension\\LDAPProvider\\UserGroupsRequest\\GroupUniqueMember::factory",
 					"nestedgroups": false,
 					"groupobjectclass": "",
 					"groupattribute": "member",
@@ -99,6 +99,6 @@
 			}
 		}
 	},
-	"load_composer_autoloader" : true,
+	"load_composer_autoloader": true,
 	"manifest_version": 2
 }
