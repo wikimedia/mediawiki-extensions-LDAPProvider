@@ -6,6 +6,10 @@
 		<exclude name="MediaWiki.Commenting.PropertyDocumentation.MissingDocumentationPrivate" />
 		<exclude name="MediaWiki.Commenting.PropertyDocumentation.MissingDocumentationProtected" />
 	</rule>
+	<!-- Extension is using config_prefix "LDAPProvider" in extension.json, which does not work with this sniff -->
+	<rule ref="MediaWiki.NamingConventions.ValidGlobalName">
+		<severity>0</severity>
+	</rule>
 	<file>.</file>
 	<arg name="bootstrap" value="./vendor/mediawiki/mediawiki-codesniffer/utils/bootstrap-ci.php"/>
 	<arg name="extensions" value="php"/>

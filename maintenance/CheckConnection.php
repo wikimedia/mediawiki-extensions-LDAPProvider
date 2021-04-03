@@ -32,9 +32,7 @@ class CheckConnection extends Maintenance {
 	 * @SuppressWarnings(PHPMD.CamelCaseVariableName)
 	 */
 	public function execute() {
-		// @codingStandardsIgnoreStart
 		global $LDAPProviderDomainConfigs;
-		// @codingStandardsIgnoreEnd
 
 		$LDAPProviderDomainConfigs = $this->getOption( "config" );
 		$factory = ClientFactory::getInstance();
