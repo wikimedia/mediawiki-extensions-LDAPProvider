@@ -23,7 +23,6 @@ namespace MediaWiki\Extension\LDAPProvider\DomainConfigProvider;
 use FormatJson;
 use MediaWiki\Extension\LDAPProvider\Config;
 use MediaWiki\Extension\LDAPProvider\IDomainConfigProvider;
-use MWException;
 
 class LocalJSONFile implements IDomainConfigProvider {
 
@@ -38,28 +37,18 @@ class LocalJSONFile implements IDomainConfigProvider {
 	 * @param string $jsonFilePath The absolute path to the JSON file
 	 */
 	public function __construct( $jsonFilePath ) {
-		if ( defined( 'MW_PHPUNIT_TEST' )
-			&& $jsonFilePath === '/etc/mediawiki/ldapprovider.json' ) {
-				$jsonFilePath = dirname( dirname( __DIR__ ) )
-					. '/tests/phpunit/data/testconfig.json';
+		if ( defined( 'MW_PHPUNIT_TEST' ) && $jsonFilePath === '/etc/mediawiki/ldapprovider.json' ) {
+			$jsonFilePath = dirname( dirname( __DIR__ ) ) . '/tests/phpunit/data/testconfig.json';
 		}
 
 		if ( !is_readable( $jsonFilePath ) ) {
-			throw new MWException(
-				wfMessage( 'ldapprovider-domain-config-not-found' )->params( $jsonFilePath )->plain()
-			);
+			throw new ConfigException( 'ldapprovider-domain-config-not-found', $jsonFilePath );
 		}
 
-		$this->configArray = FormatJson::decode(
-			file_get_contents( $jsonFilePath ),
-			true
-		);
+		$this->configArray = FormatJson::decode( file_get_contents( $jsonFilePath ), true );
 
-		if ( $this->configArray === false
-			|| count( $this->configArray ) === 0 ) {
-			throw new MWException(
-				"Could not parse configuration file '$jsonFilePath'!"
-			);
+		if ( $this->configArray === false || count( $this->configArray ) === 0 ) {
+			throw new ConfigException( 'ldapprovider-domain-config-invalid', $jsonFilePath );
 		}
 	}
 

@@ -38,19 +38,27 @@
 		"mediawiki/mediawiki-phan-config": "0.10.6",
 		"mediawiki/minus-x": "1.1.1",
 		"php-parallel-lint/php-console-highlighter": "0.5.0",
-		"php-parallel-lint/php-parallel-lint": "1.2.0"
+		"php-parallel-lint/php-parallel-lint": "1.2.0",
+		"vimeo/psalm": "^4.7"
 	},
 	"scripts": {
 		"test": [
 			"parallel-lint . --exclude vendor --exclude node_modules",
 			"minus-x check .",
-			"phpcs -sp",
-			"phan -m text --target-php-version 7.3 --no-progress-bar | sed 's, ,:,'"
+			"phpcs -sp"
 		],
 		"fix": [
 			"minus-x fix .",
 			"phpcbf"
 		],
-		"phan": "phan -d . --long-progress-bar"
+		"lint": [
+			"phpcs -p -s --report=emacs || :",
+			"phan --no-progress-bar -m text | sed 's, ,:,'",
+			"psalm --output-format=emacs --show-info=true"
+		],
+		"fixlint": [
+			"phpcf",
+			"psalter"
+		]
 	}
 }
