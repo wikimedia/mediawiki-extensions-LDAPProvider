@@ -15,7 +15,7 @@ class GroupMemberUid extends UserGroupsRequest {
 	 */
 	public function getUserGroups( $username ) {
 		$userDN = new EscapedString( $this->ldapClient->getUserDN( $username, 'uid' ) );
-        $userUid = $this->ldapClient->LDAPUsername;
+		$userUid = $this->ldapClient->LDAPUsername;
 		$baseDN = $this->config->get( ClientConfig::GROUP_BASE_DN );
 		$dn = 'dn';
 
