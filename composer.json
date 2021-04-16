@@ -59,6 +59,7 @@
 		"fixlint": [
 			"phpcf",
 			"psalter"
-		]
+		],
+		"phan": "phan -d . --long-progress-bar"
 	}
 }
