@@ -12,7 +12,7 @@ class GenericCallbackTest extends TestCase {
 	 * @return void
 	 */
 	public function testModify() {
-		$modifier = new GenericCallback( function () {
+		$modifier = new GenericCallback( static function () {
 			return 'TEST';
 		} );
 

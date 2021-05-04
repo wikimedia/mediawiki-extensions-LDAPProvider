@@ -12,10 +12,10 @@ class TestClientTest extends \PHPUnit\Framework\TestCase {
 	 */
 	public function testCallbacks() {
 		$testClient = new TestClient( [
-			'canBindAs' => function ( $username, $password ) {
+			'canBindAs' => static function ( $username, $password ) {
 				return strtoupper( $username );
 			},
-			'search' => function ( $match, $attribs ) {
+			'search' => static function ( $match, $attribs ) {
 				return strtoupper( $match );
 			}
 		] );

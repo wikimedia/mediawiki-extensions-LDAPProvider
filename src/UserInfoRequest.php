@@ -84,7 +84,7 @@ class UserInfoRequest {
 				} else {
 					$res[$key] = array_filter(
 						$value,
-						function ( $thisKey ) {
+						static function ( $thisKey ) {
 							return is_int( $thisKey );
 						},
 						ARRAY_FILTER_USE_KEY

@@ -20,7 +20,7 @@ class ClientTest extends MediaWikiTestCase {
 		$mockBuilder = $this->getMockBuilder(
 			'\MediaWiki\Extension\LDAPProvider\PlatformFunctionWrapper'
 		);
-		$mockFunctionWrapper = $mockBuilder->setMethods(
+		$mockFunctionWrapper = $mockBuilder->onlyMethods(
 			[ 'ldap_bind', 'ldap_connect', 'ldap_set_option' ]
 		)->getMock();
 		$mockFunctionWrapper->expects( $this->any() )
@@ -44,7 +44,7 @@ class ClientTest extends MediaWikiTestCase {
 		$mockBulder = $this->getMockBuilder(
 			'\MediaWiki\Extension\LDAPProvider\PlatformFunctionWrapper'
 		);
-		$mockFunctionWrapper = $mockBulder->setMethods( [
+		$mockFunctionWrapper = $mockBulder->onlyMethods( [
 			'ldap_get_entries', 'ldap_connect', 'ldap_set_option',
 			'ldap_bind', 'ldap_search'
 		] )->getMock();
