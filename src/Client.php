@@ -343,6 +343,14 @@ class Client {
 	}
 
 	/**
+	 * Gets the the LDAPUsername if it is set by getUserDN with a searchattr
+	 * @return string
+	 */
+	public function getUsername() {
+		return $this->LDAPUsername;
+	}
+
+	/**
 	 * Method to determine whether a LDAP password is valid for a
 	 * specific user on the current connection
 	 *

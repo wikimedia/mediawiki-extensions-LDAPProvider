@@ -15,7 +15,7 @@ class GroupMemberUid extends UserGroupsRequest {
 	 */
 	public function getUserGroups( $username ) {
 		$userDN = new EscapedString( $this->ldapClient->getUserDN( $username, 'uid' ) );
-		$userUid = $this->ldapClient->LDAPUsername;
+		$userUid = $this->ldapClient->getUsername();
 		$baseDN = $this->config->get( ClientConfig::GROUP_BASE_DN );
 		$dn = 'dn';
 
@@ -39,6 +39,21 @@ class GroupMemberUid extends UserGroupsRequest {
 				$ret[] = $value[$dn];
 			}
 		}
+
+		// add group from gidnumber to groups list if exists
+		$userInfo = $this->ldapClient->getUserInfo( $userUid );
+		if ( array_key_exists( 'gidnumber', $userInfo ) ) {
+			$gidNumber = $userInfo['gidnumber'];
+			$gidGroup = $this->ldapClient->search(
+				"(&(objectclass=posixGroup)(gidnumber=$gidNumber))",
+				$baseDN, [ $dn ]
+			);
+			// add group if it was found
+			if ( array_key_exists( 0, $gidGroup ) ) {
+				$ret[] = $gidGroup[0][$dn];
+			}
+		}
+
 		return new GroupList( $ret );
 	}
 
