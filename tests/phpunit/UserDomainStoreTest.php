@@ -12,7 +12,7 @@ use MediaWikiTestCase;
  */
 class UserDomainStoreTest extends MediaWikiTestCase {
 
-	protected function setUp() : void {
+	protected function setUp(): void {
 		$this->tablesUsed[] = 'ldap_domains';
 		parent::setUp();
 
