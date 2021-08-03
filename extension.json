@@ -20,6 +20,7 @@
 		"MediaWiki\\Extension\\LDAPProvider\\Maintenance\\" : "maintenance/",
 		"MediaWiki\\Extension\\LDAPProvider\\" : "src/"
 	},
+	"callback": "MediaWiki\\Extension\\LDAPProvider\\Setup::init",
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "MediaWiki\\Extension\\LDAPProvider\\Hook\\LoadExtensionSchemaUpdates::callback"
 	},
