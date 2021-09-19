@@ -380,7 +380,7 @@ class Client {
 				$factoryCallback = $this->config->get( 'grouprequest' );
 				$request = $factoryCallback( $this, $this->config );
 
-				if ( $request instanceof UserGroupsRequest === false ) {
+				if ( !$request instanceof UserGroupsRequest ) {
 					throw new MWException( "Configured GroupRequest not valid" );
 				}
 

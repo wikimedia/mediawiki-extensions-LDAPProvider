@@ -70,7 +70,7 @@ class ClientFactory {
 				$callback = $this->domainClientFactories[$domain];
 				$this->clients[$domain] = $callback();
 			}
-			if ( $this->clients[$domain] instanceof Client === false ) {
+			if ( !$this->clients[$domain] instanceof Client ) {
 				throw new MWException(
 					"Client factory for domain '$domain' did not "
 					. "return a valid Client object"

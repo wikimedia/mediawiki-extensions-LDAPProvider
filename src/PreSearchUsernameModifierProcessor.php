@@ -68,7 +68,7 @@ class PreSearchUsernameModifierProcessor {
 		}
 
 		$modifier = call_user_func( $this->factoryCallbackRegistry[$modifierKey] );
-		if ( $modifier instanceof IPreSearchUsernameModifier === false ) {
+		if ( !$modifier instanceof IPreSearchUsernameModifier ) {
 			throw new MWException(
 				"Factory callback for pre-search-username-modifier-key ' $modifierKey' "
 				. "did not return a valid 'IPreSearchUsernameModifier' object!"
