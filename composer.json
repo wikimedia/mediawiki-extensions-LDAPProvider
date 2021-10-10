@@ -45,7 +45,7 @@
 		"test": [
 			"parallel-lint . --exclude vendor --exclude node_modules",
 			"minus-x check .",
-			"phpcs -sp"
+			"@phpcs"
 		],
 		"fix": [
 			"minus-x fix .",
@@ -60,6 +60,7 @@
 			"phpcf",
 			"psalter"
 		],
-		"phan": "phan -d . --long-progress-bar"
+		"phan": "phan -d . --long-progress-bar",
+		"phpcs": "phpcs -sp"
 	}
 }
