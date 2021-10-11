@@ -5,12 +5,12 @@ namespace MediaWiki\Extension\LDAPProvider\Tests;
 use HashConfig;
 use MediaWiki\Extension\LDAPProvider\UserDomainStore;
 use MediaWiki\MediaWikiServices;
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 
 /**
  * @group Database
  */
-class UserDomainStoreTest extends MediaWikiTestCase {
+class UserDomainStoreTest extends MediaWikiIntegrationTestCase {
 
 	protected function setUp(): void {
 		$this->tablesUsed[] = 'ldap_domains';

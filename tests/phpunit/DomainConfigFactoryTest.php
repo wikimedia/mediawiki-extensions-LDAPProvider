@@ -7,7 +7,7 @@ use MediaWiki\Extension\LDAPProvider\ClientConfig;
 use MediaWiki\Extension\LDAPProvider\DomainConfigFactory;
 use MediaWiki\Extension\LDAPProvider\DomainConfigProvider\LocalJSONFile;
 
-class DomainConfigFactoryTest extends \MediaWikiTestCase {
+class DomainConfigFactoryTest extends \MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers MediaWiki\Extension\LDAPProvider\DomainConfigFactory::factory

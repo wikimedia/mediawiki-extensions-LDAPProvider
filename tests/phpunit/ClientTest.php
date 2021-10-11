@@ -6,12 +6,12 @@ use HashConfig;
 use MediaWiki\Extension\LDAPProvider\Client;
 use MediaWiki\Extension\LDAPProvider\ClientConfig;
 use MediaWiki\Extension\LDAPProvider\ClientFactory;
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 
 /**
  * @group Broken
  */
-class ClientTest extends MediaWikiTestCase {
+class ClientTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers MediaWiki\Extension\LDAPProvider\Client::canBindAs
