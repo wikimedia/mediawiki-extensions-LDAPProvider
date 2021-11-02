@@ -98,6 +98,13 @@
 					"presearchusernamemodifiers": []
 				}
 			}
+		},
+		"WebDAV": {
+			"CredentialAuthProviders": {
+				"ldap": {
+					"class": "MediaWiki\\Extension\\LDAPProvider\\WebDAV\\Auth\\LDAPAuthBackend"
+				}
+			}
 		}
 	},
 	"load_composer_autoloader" : true,
