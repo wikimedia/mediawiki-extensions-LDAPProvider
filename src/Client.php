@@ -7,6 +7,7 @@ use Config;
 use MediaWiki\Extension\LDAPProvider\Config as LDAPConfig;
 use MediaWiki\Logger\LoggerFactory;
 use MWException;
+use ObjectCache;
 
 class Client {
 
@@ -208,7 +209,7 @@ class Client {
 			if ( defined( $cacheType ) ) {
 				$cacheType = constant( $cacheType );
 			}
-			$this->cache = wfGetCache( $cacheType );
+			$this->cache = ObjectCache::getInstance( $cacheType );
 			$this->cacheTime = $conf->get( LDAPConfig::CACHE_TIME );
 		}
 	}
