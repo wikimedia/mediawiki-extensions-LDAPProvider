@@ -61,7 +61,7 @@ class ConvertLdapAuthenticationConfig extends Maintenance {
 		$file = new SplFileInfo( $this->getOption( 'output' ) );
 		$filename = $file->getPathname();
 		if ( $file->isDir() ) {
-			$filename .= '/' . wfWikiID() . '.ldap.json';
+			$filename .= '/' . WikiMap::getCurrentWikiId() . '.ldap.json';
 		}
 
 		file_put_contents(
