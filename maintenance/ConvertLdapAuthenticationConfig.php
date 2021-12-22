@@ -15,6 +15,7 @@ require_once $maintPath;
 use FormatJson;
 use Maintenance;
 use SplFileInfo;
+use WikiMap;
 
 class ConvertLdapAuthenticationConfig extends Maintenance {
 
