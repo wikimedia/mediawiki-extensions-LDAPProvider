@@ -96,5 +96,5 @@ class ConvertLdapAuthenticationConfig extends Maintenance {
 	}
 }
 
-$maintClass = __NAMESPACE__ . '\\ConvertLdapAuthenticationConfig';
+$maintClass = ConvertLdapAuthenticationConfig::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

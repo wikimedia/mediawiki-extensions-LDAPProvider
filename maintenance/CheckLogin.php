@@ -73,5 +73,5 @@ class CheckLogin extends Maintenance {
 	}
 }
 
-$maintClass = __NAMESPACE__ . '\\CheckLogin';
+$maintClass = CheckLogin::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

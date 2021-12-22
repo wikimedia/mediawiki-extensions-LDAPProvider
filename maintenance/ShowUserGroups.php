@@ -68,5 +68,5 @@ class ShowUserGroups extends Maintenance {
 	}
 }
 
-$maintClass = __NAMESPACE__ . '\\ShowUserGroups';
+$maintClass = ShowUserGroups::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

@@ -68,5 +68,5 @@ class ShowUserInfo extends Maintenance {
 	}
 }
 
-$maintClass = __NAMESPACE__ . '\\ShowUserInfo';
+$maintClass = ShowUserInfo::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

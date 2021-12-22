@@ -68,5 +68,5 @@ class CheckConnection extends Maintenance {
 	}
 }
 
-$maintClass = __NAMESPACE__ . '\\CheckConnection';
+$maintClass = CheckConnection::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
