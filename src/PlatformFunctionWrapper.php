@@ -3,19 +3,39 @@
 namespace MediaWiki\Extension\LDAPProvider;
 
 use Exception;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
+use Wikimedia\AtEase\AtEase;
 
 /**
  * @SuppressWarnings(PHPMD.CamelCaseMethodName)
  */
 
-class PlatformFunctionWrapper {
+class PlatformFunctionWrapper implements LoggerAwareInterface {
 
+	/** @var resource */
 	private $linkID;
 
 	/**
 	 * @var self[]
 	 */
 	private static $conn = [];
+
+	/** @var LoggerInterface */
+	private $logger = null;
+
+	public function __construct() {
+		$this->logger = new NullLogger();
+	}
+
+	/**
+	 * @param LoggerInterface $logger
+	 * @return void
+	 */
+	public function setLogger( LoggerInterface $logger ) {
+		$this->logger = $logger;
+	}
 
 	/**
 	 * Set the value of the given option
@@ -52,12 +72,11 @@ class PlatformFunctionWrapper {
 	 * @return bool
 	 */
 	public function setOption( $option, $newval ) {
-		wfDebugLog(
-			"LDAP", "ldap_set_option( \$linkID, \$option = $option, "
+		$this->logger->debug( "ldap_set_option( \$linkID, \$option = $option, "
 			. "\$newval = $newval );"
 		);
 		$ret = \ldap_set_option( $this->linkID, $option, $newval );
-		wfDebugLog( "LDAP", "# returns " . ( $ret ? "true" : "false" ) );
+		$this->logger->debug( "# returns " . ( $ret ? "true" : "false" ) );
 		return $ret;
 	}
 
@@ -74,14 +93,13 @@ class PlatformFunctionWrapper {
 		if ( !$this->linkID ) {
 			throw new Exception( "Nothing to bind with!" );
 		}
-		wfDebugLog(
-			"LDAP", "ldap_bind( \$linkID, \$bindRDN = '$bindRDN', "
+		$this->logger->debug( "ldap_bind( \$linkID, \$bindRDN = '$bindRDN', "
 			. "\$bindPassword = 'XXXX' );"
 		);
-		\Wikimedia\suppressWarnings();
+		AtEase::suppressWarnings();
 		$ret = \ldap_bind( $this->linkID, $bindRDN, $bindPassword );
-		\Wikimedia\restoreWarnings();
-		wfDebugLog( "LDAP", "# returns " . ( $ret ? "true" : "false" ) );
+		AtEase::restoreWarnings();
+		$this->logger->debug( "# returns " . ( $ret ? "true" : "false" ) );
 		return $ret;
 	}
 
@@ -91,11 +109,10 @@ class PlatformFunctionWrapper {
 	 * @return string string error message.
 	 */
 	public function error() {
-		wfDebugLog(
-			"LDAP", "ldap_error( \$linkID ); "
+		$this->logger->debug( "ldap_error( \$linkID ); "
 		);
 		$ret = \ldap_error( $this->linkID );
-		wfDebugLog( "LDAP", "# returns $ret" );
+		$this->logger->debug( "# returns $ret" );
 		return $ret;
 	}
 
@@ -106,11 +123,10 @@ class PlatformFunctionWrapper {
 	 * command for this link.
 	 */
 	public function errno() {
-		wfDebugLog(
-			"LDAP", "ldap_errno( \$linkID ); "
+		$this->logger->debug( "ldap_errno( \$linkID ); "
 		);
 		$ret = \ldap_errno( $this->linkID );
-		wfDebugLog( "LDAP", "# returns $ret" );
+		$this->logger->debug( "# returns $ret" );
 		return $ret;
 	}
 
@@ -120,11 +136,10 @@ class PlatformFunctionWrapper {
 	 * @return bool
 	 */
 	public function startTLS() {
-		wfDebugLog(
-			"LDAP", "ldap_start_tls( \$linkID ); "
+		$this->logger->debug( "ldap_start_tls( \$linkID ); "
 		);
 		$ret = \ldap_start_tls( $this->linkID );
-		wfDebugLog( "LDAP", "# returns " . ( $ret ? "true" : "false" ) );
+		$this->logger->debug( "# returns " . ( $ret ? "true" : "false" ) );
 		return $ret;
 	}
 
@@ -170,25 +185,24 @@ class PlatformFunctionWrapper {
 		$attrsonly = null, $sizelimit = null, $timelimit = null,
 		$deref = null
 	) {
-		wfDebugLog(
-			"LDAP", "ldap_search( \$linkID, \$baseDN = '$baseDN', "
+		$this->logger->debug( "ldap_search( \$linkID, \$baseDN = '$baseDN', "
 			. "\$filter = '$filter', \$attributes = [ '"
 			. implode( "', '", $attributes )
 			. "' ], \$attrsonly = $attrsonly, "
 			. "\$sizelimit = $sizelimit, \$timelimit = $timelimit, "
 			. "\$deref = $deref ); "
 		);
-		\Wikimedia\suppressWarnings();
+		AtEase::suppressWarnings();
 		$ret = \ldap_search(
 			$this->linkID, $baseDN, $filter, $attributes, $attrsonly,
 			$sizelimit, $timelimit, $deref
 		);
-		\Wikimedia\restoreWarnings();
+		AtEase::restoreWarnings();
 		$retDbg = "a resource";
 		if ( $ret === false ) {
 			$retDbg = "an error (" . \ldap_error( $this->linkID ) . ")";
 		}
-		wfDebugLog( "LDAP", "# returns $retDbg" );
+		$this->logger->debug( "# returns $retDbg" );
 		return $ret;
 	}
 
@@ -213,11 +227,10 @@ class PlatformFunctionWrapper {
 	 * return_value[i]["attribute"][j]       jth value of attribute in ith entry
 	 */
 	public function getEntries( $resultID ) {
-		wfDebugLog(
-			"LDAP", "ldap_get_entries( \$linkID, \$resultID ); "
+		$this->logger->debug( "ldap_get_entries( \$linkID, \$resultID ); "
 		);
 		$ret = \ldap_get_entries( $this->linkID, $resultID );
-		wfDebugLog( "LDAP", "# returns: " . var_export( $ret, true ) );
+		$this->logger->debug( "# returns: " . var_export( $ret, true ) );
 		return $ret;
 	}
 
@@ -245,14 +258,13 @@ class PlatformFunctionWrapper {
 		if ( $this->linkID ) {
 			throw new Exception( "already connected" );
 		}
-		wfDebugLog(
-			"LDAP", "ldap_connect( \$uri = '$uri' ); "
+		$this->logger->debug( "ldap_connect( \$uri = '$uri' ); "
 		);
 		$this->linkID = \ldap_connect( $uri );
 		if ( $this->linkID === false ) {
 			throw new Exception( "$uri is not a valid LDAP URI" );
 		}
-		wfDebugLog( "LDAP", "# __METHOD__ returns a link id" );
+		$this->logger->debug( "# __METHOD__ returns a link id" );
 		return $this->linkID;
 	}
 
@@ -280,12 +292,11 @@ class PlatformFunctionWrapper {
 	 * @return string
 	 */
 	public function escape( $value, $ignore = null, $flags = 0 ) {
-		wfDebugLog(
-			"LDAP", "ldap_escape( \$value = '$value', "
+		$this->logger->debug( "ldap_escape( \$value = '$value', "
 			. "\$ignore = '$ignore', \$flags = $flags );"
 		);
 		$ret = \ldap_escape( $value, $ignore, $flags );
-		wfDebugLog( "LDAP", "# returns $ret" );
+		$this->logger->debug( "# returns $ret" );
 		return $ret;
 	}
 
@@ -296,11 +307,10 @@ class PlatformFunctionWrapper {
 	 * @return int
 	 */
 	public function count( $result ) {
-		wfDebugLog(
-			"LDAP", "ldap_count_entries( \$linkiID, \$result = [resource] );"
+		$this->logger->debug( "ldap_count_entries( \$linkiID, \$result = [resource] );"
 		);
 		$ret = \ldap_count_entries( $this->linkID, $result );
-		wfDebugLog( "LDAP", "# returns $ret" );
+		$this->logger->debug( "# returns $ret" );
 		return $ret;
 	}
 

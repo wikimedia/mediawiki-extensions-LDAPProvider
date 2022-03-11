@@ -86,10 +86,11 @@ class Client {
 		) {
 		$this->config = $config;
 		$this->preSearchUsernameModifierProcessor = $preSearchUsernameModifierProcessor;
+		$this->logger = LoggerFactory::getInstance( 'LDAPProvider' );
 		if ( $this->connection === null ) {
 			$this->connection = new PlatformFunctionWrapper();
+			$this->connection->setLogger( $this->logger );
 		}
-		$this->logger = LoggerFactory::getInstance( __CLASS__ );
 		$this->boundTo = self::BOUND_NONE;
 		$this->adminUserProvided = false;
 	}
