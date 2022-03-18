@@ -24,7 +24,6 @@ use ExtensionRegistry;
 use HashConfig;
 use MediaWiki\MediaWikiServices;
 use MultiConfig;
-use MWException;
 
 class DomainConfigFactory {
 
@@ -60,12 +59,6 @@ class DomainConfigFactory {
 		if ( !isset( $this->config[$domain] ) ) {
 			throw new LDAPNoDomainConfigException(
 				"No configuration available for domain '$domain'!"
-			);
-		}
-		if ( !isset( $this->config[$domain][$section] ) ) {
-			throw new MWException(
-				"No section '$section' found in configuration for "
-				. "domain '$domain'!"
 			);
 		}
 
