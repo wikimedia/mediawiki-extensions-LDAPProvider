@@ -343,7 +343,7 @@ class Client {
 	}
 
 	/**
-	 * Gets the the LDAPUsername if it is set by getUserDN with a searchattr
+	 * Gets the LDAPUsername if it is set by getUserDN with a searchattr
 	 * @return string
 	 */
 	public function getUsername() {
