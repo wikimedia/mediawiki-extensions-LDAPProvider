@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"ldapprovider-desc": "Forni un infrastructura commun pro connecter a un ressource LDAP e facer consultas a illo",
+	"ldapprovider-config-clientregistry": "Permitte le registration de clientes personalisate",
+	"ldapprovider-config-domainconfigs": "Immagazina configurationes per dominio",
+	"ldapprovider-domain-config-not-found": "Non poteva acceder al file de configuration '$1'!\n\nPer favor installa un file de configuration de dominio pro le extension LDAPProvider.",
+	"ldapprovider-more-than-one": "Plus de un usator trovate pro '$1'",
+	"ldapprovider-config-domainconfigprovider": "Specifica le mechanismo pro obtener le configuration del dominio",
+	"ldapprovider-config-defaultdomain": "Specifica qual dominio eliger pro un usator si nulle correspondentia del base de datos es disponibile"
+}
