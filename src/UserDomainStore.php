@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\LDAPProvider;
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserIdentity;
 use User;
 use Wikimedia\Rdbms\ILoadBalancer;
 
@@ -62,32 +63,28 @@ class UserDomainStore {
 	}
 
 	/**
-	 * @param User $user to set
+	 * @param UserIdentity $user to set
 	 * @param string $domain to set user to
 	 * @return bool
 	 */
 	public function setDomainForUser( $user, $domain ) {
 		$userId = $user->getId();
 		if ( $userId != 0 ) {
-			$dbw = $this->loadbalancer->getConnection( DB_MASTER );
-			$olddomain = $this->getDomainForUser( $user );
-			if ( $olddomain ) {
-				return $dbw->update(
-					'ldap_domains',
-					[ 'domain' => $domain ],
-					[ 'user_id' => $userId ],
-					__METHOD__
-				);
-			} else {
-				return $dbw->insert(
-					'ldap_domains',
-					[
-						'domain' => $domain,
-						'user_id' => $userId
-					],
-					__METHOD__
-				);
-			}
+			$dbw = $this->loadbalancer->getConnection( DB_PRIMARY );
+			$dbw->delete(
+				'ldap_domains',
+				[
+					'user_id' => $userId
+				]
+			);
+			return $dbw->insert(
+				'ldap_domains',
+				[
+					'domain' => $domain,
+					'user_id' => $userId
+				],
+				__METHOD__
+			);
 		}
 		return false;
 	}
