@@ -6,6 +6,7 @@ use MediaWiki\Extension\LDAPProvider\ClientFactory;
 use MediaWiki\Extension\LDAPProvider\Config;
 use MediaWiki\Extension\LDAPProvider\LDAPNoDomainConfigException as NoDomain;
 use MediaWiki\Extension\WebDAV\WebDAVCredentialAuthProvider;
+use MediaWiki\MediaWikiServices;
 use MWException;
 use User;
 
@@ -18,7 +19,7 @@ class LDAPAuthBackend implements WebDAVCredentialAuthProvider {
 		$password = utf8_encode( $password );
 
 		list( $username, $domain ) = $this->parseUsername( $username );
-		$user = User::newFromName( $username );
+		$user = MediaWikiServices::getInstance()->getUserFactory()->newFromName( $username );
 		if ( !$user instanceof User ) {
 			return null;
 		}
