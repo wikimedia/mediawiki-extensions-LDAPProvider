@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"ديفيد"
+			"ديفيد",
+			"Meno25"
 		]
 	},
 	"ldapprovider-desc": "يوفر بنية تحتية مشتركة للاتصال بمورد LDAP وتشغيل الاستعلامات ضده",
@@ -9,5 +10,6 @@
 	"ldapprovider-config-domainconfigs": "مخازن لكل تكوينات النطاقات",
 	"ldapprovider-domain-config-not-found": "تعذر الوصول إلى ملف التكوين \"$1\"!\n\nيُرجَى إعداد ملف تهيئة النطاق لملحق LDAPProvider.",
 	"ldapprovider-more-than-one": "العثور على أكثر من مستخدم واحد لـ\"$1\"",
-	"ldapprovider-config-domainconfigprovider": "يحدد آلية الحصول على تكوين النطاق"
+	"ldapprovider-config-domainconfigprovider": "يحدد آلية الحصول على تكوين النطاق",
+	"ldapprovider-config-defaultdomain": "يحدد المجال الذي سيتم اختياره للمستخدم ، في حالة عدم توفر تعيين من قاعدة البيانات"
 }
