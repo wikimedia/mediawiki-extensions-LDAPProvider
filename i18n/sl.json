@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"ldapprovider-desc": "Zagotavlja skupno infrastrukturo za povezovanje z virom LDAP in izvajanje poizvedb"
+}
