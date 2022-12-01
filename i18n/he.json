@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80"
+		]
+	},
+	"ldapprovider-config-clientregistry": "אפשרות רישום של לקוחות מותאמים",
+	"ldapprovider-config-domainconfigs": "אחסון הגדרות לפי תחום",
+	"ldapprovider-domain-config-not-found": "לא היה אפשר לגשת לקובץ התצורה \"$1\"!\n\nנא להגדיר קובץ תצורת תחום עבור ההרחבה LDAPPprovider.",
+	"ldapprovider-more-than-one": "נמצא יותר ממשתמש אחד עבור \"$1\"",
+	"ldapprovider-config-domainconfigprovider": "הגדרת המנגנון להשגת תצורת התחום",
+	"ldapprovider-config-defaultdomain": "מציין באיזה תחום לבחור עבור משתמש, אם אין מיפוי ממסד הנתונים זמין"
+}
