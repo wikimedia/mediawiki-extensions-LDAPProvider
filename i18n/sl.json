@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"ldapprovider-config-clientregistry": "Omogoča registracijo odjemalcev po meri",
+	"ldapprovider-config-domainconfigs": "Shranjuje konfiguracije po domenah",
+	"ldapprovider-domain-config-not-found": "Ni bilo mogoče dostopati do konfiguracijske datoteke »$1«!\n\nProsimo, nastavite konfiguracijsko datoteko domene za razširitev LDAPPprovider.",
+	"ldapprovider-more-than-one": "Za »$1« je bil najden več kot en uporabnik",
+	"ldapprovider-config-domainconfigprovider": "Določa mehanizem za pridobitev konfiguracije domene",
+	"ldapprovider-config-defaultdomain": "Določa, katera domena naj se izbere za uporabnika, če ni na voljo nobena preslikava iz podatkovne zbirke"
+}
