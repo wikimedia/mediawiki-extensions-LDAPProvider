@@ -256,7 +256,9 @@ class Client {
 	public function getUserInfo( $username, $userBaseDN = '' ) {
 		$this->init();
 		$username = $this->modifyUsername( $username );
-
+		if ( $userBaseDN === '' ) {
+			$userBaseDN = $this->config->get( ClientConfig::USER_BASE_DN );
+		}
 		return $this->cache->getWithSetCallback(
 			$this->cache->makeKey(
 				"ldap-provider", "user-info", $username, $userBaseDN
@@ -381,6 +383,9 @@ class Client {
 	public function getUserGroups( $username, $groupBaseDN = '' ) {
 		$this->init();
 		$username = $this->modifyUsername( $username );
+		if ( $groupBaseDN === '' ) {
+			$groupBaseDN = $this->config->get( ClientConfig::GROUP_BASE_DN );
+		}
 		return $this->cache->getWithSetCallback(
 			$this->cache->makeKey(
 				"ldap-provider", "user-groups", $username, $groupBaseDN
