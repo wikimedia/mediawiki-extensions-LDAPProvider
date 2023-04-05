@@ -95,7 +95,23 @@
 					"nestedgroups": false,
 					"groupobjectclass": "",
 					"groupattribute": "member",
-					"presearchusernamemodifiers": []
+					"presearchusernamemodifiers": [],
+					"userinfoattributes": [
+						"description",
+						"givenname",
+						"distinguishedname",
+						"displayname",
+						"memberof",
+						"name",
+						"samaccountname",
+						"userprincipalname",
+						"objectcategory",
+						"mail",
+						"dn",
+						"telephonenumber",
+						"cn",
+						"sn"
+					]
 				}
 			}
 		},
