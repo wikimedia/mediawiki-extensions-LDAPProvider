@@ -32,6 +32,11 @@ class UserInfoRequest {
 	protected $searchAttribute = '';
 
 	/**
+	 * @var string[]
+	 */
+	protected $userInfoAttributes = null;
+
+	/**
 	 * @param Client $ldapClient to use
 	 * @param Config $config for retrieving config from
 	 */
@@ -42,6 +47,7 @@ class UserInfoRequest {
 		$this->searchAttribute = $config->get(
 			ClientConfig::USER_DN_SEARCH_ATTR
 		);
+		$this->userInfoAttributes = $config->get( ClientConfig::USER_INFO_ATTRIBUTES );
 	}
 
 	/**
@@ -55,12 +61,14 @@ class UserInfoRequest {
 
 		// We explicitly put "memberof" here because it's an operational
 		// attribute in some servers.
-		$attributes = [ "*", "memberof" ];
+		if ( !in_array( 'memberof', $this->userInfoAttributes ) ) {
+			$this->userInfoAttributes[] = 'memberof';
+		}
 
 		$entry = $this->ldapClient->search(
 			$filter,
 			$this->userBaseDN,
-			$attributes
+			$this->userInfoAttributes
 		);
 
 		$count = $entry['count'];

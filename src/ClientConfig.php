@@ -21,4 +21,5 @@ class ClientConfig {
 	public const NESTED_GROUPS = 'nestedgroups';
 	public const GROUP_OBJECT_CLASS = 'groupobjectclass';
 	public const GROUP_ATTRIBUTE = 'groupattribute';
+	public const USER_INFO_ATTRIBUTES = 'userinfoattributes';
 }

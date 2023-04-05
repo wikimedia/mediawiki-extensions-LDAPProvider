@@ -59,7 +59,7 @@ class ShowUserInfo extends Maintenance {
 
 			if ( is_array( $value ) ) {
 				$this->output( $key . ' =>' . "\n" );
-				$this->showValue( $value, ++$recursion );
+				$this->showValue( $value, $recursion + 1 );
 				continue;
 			}
 
