@@ -54,6 +54,9 @@ class ClientFactory {
 	 * @throws MWException
 	 */
 	public function getForDomain( $domain ) {
+		// For convenience, domain name should be case-insensitive
+		$domain = strtolower( $domain );
+
 		if ( !isset( $this->clients[$domain] ) ) {
 			if ( !isset( $this->domainClientFactories[$domain] ) ) {
 				$clientConfig = DomainConfigFactory::getInstance()->factory(
