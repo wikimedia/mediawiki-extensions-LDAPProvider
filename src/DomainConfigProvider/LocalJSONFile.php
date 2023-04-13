@@ -50,6 +50,8 @@ class LocalJSONFile implements IDomainConfigProvider {
 		if ( $this->configArray === false || count( $this->configArray ) === 0 ) {
 			throw new ConfigException( 'ldapprovider-domain-config-invalid', $jsonFilePath );
 		}
+
+		$this->configArray = array_change_key_case( $this->configArray, CASE_LOWER );
 	}
 
 	/**

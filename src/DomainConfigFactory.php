@@ -56,6 +56,8 @@ class DomainConfigFactory {
 	 * @return \Config
 	 */
 	public function factory( $domain, $section ) {
+		$domain = strtolower( $domain );
+
 		if ( !isset( $this->config[$domain] ) ) {
 			throw new LDAPNoDomainConfigException(
 				"No configuration available for domain '$domain'!"

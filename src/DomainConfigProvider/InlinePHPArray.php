@@ -31,7 +31,7 @@ class InlinePHPArray implements IDomainConfigProvider {
 	 * @param array $config The config to be used
 	 */
 	public function __construct( $config ) {
-		$this->configArray = $config;
+		$this->configArray = array_change_key_case( $config, CASE_LOWER );
 	}
 
 	/**
