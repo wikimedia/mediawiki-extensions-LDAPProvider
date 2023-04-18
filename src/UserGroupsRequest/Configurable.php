@@ -15,7 +15,6 @@ class Configurable extends UserGroupsRequest {
 	 * @return GroupList
 	 */
 	public function getUserGroups( $username ) {
-		$userDN = new EscapedString( $this->ldapClient->getUserDN( $username ) );
 		$baseDN = $this->config->get( ClientConfig::GROUP_BASE_DN );
 		$dn = 'dn';
 
@@ -33,8 +32,11 @@ class Configurable extends UserGroupsRequest {
 		}
 		$groupAttribute = $this->config->get( ClientConfig::GROUP_ATTRIBUTE );
 
+		$callback = $this->getGroupAttributeValueCallback();
+		$groupAttributeValue = $callback( $username );
+
 		$groups = $this->ldapClient->search(
-			"(&(objectclass=$objectClass)($groupAttribute=$userDN))",
+			"(&(objectclass=$objectClass)($groupAttribute=$groupAttributeValue))",
 			$baseDN, [ $dn ]
 		);
 
@@ -46,4 +48,33 @@ class Configurable extends UserGroupsRequest {
 		return new GroupList( $ret );
 	}
 
+	/**
+	 * Returns callback function to get {@link ClientConfig::GROUP_ATTRIBUTE} value.
+	 * With this callback, there could be different ways to calculate that "group attribute" value.
+	 * For example, in some cases just username can be used, like that:
+	 *
+	 * <code>
+	 * function groupAttributeValueCallback( $username ) {
+	 * 		return new \MediaWiki\Extension\LDAPProvider\EscapedString( $username );
+	 * }
+	 * </code>
+	 *
+	 * Logic may be more complicated, that's just simple example.
+	 *
+	 * @return callable
+	 */
+	private function getGroupAttributeValueCallback(): callable {
+		$callback = function ( $username ) {
+			return new EscapedString( $this->ldapClient->getUserDN( $username ) );
+		};
+
+		if ( $this->config->has( ClientConfig::GROUP_ATTRIBUTE_VALUE_CALLBACK ) ) {
+			$customCallback = $this->config->get( ClientConfig::GROUP_ATTRIBUTE_VALUE_CALLBACK );
+			if ( is_callable( $customCallback ) ) {
+				$callback = $customCallback;
+			}
+		}
+
+		return $callback;
+	}
 }
