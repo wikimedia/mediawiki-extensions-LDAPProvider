@@ -110,7 +110,8 @@
 						"dn",
 						"telephonenumber",
 						"cn",
-						"sn"
+						"sn",
+						"uid"
 					]
 				}
 			}
