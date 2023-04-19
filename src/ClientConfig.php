@@ -22,4 +22,5 @@ class ClientConfig {
 	public const GROUP_OBJECT_CLASS = 'groupobjectclass';
 	public const GROUP_ATTRIBUTE = 'groupattribute';
 	public const USER_INFO_ATTRIBUTES = 'userinfoattributes';
+	public const GROUP_ATTRIBUTE_VALUE_CALLBACK = 'group-attribute-value-callback';
 }
