@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nokeoo"
+		]
+	},
+	"ldapprovider-more-than-one": "Rasta daugiau nei vienas naudotojas „$1“",
+	"ldapprovider-config-domainconfigprovider": "Nurodo mechanizmą, skirtą gauti domeno konfigūraciją"
+}
