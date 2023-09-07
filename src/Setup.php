@@ -10,7 +10,7 @@ class Setup {
 	 */
 	public static function init() {
 		// Set dummy config for WMF CI environment
-		if ( getenv( 'MW_QUIBBLE_CI' ) ) {
+		if ( defined( 'MW_QUIBBLE_CI' ) ) {
 			$GLOBALS['LDAPProviderDomainConfigs'] =
 				__DIR__ . '/../docs/ldapprovider.json';
 		}
