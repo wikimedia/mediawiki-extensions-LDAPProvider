@@ -1,8 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mainframe98"
+			"Mainframe98",
+			"McDutchie"
 		]
 	},
-	"ldapprovider-more-than-one": "Meer dan één gebruiker gevonden voor '$1'"
+	"ldapprovider-config-clientregistry": "Maakt registratie van aangepaste cliënten mogelijk",
+	"ldapprovider-config-domainconfigs": "Slaat instellingen per domein op",
+	"ldapprovider-more-than-one": "Meer dan één gebruiker gevonden voor '$1'",
+	"ldapprovider-config-domainconfigprovider": "Geeft het mechanisme aan voor het verkrijgen van de domeinconfiguratie",
+	"ldapprovider-config-defaultdomain": "Geeft aan welk domein voor een gebruiker moet worden gekozen als er geen toewijzing uit de database beschikbaar is"
 }
