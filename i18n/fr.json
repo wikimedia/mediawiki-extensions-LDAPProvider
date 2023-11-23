@@ -3,8 +3,8 @@
 		"authors": [
 			"Gomoko",
 			"Thibaut120094",
-			"Wladek92",
-			"Verdy p"
+			"Verdy p",
+			"Wladek92"
 		]
 	},
 	"ldapprovider-desc": "Fournit une infrastructure commune pour connecter une ressource LDAP et y lancer des requêtes",
