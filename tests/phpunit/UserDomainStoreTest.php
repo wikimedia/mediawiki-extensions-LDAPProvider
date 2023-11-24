@@ -32,7 +32,7 @@ class UserDomainStoreTest extends MediaWikiIntegrationTestCase {
 		$domain = $store->getDomainForUser( self::getTestSysop()->getUser() );
 
 		$this->assertEquals(
-			'SOMEDOMAIN', $domain, 'Should deliver the domain'
+			'somedomain', $domain, 'Should deliver the domain'
 		);
 	}
 
@@ -69,7 +69,7 @@ class UserDomainStoreTest extends MediaWikiIntegrationTestCase {
 		$domain = $store->getDomainForUser( self::getTestUser()->getUser() );
 
 		$this->assertEquals(
-			'SOMEOTHERDOMAIN', $domain, 'Should deliver the default domain'
+			'someotherdomain', $domain, 'Should deliver the default domain'
 		);
 	}
 
