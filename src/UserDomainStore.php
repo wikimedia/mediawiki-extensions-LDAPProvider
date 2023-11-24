@@ -50,13 +50,13 @@ class UserDomainStore {
 				__METHOD__ );
 
 			if ( $row ) {
-				return $row->domain;
+				return strtolower( $row->domain );
 			}
 		}
 
 		$defaultDomain = $this->config->get( Config::DEFAULT_DOMAIN );
 		if ( !empty( $defaultDomain ) ) {
-			return $defaultDomain;
+			return strtolower( $defaultDomain );
 		}
 
 		return null;
