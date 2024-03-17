@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class GenericCallbackTest extends TestCase {
 
 	/**
-	 * @covers GenericCallback::modify
+	 * @covers \MediaWiki\Extension\LDAPProvider\PreSearchUsernameModifier\GenericCallback::modify
 	 * @return void
 	 */
 	public function testModify() {

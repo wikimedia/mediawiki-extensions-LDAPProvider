@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class RemoveSpacesTest extends TestCase {
 
 	/**
-	 * @covers RemoveSpaces::modify
+	 * @covers \MediaWiki\Extension\LDAPProvider\PreSearchUsernameModifier\RemoveSpaces::modify
 	 * @return void
 	 */
 	public function testModify() {
@@ -20,7 +20,7 @@ class RemoveSpacesTest extends TestCase {
 	}
 
 	/**
-	 * @covers RemoveSpaces::factory
+	 * @covers \MediaWiki\Extension\LDAPProvider\PreSearchUsernameModifier\RemoveSpaces::factory
 	 * @return void
 	 */
 	public function testFactory() {

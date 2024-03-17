@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class SpacesToUnderscoresTest extends TestCase {
 
 	/**
-	 * @covers SpacesToUnderscores::modify
+	 * @covers \MediaWiki\Extension\LDAPProvider\PreSearchUsernameModifier\SpacesToUnderscores::modify
 	 * @return void
 	 */
 	public function testModify() {
@@ -20,7 +20,7 @@ class SpacesToUnderscoresTest extends TestCase {
 	}
 
 	/**
-	 * @covers SpacesToUnderscores::factory
+	 * @covers \MediaWiki\Extension\LDAPProvider\PreSearchUsernameModifier\SpacesToUnderscores::factory
 	 * @return void
 	 */
 	public function testFactory() {

@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class PreSearchUsernameModifierProcessorTest extends TestCase {
 
 	/**
-	 * @covers PreSearchUsernameModifierProcessor::process
+	 * @covers \MediaWiki\Extension\LDAPProvider\PreSearchUsernameModifierProcessor::process
 	 * @dataProvider provideTestProcessData
 	 * @param string[] $enabledModifier
 	 * @param string $originalUsername

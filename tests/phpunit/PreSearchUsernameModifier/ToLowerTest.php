@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class ToLowerTest extends TestCase {
 
 	/**
-	 * @covers ToLower::modify
+	 * @covers \MediaWiki\Extension\LDAPProvider\PreSearchUsernameModifier\ToLower::modify
 	 * @return void
 	 */
 	public function testModify() {
@@ -20,7 +20,7 @@ class ToLowerTest extends TestCase {
 	}
 
 	/**
-	 * @covers ToLower::factory
+	 * @covers \MediaWiki\Extension\LDAPProvider\PreSearchUsernameModifier\ToLower::factory
 	 * @return void
 	 */
 	public function testFactory() {
