@@ -125,6 +125,7 @@ class Client {
 	protected function makeNewConnection() {
 		$servers = (string)( new Serverlist( $this->config ) );
 		$this->connection = PlatformFunctionWrapper::getConnection( $servers );
+		$this->connection->setLogger( $this->logger );
 		if ( !$this->connection ) {
 			throw new MWException( "Couldn't connect with $servers" );
 		}
