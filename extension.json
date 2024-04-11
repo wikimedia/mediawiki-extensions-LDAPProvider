@@ -26,8 +26,13 @@
 		"MediaWiki\\Extension\\LDAPProvider\\Tests\\": "tests/phpunit/"
 	},
 	"callback": "MediaWiki\\Extension\\LDAPProvider\\Setup::init",
+	"HookHandlers": {
+		"loadExtensionSchemaUpdates": {
+			"class": "MediaWiki\\Extension\\LDAPProvider\\Hook\\LoadExtensionSchemaUpdates"
+		}
+	},
 	"Hooks": {
-		"LoadExtensionSchemaUpdates": "MediaWiki\\Extension\\LDAPProvider\\Hook\\LoadExtensionSchemaUpdates::callback"
+		"LoadExtensionSchemaUpdates": "loadExtensionSchemaUpdates"
 	},
 	"config_prefix": "LDAPProvider",
 	"config": {
