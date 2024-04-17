@@ -15,8 +15,8 @@ class LDAPAuthBackend implements WebDAVCredentialAuthProvider {
 	 * @inheritDoc
 	 */
 	public function getValidatedUser( $username, $password ) {
-		$username = utf8_encode( $username );
-		$password = utf8_encode( $password );
+		$username = mb_convert_encoding( $username, 'UTF-8', 'ISO-8859-1' );
+		$password = mb_convert_encoding( $password, 'UTF-8', 'ISO-8859-1' );
 
 		list( $username, $domain ) = $this->parseUsername( $username );
 		$user = MediaWikiServices::getInstance()->getUserFactory()->newFromName( $username );
