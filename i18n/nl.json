@@ -5,11 +5,11 @@
 			"McDutchie"
 		]
 	},
-	"ldapprovider-config-clientregistry": "Maakt registratie van aangepaste cliënten mogelijk",
+	"ldapprovider-config-clientregistry": "Maakt registratie van aangepaste cli\u00ebnten mogelijk",
 	"ldapprovider-config-domainconfigs": "Slaat instellingen per domein op",
-	"ldapprovider-domain-config-not-found": "Kon geen toegang krijgen tot configuratiebestand ‘$1’!\n\nStel een domeinconfiguratiebestand in voor de uitbreiding LDAPProvider.",
-	"ldapprovider-more-than-one": "Meer dan één gebruiker gevonden voor '$1'",
+	"ldapprovider-domain-config-not-found": "Kon geen toegang krijgen tot configuratiebestand \u2018$1\u2019!\n\nStel een domeinconfiguratiebestand in voor de uitbreiding LDAPProvider.",
+	"ldapprovider-more-than-one": "Meer dan \u00e9\u00e9n gebruiker gevonden voor '$1'",
 	"ldapprovider-config-domainconfigprovider": "Geeft het mechanisme aan voor het verkrijgen van de domeinconfiguratie",
 	"ldapprovider-config-defaultdomain": "Geeft aan welk domein voor een gebruiker moet worden gekozen als er geen toewijzing uit de database beschikbaar is",
-	"ldapprovider-desc": "Biedt een gemeenschappelijke infrastructuur om verbinding te maken met een LDAP-bron en er query’s op uit te voeren"
+	"ldapprovider-desc": "Biedt een gemeenschappelijke infrastructuur om verbinding te maken met een LDAP-bron en er query\u2019s op uit te voeren"
 }

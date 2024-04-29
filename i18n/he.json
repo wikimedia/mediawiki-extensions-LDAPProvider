@@ -4,11 +4,11 @@
 			"Amire80"
 		]
 	},
-	"ldapprovider-config-clientregistry": "אפשרות רישום של לקוחות מותאמים",
-	"ldapprovider-config-domainconfigs": "אחסון הגדרות לפי תחום",
-	"ldapprovider-domain-config-not-found": "לא היה אפשר לגשת לקובץ התצורה \"$1\"!\n\nנא להגדיר קובץ תצורת תחום עבור ההרחבה LDAPPprovider.",
-	"ldapprovider-more-than-one": "נמצא יותר ממשתמש אחד עבור \"$1\"",
-	"ldapprovider-config-domainconfigprovider": "הגדרת המנגנון להשגת תצורת התחום",
-	"ldapprovider-config-defaultdomain": "מציין באיזה תחום לבחור עבור משתמש, אם אין מיפוי ממסד הנתונים זמין",
-	"ldapprovider-desc": "אספקת תשתית משותפת להתחברות למשאב LDAP והפעלת שאילתות כנגדו"
+	"ldapprovider-config-clientregistry": "\u05d0\u05e4\u05e9\u05e8\u05d5\u05ea \u05e8\u05d9\u05e9\u05d5\u05dd \u05e9\u05dc \u05dc\u05e7\u05d5\u05d7\u05d5\u05ea \u05de\u05d5\u05ea\u05d0\u05de\u05d9\u05dd",
+	"ldapprovider-config-domainconfigs": "\u05d0\u05d7\u05e1\u05d5\u05df \u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05dc\u05e4\u05d9 \u05ea\u05d7\u05d5\u05dd",
+	"ldapprovider-domain-config-not-found": "\u05dc\u05d0 \u05d4\u05d9\u05d4 \u05d0\u05e4\u05e9\u05e8 \u05dc\u05d2\u05e9\u05ea \u05dc\u05e7\u05d5\u05d1\u05e5 \u05d4\u05ea\u05e6\u05d5\u05e8\u05d4 \"$1\"!\n\n\u05e0\u05d0 \u05dc\u05d4\u05d2\u05d3\u05d9\u05e8 \u05e7\u05d5\u05d1\u05e5 \u05ea\u05e6\u05d5\u05e8\u05ea \u05ea\u05d7\u05d5\u05dd \u05e2\u05d1\u05d5\u05e8 \u05d4\u05d4\u05e8\u05d7\u05d1\u05d4 LDAPPprovider.",
+	"ldapprovider-more-than-one": "\u05e0\u05de\u05e6\u05d0 \u05d9\u05d5\u05ea\u05e8 \u05de\u05de\u05e9\u05ea\u05de\u05e9 \u05d0\u05d7\u05d3 \u05e2\u05d1\u05d5\u05e8 \"$1\"",
+	"ldapprovider-config-domainconfigprovider": "\u05d4\u05d2\u05d3\u05e8\u05ea \u05d4\u05de\u05e0\u05d2\u05e0\u05d5\u05df \u05dc\u05d4\u05e9\u05d2\u05ea \u05ea\u05e6\u05d5\u05e8\u05ea \u05d4\u05ea\u05d7\u05d5\u05dd",
+	"ldapprovider-config-defaultdomain": "\u05de\u05e6\u05d9\u05d9\u05df \u05d1\u05d0\u05d9\u05d6\u05d4 \u05ea\u05d7\u05d5\u05dd \u05dc\u05d1\u05d7\u05d5\u05e8 \u05e2\u05d1\u05d5\u05e8 \u05de\u05e9\u05ea\u05de\u05e9, \u05d0\u05dd \u05d0\u05d9\u05df \u05de\u05d9\u05e4\u05d5\u05d9 \u05de\u05de\u05e1\u05d3 \u05d4\u05e0\u05ea\u05d5\u05e0\u05d9\u05dd \u05d6\u05de\u05d9\u05df",
+	"ldapprovider-desc": "\u05d0\u05e1\u05e4\u05e7\u05ea \u05ea\u05e9\u05ea\u05d9\u05ea \u05de\u05e9\u05d5\u05ea\u05e4\u05ea \u05dc\u05d4\u05ea\u05d7\u05d1\u05e8\u05d5\u05ea \u05dc\u05de\u05e9\u05d0\u05d1 LDAP \u05d5\u05d4\u05e4\u05e2\u05dc\u05ea \u05e9\u05d0\u05d9\u05dc\u05ea\u05d5\u05ea \u05db\u05e0\u05d2\u05d3\u05d5"
 }
