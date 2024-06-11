@@ -27,8 +27,10 @@ class ConvertLdapAuthenticationConfig extends Maintenance {
 		$this->requireExtension( 'LDAPProvider' );
 	}
 
+	/** @var array */
 	protected $newConfig = [];
 
+	/** @var array<string,string> */
 	protected $oldConfigVarNames = [
 		'wgLDAPServerNames' => 'connection.server',
 		'wgLDAPProxyAgent' => 'connection.user',

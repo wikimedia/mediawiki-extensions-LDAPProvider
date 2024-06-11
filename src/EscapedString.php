@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\LDAPProvider;
 
 class EscapedString {
+	/** @var string */
 	protected $value = '';
 
 	/**

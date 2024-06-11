@@ -32,6 +32,7 @@ class CheckConnection extends Maintenance {
 	 * @SuppressWarnings(PHPMD.CamelCaseVariableName)
 	 */
 	public function execute() {
+		// phpcs:ignore MediaWiki.NamingConventions.ValidGlobalName.allowedPrefix
 		global $LDAPProviderDomainConfigs;
 
 		$LDAPProviderDomainConfigs = $this->getOption( "config" );
