@@ -24,10 +24,10 @@ use MediaWiki\Extension\LDAPProvider\IDomainConfigProvider;
 
 class InlinePHPArray implements IDomainConfigProvider {
 
+	/** @var array */
 	private $configArray = [];
 
 	/**
-	 *
 	 * @param array $config The config to be used
 	 */
 	public function __construct( $config ) {
@@ -35,7 +35,6 @@ class InlinePHPArray implements IDomainConfigProvider {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	public function getConfigArray() {

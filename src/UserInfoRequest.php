@@ -26,8 +26,7 @@ class UserInfoRequest {
 	protected $userBaseDN = '';
 
 	/**
-	 *
-	 * @var string
+	 * @var string Typically "uid"
 	 */
 	protected $searchAttribute = '';
 

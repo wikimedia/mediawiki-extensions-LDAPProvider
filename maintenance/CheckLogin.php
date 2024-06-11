@@ -56,6 +56,10 @@ class CheckLogin extends Maintenance {
 		}
 	}
 
+	/**
+	 * @param array $obj
+	 * @param int $recursion
+	 */
 	private function showValue( array $obj, $recursion = 0 ) {
 		foreach ( $obj as $key => $value ) {
 			for ( $i = 0; $i < $recursion; $i++ ) {
