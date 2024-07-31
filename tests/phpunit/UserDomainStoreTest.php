@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\LDAPProvider\Tests;
 
 use HashConfig;
 use MediaWiki\Extension\LDAPProvider\UserDomainStore;
-use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -27,7 +26,7 @@ class UserDomainStoreTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testGetDomainForUser() {
 		$store = new UserDomainStore(
-			MediaWikiServices::getInstance()->getDBLoadBalancer()
+			$this->getServiceContainer()->getDBLoadBalancer()
 		);
 		$domain = $store->getDomainForUser( self::getTestSysop()->getUser() );
 
@@ -41,7 +40,7 @@ class UserDomainStoreTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testSetDomainForUser() {
 		$store = new UserDomainStore(
-			MediaWikiServices::getInstance()->getDBLoadBalancer()
+			$this->getServiceContainer()->getDBLoadBalancer()
 		);
 		$store->setDomainForUser(
 			self::getTestUser()->getUser(), 'ANOTHERDOMAIN'
@@ -61,7 +60,7 @@ class UserDomainStoreTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testGetDomainForUserWithDefaultDomainSuccess() {
 		$store = new UserDomainStore(
-			MediaWikiServices::getInstance()->getDBLoadBalancer(),
+			$this->getServiceContainer()->getDBLoadBalancer(),
 			new HashConfig( [
 				'DefaultDomain' => 'SOMEOTHERDOMAIN'
 			] )
@@ -78,7 +77,7 @@ class UserDomainStoreTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testGetDomainForUserWithDefaultDomainFail() {
 		$store = new UserDomainStore(
-			MediaWikiServices::getInstance()->getDBLoadBalancer()
+			$this->getServiceContainer()->getDBLoadBalancer()
 		);
 		$domain = $store->getDomainForUser( self::getTestUser()->getUser() );
 
