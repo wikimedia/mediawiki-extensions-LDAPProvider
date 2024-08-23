@@ -2,52 +2,20 @@
 
 namespace MediaWiki\Extension\LDAPProvider\Hook;
 
-use DatabaseUpdater;
+use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 
-class LoadExtensionSchemaUpdates {
-
-	/**
-	 *
-	 * @var DatabaseUpdater
-	 */
-	protected $updater = null;
+class LoadExtensionSchemaUpdates implements LoadExtensionSchemaUpdatesHook {
 
 	/**
-	 * @param DatabaseUpdater $updater object
-	 * @return bool
+	 * @inheritDoc
 	 */
-	public static function callback( DatabaseUpdater $updater ) {
-		$className = static::class;
-		$hookHandler = new $className(
-			$updater
+	public function onLoadExtensionSchemaUpdates( $updater ) {
+		$dbType = $updater->getDB()->getType();
+		$base = dirname( __DIR__, 2 );
+
+		$updater->addExtensionTable(
+			'ldap_domains',
+			"$base/db/$dbType/ldap.sql"
 		);
-		return $hookHandler->process();
-	}
-
-	/**
-	 * @param DatabaseUpdater $updater object
-	 */
-	public function __construct( DatabaseUpdater $updater ) {
-		$this->updater = $updater;
-	}
-
-	/**
-	 * Process the needed updates for the different DB types
-	 */
-	public function process() {
-		$base = dirname( dirname( __DIR__ ) );
-		switch ( $this->updater->getDB()->getType() ) {
-			case 'mysql':
-			case 'sqlite':
-				$this->updater->addExtensionTable(
-					'ldap_domains', "$base/schema/ldap-mysql.sql"
-				);
-				break;
-			case 'postgres':
-				$this->updater->addExtensionTable(
-					'ldap_domains', "$base/schema/ldap-postgres.sql"
-				);
-				break;
-		}
 	}
 }
