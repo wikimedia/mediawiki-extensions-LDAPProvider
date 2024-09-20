@@ -75,7 +75,8 @@ class UserDomainStore {
 				'ldap_domains',
 				[
 					'user_id' => $userId
-				]
+				],
+				__METHOD__
 			);
 			return $dbw->insert(
 				'ldap_domains',
