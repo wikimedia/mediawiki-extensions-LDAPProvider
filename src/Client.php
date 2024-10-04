@@ -176,7 +176,7 @@ class Client {
 	 */
 	protected function establishBinding() {
 		if ( $this->boundTo == self::BOUND_ADMIN ||
-			$this->boundTo == self::BOUND_USER && !$this->adminUserProvided ) {
+			( $this->boundTo == self::BOUND_USER && !$this->adminUserProvided ) ) {
 			return;
 		}
 		$this->init();
