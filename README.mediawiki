@@ -52,7 +52,7 @@ $LDAPProviderDomainConfigs = "$IP/extensions/LDAPProvider/ldapprovider.json";
 ==== Alternative configuration via PHP ====
 
 In <code>LocalSettings.php</code> add
-<syntaxhighlight lang="php">
+<source lang="php">
 $LDAPProviderDomainConfigProvider = function( $ldapConfig ) {
 	return new \MediaWiki\Extension\LDAPProvider\DomainConfigProvider\InlinePHPArray( [
 		//Domain name
@@ -67,7 +67,7 @@ $LDAPProviderDomainConfigProvider = function( $ldapConfig ) {
 			]
 	] );
 };
-</syntaxhighlight>
+</source>
 
 === Testing ===
 
