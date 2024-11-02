@@ -181,7 +181,7 @@ class PlatformFunctionWrapper implements LoggerAwareInterface {
 	 * @return resource|bool FALSE on error.
 	 */
 	public function search(
-		$baseDN, $filter, array $attributes = null,
+		$baseDN, $filter, ?array $attributes = null,
 		$attrsonly = null, $sizelimit = null, $timelimit = null,
 		$deref = null
 	) {
