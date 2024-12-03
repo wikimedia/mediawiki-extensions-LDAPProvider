@@ -23,4 +23,12 @@ class ClientConfig {
 	public const GROUP_ATTRIBUTE = 'groupattribute';
 	public const USER_INFO_ATTRIBUTES = 'userinfoattributes';
 	public const GROUP_ATTRIBUTE_VALUE_CALLBACK = 'group-attribute-value-callback';
+
+	// Currently, that constant is only used in "LDAPSyncAll" extension.
+	//
+	// Two choices: "ad" or "openldap".
+	// By default - "ad".
+	// It may affect, for example, default search filters.
+	// https://github.com/ldaptools/ldaptools/blob/master/docs/en/reference/Main-Configuration.md#ldap_type
+	public const LDAP_TYPE = 'ldaptype';
 }
