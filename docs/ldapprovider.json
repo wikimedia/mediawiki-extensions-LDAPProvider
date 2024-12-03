@@ -14,7 +14,8 @@
 			"searchstring": "uid=USER-NAME,dc=example,dc=com",
 			"usernameattribute": "uid",
 			"realnameattribute": "cn",
-			"emailattribute": "mail"
+			"emailattribute": "mail",
+			"ldaptype": "ad"
 		},
 		"userinfo": {
 			"attributes-map": {
