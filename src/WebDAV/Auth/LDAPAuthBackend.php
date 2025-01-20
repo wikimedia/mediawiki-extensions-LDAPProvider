@@ -7,8 +7,8 @@ use MediaWiki\Extension\LDAPProvider\Config;
 use MediaWiki\Extension\LDAPProvider\LDAPNoDomainConfigException as NoDomain;
 use MediaWiki\Extension\WebDAV\WebDAVCredentialAuthProvider;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\User;
 use MWException;
-use User;
 
 class LDAPAuthBackend implements WebDAVCredentialAuthProvider {
 	/**
