@@ -3,8 +3,8 @@
 namespace MediaWiki\Extension\LDAPProvider;
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
-use User;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class UserDomainStore {

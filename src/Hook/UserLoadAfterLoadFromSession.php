@@ -9,8 +9,8 @@ use MediaWiki\Extension\LDAPProvider\ClientFactory;
 use MediaWiki\Extension\LDAPProvider\DomainConfigFactory;
 use MediaWiki\Extension\LDAPProvider\UserDomainStore;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\User;
 use RequestContext;
-use User;
 
 abstract class UserLoadAfterLoadFromSession {
 
