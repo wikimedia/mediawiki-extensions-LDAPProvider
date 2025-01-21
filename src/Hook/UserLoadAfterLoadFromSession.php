@@ -5,12 +5,12 @@ namespace MediaWiki\Extension\LDAPProvider\Hook;
 use Config;
 use GlobalVarConfig;
 use IContextSource;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\LDAPProvider\ClientFactory;
 use MediaWiki\Extension\LDAPProvider\DomainConfigFactory;
 use MediaWiki\Extension\LDAPProvider\UserDomainStore;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\User;
-use RequestContext;
 
 abstract class UserLoadAfterLoadFromSession {
 
@@ -174,7 +174,7 @@ abstract class UserLoadAfterLoadFromSession {
 			return true;
 		}
 
-		$webRequest = \RequestContext::getMain()->getRequest();
+		$webRequest = RequestContext::getMain()->getRequest();
 		$session = $webRequest->getSession();
 
 		$lastSyncTS = $session->get( $this->sessionDataKey, null );
