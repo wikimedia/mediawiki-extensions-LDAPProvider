@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\LDAPProvider;
 
 use BagOStuff;
-use Config;
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\LDAPProvider\Config as LDAPConfig;
 use MediaWiki\Logger\LoggerFactory;
 use MWException;

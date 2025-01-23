@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\LDAPProvider\Hook;
 
-use Config;
 use GlobalVarConfig;
 use IContextSource;
+use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\LDAPProvider\ClientFactory;
 use MediaWiki\Extension\LDAPProvider\DomainConfigFactory;
