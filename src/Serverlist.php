@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\LDAPProvider;
 
-use Config;
+use MediaWiki\Config\Config;
 
 class Serverlist {
 	/**
