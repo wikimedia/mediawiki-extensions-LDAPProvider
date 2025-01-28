@@ -22,7 +22,7 @@ namespace MediaWiki\Extension\LDAPProvider;
 
 use ExtensionRegistry;
 use HashConfig;
-use MediaWiki\Config\Config;
+use MediaWiki\Config\Config as MediaWikiConfig;
 use MediaWiki\MediaWikiServices;
 use MultiConfig;
 
@@ -54,7 +54,7 @@ class DomainConfigFactory {
 	 * referenced in "$LDAPProviderDomainConfigs"
 	 * @param string $domain to use
 	 * @param string $section to get
-	 * @return Config
+	 * @return MediaWikiConfig
 	 */
 	public function factory( $domain, $section ) {
 		$domain = strtolower( $domain );
