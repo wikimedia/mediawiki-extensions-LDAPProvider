@@ -20,9 +20,9 @@
 
 namespace MediaWiki\Extension\LDAPProvider\DomainConfigProvider;
 
-use FormatJson;
 use MediaWiki\Extension\LDAPProvider\Config;
 use MediaWiki\Extension\LDAPProvider\IDomainConfigProvider;
+use MediaWiki\Json\FormatJson;
 
 class LocalJSONFile implements IDomainConfigProvider {
 
