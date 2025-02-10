@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\LDAPProvider;
 
-use GlobalVarConfig;
+use MediaWiki\Config\GlobalVarConfig;
 
 class Config extends GlobalVarConfig {
 
