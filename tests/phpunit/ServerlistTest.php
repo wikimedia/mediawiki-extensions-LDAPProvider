@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\LDAPProvider\Tests;
 
-use HashConfig;
 use MediaWiki\Config\Config;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\Extension\LDAPProvider\ClientConfig;
 use MediaWiki\Extension\LDAPProvider\EncType;
 use MediaWiki\Extension\LDAPProvider\Serverlist;
