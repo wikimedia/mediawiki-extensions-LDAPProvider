@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\LDAPProvider\Tests;
 
-use HashConfig;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\Extension\LDAPProvider\UserDomainStore;
 use MediaWikiIntegrationTestCase;
 
