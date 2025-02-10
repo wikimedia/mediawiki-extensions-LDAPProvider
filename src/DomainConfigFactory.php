@@ -23,8 +23,8 @@ namespace MediaWiki\Extension\LDAPProvider;
 use ExtensionRegistry;
 use HashConfig;
 use MediaWiki\Config\Config as MediaWikiConfig;
+use MediaWiki\Config\MultiConfig;
 use MediaWiki\MediaWikiServices;
-use MultiConfig;
 
 class DomainConfigFactory {
 
