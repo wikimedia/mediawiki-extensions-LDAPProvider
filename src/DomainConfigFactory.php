@@ -20,11 +20,11 @@
 
 namespace MediaWiki\Extension\LDAPProvider;
 
-use ExtensionRegistry;
 use MediaWiki\Config\Config as MediaWikiConfig;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\MultiConfig;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Registration\ExtensionRegistry;
 
 class DomainConfigFactory {
 
