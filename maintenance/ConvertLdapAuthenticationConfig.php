@@ -14,8 +14,8 @@ require_once $maintPath;
 
 use Maintenance;
 use MediaWiki\Json\FormatJson;
+use MediaWiki\WikiMap\WikiMap;
 use SplFileInfo;
-use WikiMap;
 
 class ConvertLdapAuthenticationConfig extends Maintenance {
 
