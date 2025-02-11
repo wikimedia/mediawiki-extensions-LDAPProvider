@@ -12,8 +12,8 @@ if ( !file_exists( $maintPath ) ) {
 }
 require_once $maintPath;
 
-use Maintenance;
 use MediaWiki\Json\FormatJson;
+use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\WikiMap\WikiMap;
 use SplFileInfo;
 
