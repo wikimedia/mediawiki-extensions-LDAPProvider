@@ -2,12 +2,12 @@
 
 namespace MediaWiki\Extension\LDAPProvider;
 
-use BagOStuff;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\LDAPProvider\Config as LDAPConfig;
 use MediaWiki\Logger\LoggerFactory;
 use MWException;
 use ObjectCache;
+use Wikimedia\ObjectCache\BagOStuff;
 
 class Client {
 
