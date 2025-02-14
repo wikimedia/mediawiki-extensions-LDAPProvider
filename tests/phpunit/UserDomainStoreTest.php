@@ -12,7 +12,6 @@ use MediaWikiIntegrationTestCase;
 class UserDomainStoreTest extends MediaWikiIntegrationTestCase {
 
 	protected function setUp(): void {
-		$this->tablesUsed[] = 'ldap_domains';
 		parent::setUp();
 
 		$this->getDb()->insert( 'ldap_domains', [
