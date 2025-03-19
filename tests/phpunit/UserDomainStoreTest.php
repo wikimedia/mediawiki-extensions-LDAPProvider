@@ -14,10 +14,14 @@ class UserDomainStoreTest extends MediaWikiIntegrationTestCase {
 	protected function setUp(): void {
 		parent::setUp();
 
-		$this->getDb()->insert( 'ldap_domains', [
-			'domain' => 'SOMEDOMAIN',
-			'user_id' => self::getTestSysop()->getUser()->getId()
-		] );
+		$this->getDb()->insert(
+			'ldap_domains',
+			[
+				'domain' => 'SOMEDOMAIN',
+				'user_id' => self::getTestSysop()->getUser()->getId()
+			],
+			__METHOD__
+		);
 	}
 
 	/**
