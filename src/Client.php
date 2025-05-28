@@ -6,7 +6,7 @@ use LogicException;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\LDAPProvider\Config as LDAPConfig;
 use MediaWiki\Logger\LoggerFactory;
-use ObjectCache;
+use MediaWiki\MediaWikiServices;
 use RuntimeException;
 use Wikimedia\ObjectCache\BagOStuff;
 
@@ -219,7 +219,7 @@ class Client {
 			if ( defined( $cacheType ) ) {
 				$cacheType = constant( $cacheType );
 			}
-			$this->cache = ObjectCache::getInstance( $cacheType );
+			$this->cache = MediaWikiServices::getInstance()->getObjectCacheFactory()->getInstance( $cacheType );
 			$this->cacheTime = $conf->get( LDAPConfig::CACHE_TIME );
 		}
 	}
