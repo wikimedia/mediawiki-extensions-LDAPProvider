@@ -22,9 +22,9 @@
 
 namespace MediaWiki\Extension\LDAPProvider\DomainConfigProvider;
 
-use MWException;
+use MediaWiki\Config\ConfigException as MediaWikiConfigException;
 
-class ConfigException extends MWException {
+class ConfigException extends MediaWikiConfigException {
 	/**
 	 * @param string $msg Localisation string
 	 * @param mixed ...$args any parameters for the message

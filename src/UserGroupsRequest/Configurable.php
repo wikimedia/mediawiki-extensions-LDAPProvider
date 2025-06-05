@@ -2,17 +2,18 @@
 
 namespace MediaWiki\Extension\LDAPProvider\UserGroupsRequest;
 
+use InvalidArgumentException;
 use MediaWiki\Extension\LDAPProvider\ClientConfig;
 use MediaWiki\Extension\LDAPProvider\EscapedString;
 use MediaWiki\Extension\LDAPProvider\GroupList;
 use MediaWiki\Extension\LDAPProvider\UserGroupsRequest;
-use MWException;
 
 class Configurable extends UserGroupsRequest {
 
 	/**
 	 * @param string $username to get the groups for
 	 * @return GroupList
+	 * @throws InvalidArgumentException
 	 */
 	public function getUserGroups( $username ) {
 		$baseDN = $this->config->get( ClientConfig::GROUP_BASE_DN );
@@ -25,7 +26,7 @@ class Configurable extends UserGroupsRequest {
 		$ret = [];
 		$objectClass = $this->config->get( ClientConfig::GROUP_OBJECT_CLASS );
 		if ( empty( trim( $objectClass ) ) ) {
-			throw new MWException( sprintf(
+			throw new InvalidArgumentException( sprintf(
 				"Parameter %s must be set when configurable groups request is used",
 				ClientConfig::GROUP_OBJECT_CLASS
 			) );

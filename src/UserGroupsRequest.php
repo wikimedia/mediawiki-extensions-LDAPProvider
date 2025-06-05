@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\LDAPProvider;
 
 use MediaWiki\Config\Config;
-use MWException;
 
 abstract class UserGroupsRequest {
 
@@ -36,7 +35,6 @@ abstract class UserGroupsRequest {
 	 * @param Client $ldapClient The client to be used
 	 * @param Config $config The config to be used
 	 * @return UserGroupsRequest
-	 * @throws MWException
 	 */
 	public static function factory( $ldapClient, Config $config ) {
 		$request = new static( $ldapClient, $config );

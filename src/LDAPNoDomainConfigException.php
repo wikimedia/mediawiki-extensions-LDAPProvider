@@ -20,7 +20,7 @@
 
 namespace MediaWiki\Extension\LDAPProvider;
 
-use MWException;
+use MediaWiki\Config\ConfigException as MediaWikiConfigException;
 
-class LDAPNoDomainConfigException extends MWException {
+class LDAPNoDomainConfigException extends MediaWikiConfigException {
 }
