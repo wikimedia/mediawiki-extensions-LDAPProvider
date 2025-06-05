@@ -2,7 +2,9 @@
 
 namespace MediaWiki\Extension\LDAPProvider;
 
-use MWException;
+use InvalidArgumentException;
+use LogicException;
+use UnexpectedValueException;
 
 class PreSearchUsernameModifierProcessor {
 
@@ -49,19 +51,21 @@ class PreSearchUsernameModifierProcessor {
 	}
 
 	/**
-	 *
 	 * @param string $modifierKey
 	 * @return IPreSearchUsernameModifier
+	 * @throws InvalidArgumentException
+	 * @throws LogicException
+	 * @throws UnexpectedValueException
 	 */
 	private function makePreSearchUsernameModifier( $modifierKey ) {
 		if ( !isset( $this->factoryCallbackRegistry[$modifierKey] ) ) {
-			throw new MWException(
+			throw new InvalidArgumentException(
 				"No factory callback set for "
 				. "pre-search-username-modifier-key ' $modifierKey'"
 			);
 		}
 		if ( !is_callable( $this->factoryCallbackRegistry[$modifierKey] ) ) {
-			throw new MWException(
+			throw new LogicException(
 				"Provided factory callback for "
 				. "pre-search-username-modifier-key ' $modifierKey' is not callable!"
 			);
@@ -69,7 +73,7 @@ class PreSearchUsernameModifierProcessor {
 
 		$modifier = call_user_func( $this->factoryCallbackRegistry[$modifierKey] );
 		if ( !$modifier instanceof IPreSearchUsernameModifier ) {
-			throw new MWException(
+			throw new UnexpectedValueException(
 				"Factory callback for pre-search-username-modifier-key ' $modifierKey' "
 				. "did not return a valid 'IPreSearchUsernameModifier' object!"
 			);

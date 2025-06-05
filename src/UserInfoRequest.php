@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\LDAPProvider;
 
+use LogicException;
 use MediaWiki\Config\Config;
-use MWException;
 
 class UserInfoRequest {
 
@@ -52,6 +52,7 @@ class UserInfoRequest {
 	/**
 	 * @param string $username to get info for
 	 * @return array
+	 * @throws LogicException
 	 */
 	public function getUserInfo( $username ) {
 		$escapedUserName = new EscapedString( $username );
@@ -76,7 +77,7 @@ class UserInfoRequest {
 		}
 
 		if ( $count > 1 ) {
-			throw new MWException(
+			throw new LogicException(
 				wfMessage( "ldapprovider-more-than-one" )->params( $filter )->plain()
 			);
 		}

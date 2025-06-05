@@ -2,11 +2,12 @@
 
 namespace MediaWiki\Extension\LDAPProvider;
 
+use LogicException;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\LDAPProvider\Config as LDAPConfig;
 use MediaWiki\Logger\LoggerFactory;
-use MWException;
 use ObjectCache;
+use RuntimeException;
 use Wikimedia\ObjectCache\BagOStuff;
 
 class Client {
@@ -121,13 +122,14 @@ class Client {
 
 	/**
 	 * @return PlatformFunctionWrapper
+	 * @throws RuntimeException
 	 */
 	protected function makeNewConnection() {
 		$servers = (string)( new Serverlist( $this->config ) );
 		$this->connection = PlatformFunctionWrapper::getConnection( $servers );
 		$this->connection->setLogger( $this->logger );
 		if ( !$this->connection ) {
-			throw new MWException( "Couldn't connect with $servers" );
+			throw new RuntimeException( "Couldn't connect with $servers" );
 		}
 		return $this->connection;
 	}
@@ -158,6 +160,7 @@ class Client {
 
 	/**
 	 * Start encrypted connection if so configured
+	 * @throws RuntimeException
 	 */
 	protected function maybeStartTLS() {
 		if ( $this->config->has( ClientConfig::ENC_TYPE ) ) {
@@ -165,7 +168,7 @@ class Client {
 			if ( $encType === EncType::TLS ) {
 				$ret = $this->connection->startTLS();
 				if ( $ret === false ) {
-					throw new MWException( 'Could not start TLS!' );
+					throw new RuntimeException( 'Could not start TLS!' );
 				}
 			}
 		}
@@ -173,6 +176,7 @@ class Client {
 
 	/**
 	 * Make sure we can bind properly
+	 * @throws RuntimeException
 	 */
 	protected function establishBinding() {
 		if ( $this->boundTo == self::BOUND_ADMIN ||
@@ -194,7 +198,7 @@ class Client {
 		if ( $ret === false ) {
 			$error = $this->connection->error();
 			$errno = $this->connection->errno();
-			throw new MWException(
+			throw new RuntimeException(
 				"Could not bind to LDAP: ($errno) $error"
 			);
 		}
@@ -222,6 +226,7 @@ class Client {
 	 * @param string|null $basedn The base DN to search in
 	 * @param array $attrs list of attributes to get, default to '*'
 	 * @return array
+	 * @throws RuntimeException
 	 */
 	public function search( $match, $basedn = null, $attrs = [ "*" ] ) {
 		$this->establishBinding();
@@ -234,7 +239,7 @@ class Client {
 		$res = $this->connection->search( $basedn, $match, $attrs );
 
 		if ( !$res ) {
-			throw new MWException(
+			throw new RuntimeException(
 				"Error in LDAP search: " . $this->connection->error() );
 		}
 
@@ -380,6 +385,7 @@ class Client {
 	 * @param string $username for user
 	 * @param string $groupBaseDN for group
 	 * @return GroupList
+	 * @throws LogicException
 	 */
 	public function getUserGroups( $username, $groupBaseDN = '' ) {
 		$this->init();
@@ -397,7 +403,7 @@ class Client {
 				$request = $factoryCallback( $this, $this->config );
 
 				if ( !$request instanceof UserGroupsRequest ) {
-					throw new MWException( "Configured GroupRequest not valid" );
+					throw new LogicException( "Configured GroupRequest not valid" );
 				}
 
 				return $request->getUserGroups( $username );

@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\LDAPProvider;
 
-use MWException;
+use LogicException;
 
 class ClientFactory {
 
@@ -51,7 +51,7 @@ class ClientFactory {
 	 *
 	 * @param string $domain to get
 	 * @return Client
-	 * @throws MWException
+	 * @throws LogicException
 	 */
 	public function getForDomain( $domain ) {
 		// For convenience, domain name should be case-insensitive
@@ -74,7 +74,7 @@ class ClientFactory {
 				$this->clients[$domain] = $callback();
 			}
 			if ( !$this->clients[$domain] instanceof Client ) {
-				throw new MWException(
+				throw new LogicException(
 					"Client factory for domain '$domain' did not "
 					. "return a valid Client object"
 				);
