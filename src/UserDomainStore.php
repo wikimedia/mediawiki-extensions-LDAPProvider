@@ -10,13 +10,11 @@ use Wikimedia\Rdbms\ILoadBalancer;
 class UserDomainStore {
 
 	/**
-	 *
 	 * @var ILoadBalancer
 	 */
 	protected $loadbalancer = null;
 
 	/**
-	 *
 	 * @var Config
 	 */
 	protected $config = null;

@@ -7,13 +7,11 @@ use MWException;
 class PreSearchUsernameModifierProcessor {
 
 	/**
-	 *
 	 * @var array
 	 */
 	private $factoryCallbackRegistry = [];
 
 	/**
-	 *
 	 * @param array $factoryCallbackRegistry
 	 */
 	public function __construct( $factoryCallbackRegistry ) {
@@ -21,7 +19,6 @@ class PreSearchUsernameModifierProcessor {
 	}
 
 	/**
-	 *
 	 * @param string $username
 	 * @param string[] $modifierKeys
 	 * @return string
@@ -36,7 +33,6 @@ class PreSearchUsernameModifierProcessor {
 	}
 
 	/**
-	 *
 	 * @param string[] $modifierKeys
 	 * @return IPreSearchUsernameModifier[]
 	 */
@@ -49,7 +45,6 @@ class PreSearchUsernameModifierProcessor {
 	}
 
 	/**
-	 *
 	 * @param string $modifierKey
 	 * @return IPreSearchUsernameModifier
 	 */

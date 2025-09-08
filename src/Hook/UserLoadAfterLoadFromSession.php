@@ -15,37 +15,31 @@ use MediaWiki\User\User;
 abstract class UserLoadAfterLoadFromSession {
 
 	/**
-	 *
 	 * @var User
 	 */
 	protected $user = null;
 
 	/**
-	 *
 	 * @var IContextSource
 	 */
 	protected $context = null;
 
 	/**
-	 *
 	 * @var Config
 	 */
 	protected $config = null;
 
 	/**
-	 *
 	 * @var \MediaWiki\Extension\LDAPProvider\Client
 	 */
 	protected $ldapClient = null;
 
 	/**
-	 *
 	 * @var string
 	 */
 	protected $domain = '';
 
 	/**
-	 *
 	 * @var Config
 	 */
 	protected $domainConfig = null;
@@ -63,7 +57,6 @@ abstract class UserLoadAfterLoadFromSession {
 	protected $sessionDataKey = null;
 
 	/**
-	 *
 	 * @param IContextSource $context we're operating in
 	 * @param Config $config accessor
 	 * @param User $user we're talking about
@@ -77,7 +70,6 @@ abstract class UserLoadAfterLoadFromSession {
 	}
 
 	/**
-	 *
 	 * @param User $user we're going to process
 	 * @return bool
 	 */
@@ -91,7 +83,6 @@ abstract class UserLoadAfterLoadFromSession {
 	}
 
 	/**
-	 *
 	 * @return bool
 	 */
 	public function process() {
@@ -121,7 +112,6 @@ abstract class UserLoadAfterLoadFromSession {
 	}
 
 	/**
-	 *
 	 * @return bool
 	 */
 	protected function findDomainForUser() {
@@ -163,7 +153,6 @@ abstract class UserLoadAfterLoadFromSession {
 	}
 
 	/**
-	 *
 	 * This method manages the frequency of launching sync processes.
 	 * We don't need to sync data every user request
 	 *

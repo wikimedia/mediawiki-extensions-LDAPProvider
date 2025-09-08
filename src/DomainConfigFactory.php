@@ -31,13 +31,11 @@ class DomainConfigFactory {
 	private const DEFAULT_CONF_ATTR = 'LDAPProviderDefaultSettings';
 
 	/**
-	 *
 	 * @var DomainConfigFactory
 	 */
 	protected static $instance = null;
 
 	/**
-	 *
 	 * @var array
 	 */
 	protected $config = null;

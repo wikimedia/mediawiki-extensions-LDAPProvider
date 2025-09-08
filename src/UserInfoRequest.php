@@ -8,19 +8,16 @@ use MWException;
 class UserInfoRequest {
 
 	/**
-	 *
 	 * @var Client
 	 */
 	protected $ldapClient = null;
 
 	/**
-	 *
 	 * @var Config
 	 */
 	protected $config = null;
 
 	/**
-	 *
 	 * @var string
 	 */
 	protected $userBaseDN = '';

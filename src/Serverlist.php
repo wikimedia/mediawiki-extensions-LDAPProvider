@@ -6,13 +6,11 @@ use MediaWiki\Config\Config;
 
 class Serverlist {
 	/**
-	 *
 	 * @var Config
 	 */
 	protected $config = null;
 
 	/**
-	 *
 	 * @param Config $config to get server from
 	 */
 	public function __construct( Config $config ) {

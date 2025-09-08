@@ -44,7 +44,6 @@ class DomainConfigFactoryTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 *
 	 * @return DomainConfigFactory
 	 */
 	protected function makeDomainConfigFactory() {

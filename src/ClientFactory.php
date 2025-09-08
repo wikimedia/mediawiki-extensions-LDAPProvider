@@ -7,19 +7,16 @@ use MWException;
 class ClientFactory {
 
 	/**
-	 *
 	 * @var Client[]
 	 */
 	protected $clients = [];
 
 	/**
-	 *
 	 * @var Config
 	 */
 	private $config = null;
 
 	/**
-	 *
 	 * @var callable[]
 	 */
 	protected $domainClientFactories = [];
@@ -30,7 +27,6 @@ class ClientFactory {
 	}
 
 	/**
-	 *
 	 * @var ClientFactory
 	 */
 	protected static $instance = null;

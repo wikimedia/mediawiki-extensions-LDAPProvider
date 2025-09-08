@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <ruleset>
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
+		<exclude name="MediaWiki.Commenting.CommentBeforeClass.SpacingAfter" />
 		<exclude name="MediaWiki.Commenting.FunctionAnnotations.UnrecognizedAnnotation" />
+		<exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationProtected" />
 	</rule>
 	<file>.</file>
 	<arg name="extensions" value="php"/>

@@ -52,7 +52,6 @@ class ShowUserGroups extends Maintenance {
 	}
 
 	/**
-	 *
 	 * @param \MediaWiki\Extension\LDAPProvider\GroupList $groupList
 	 */
 	private function showValue( $groupList ) {

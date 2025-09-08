@@ -11,7 +11,6 @@ use MediaWiki\Extension\LDAPProvider\Serverlist;
 class ServerlistTest extends \PHPUnit\Framework\TestCase {
 
 	/**
-	 *
 	 * @param Config $config
 	 * @param string $expected
 	 *

@@ -33,7 +33,6 @@ abstract class UserGroupsRequest {
 	}
 
 	/**
-	 *
 	 * @param Client $ldapClient The client to be used
 	 * @param Config $config The config to be used
 	 * @return UserGroupsRequest

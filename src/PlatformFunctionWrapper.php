@@ -269,7 +269,6 @@ class PlatformFunctionWrapper implements LoggerAwareInterface {
 	}
 
 	/**
-	 *
 	 * @param string|null $uri
 	 * @return PlatformFunctionWrapper
 	 */
