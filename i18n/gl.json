@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"ldapprovider-desc": "Ofrece unha infraestrutura común para conectarse a un recurso LDAP e executar consultas contra el",
+	"ldapprovider-config-clientregistry": "Permite o rexistro de clientes personalizados",
+	"ldapprovider-config-domainconfigs": "Almacena configuracións por dominio",
+	"ldapprovider-domain-config-not-found": "Non se puido acceder ao ficheiro de configuración «$1»!\n\nConfigura un ficheiro de configuración de dominio para a extensión LDAPProvider.",
+	"ldapprovider-more-than-one": "Atopouse máis dun usuario para «$1»",
+	"ldapprovider-config-domainconfigprovider": "Especifica o mecanismo para obter a configuración do dominio",
+	"ldapprovider-config-defaultdomain": "Especifica que dominio escoller para un usuario, se non hai dispoñible ningunha correspondencia da base de datos"
+}
