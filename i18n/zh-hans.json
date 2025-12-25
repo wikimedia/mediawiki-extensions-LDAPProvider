@@ -10,5 +10,7 @@
 	"ldapprovider-config-clientregistry": "允许注册自定义客户端",
 	"ldapprovider-config-domainconfigs": "存储各域名设置",
 	"ldapprovider-domain-config-not-found": "无法访问配置文件“$1”！\n\n请为LDAPProvider扩展创建一个域配置文件。",
-	"ldapprovider-config-domainconfigprovider": "指定获取域名设置的机制"
+	"ldapprovider-more-than-one": "有找出一个以上的'$1'用户",
+	"ldapprovider-config-domainconfigprovider": "指定获取域名设置的机制",
+	"ldapprovider-config-defaultdomain": "若没有可用的数据库对应，为用户指定所挑选的域名"
 }
