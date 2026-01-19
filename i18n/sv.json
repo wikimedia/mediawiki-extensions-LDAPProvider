@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stefan2255"
+		]
+	},
+	"ldapprovider-desc": "Tillhandahåller en gemensam infrastruktur för att ansluta till en LDAP-resurs och köra frågor mot den.",
+	"ldapprovider-config-clientregistry": "Tillåter registrering av anpassade klienter",
+	"ldapprovider-config-domainconfigs": "Lagrar konfigurationer per domän",
+	"ldapprovider-domain-config-not-found": "Kunde inte komma åt konfigurationsfilen '$1'!\n\nVar god skapa en domänkonfigurationsfil för LDAPProvider-tillägget.",
+	"ldapprovider-more-than-one": "Hittade mer än en användare för '$1'",
+	"ldapprovider-config-domainconfigprovider": "Anger mekanismen för att hämta domänkonfigurationen",
+	"ldapprovider-config-defaultdomain": "Anger vilken domän som ska väljas för en användare, om ingen mappning från databasen är tillgänglig"
+}
