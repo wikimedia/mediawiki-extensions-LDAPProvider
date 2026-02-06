@@ -6,7 +6,6 @@ use Exception;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
-use Wikimedia\AtEase\AtEase;
 
 /**
  * @SuppressWarnings(PHPMD.CamelCaseMethodName)
@@ -96,9 +95,8 @@ class PlatformFunctionWrapper implements LoggerAwareInterface {
 		$this->logger->debug( "ldap_bind( \$linkID, \$bindRDN = '$bindRDN', "
 			. "\$bindPassword = 'XXXX' );"
 		);
-		AtEase::suppressWarnings();
-		$ret = \ldap_bind( $this->linkID, $bindRDN, $bindPassword );
-		AtEase::restoreWarnings();
+		// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+		$ret = @\ldap_bind( $this->linkID, $bindRDN, $bindPassword );
 		$this->logger->debug( "# returns " . ( $ret ? "true" : "false" ) );
 		return $ret;
 	}
@@ -192,12 +190,11 @@ class PlatformFunctionWrapper implements LoggerAwareInterface {
 			. "\$sizelimit = $sizelimit, \$timelimit = $timelimit, "
 			. "\$deref = $deref ); "
 		);
-		AtEase::suppressWarnings();
-		$ret = \ldap_search(
+		// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+		$ret = @\ldap_search(
 			$this->linkID, $baseDN, $filter, $attributes, $attrsonly,
 			$sizelimit, $timelimit, $deref
 		);
-		AtEase::restoreWarnings();
 		$retDbg = "a resource";
 		if ( $ret === false ) {
 			$retDbg = "an error (" . \ldap_error( $this->linkID ) . ")";
