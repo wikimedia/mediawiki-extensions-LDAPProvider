@@ -74,6 +74,7 @@ abstract class UserLoadAfterLoadFromSession {
 	 * @return bool
 	 */
 	public static function callback( User $user ) {
+		// @phan-suppress-next-line PhanTypeInstantiateAbstractStatic
 		$handler = new static(
 			static::makeContext(),
 			static::makeConfig(),
