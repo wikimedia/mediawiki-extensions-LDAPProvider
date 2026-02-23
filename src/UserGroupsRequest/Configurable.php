@@ -25,7 +25,7 @@ class Configurable extends UserGroupsRequest {
 
 		$ret = [];
 		$objectClass = $this->config->get( ClientConfig::GROUP_OBJECT_CLASS );
-		if ( empty( trim( $objectClass ) ) ) {
+		if ( !trim( $objectClass ) ) {
 			throw new InvalidArgumentException( sprintf(
 				"Parameter %s must be set when configurable groups request is used",
 				ClientConfig::GROUP_OBJECT_CLASS

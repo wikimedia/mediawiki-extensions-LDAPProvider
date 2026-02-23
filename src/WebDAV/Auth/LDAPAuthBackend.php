@@ -4,12 +4,15 @@ namespace MediaWiki\Extension\LDAPProvider\WebDAV\Auth;
 
 use MediaWiki\Extension\LDAPProvider\ClientFactory;
 use MediaWiki\Extension\LDAPProvider\Config;
-use MediaWiki\Extension\LDAPProvider\LDAPNoDomainConfigException as NoDomain;
 use MediaWiki\Extension\WebDAV\WebDAVCredentialAuthProvider;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\User;
+use Throwable;
 
 class LDAPAuthBackend implements WebDAVCredentialAuthProvider {
+// @phan-suppress-previous-line PhanUndeclaredInterface
+// WebDAV added in zuul/phan_dependencies.yaml, but still not recognised; revisit later
+
 	/**
 	 * @inheritDoc
 	 */
@@ -39,7 +42,7 @@ class LDAPAuthBackend implements WebDAVCredentialAuthProvider {
 		$ldapClient = null;
 		try {
 			$ldapClient = ClientFactory::getInstance()->getForDomain( $domain );
-		} catch ( NoDomain $e ) {
+		} catch ( Throwable ) {
 			return false;
 		}
 

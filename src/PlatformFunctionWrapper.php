@@ -2,14 +2,16 @@
 
 namespace MediaWiki\Extension\LDAPProvider;
 
-use Exception;
+use LDAP\Connection;
+use LDAP\Result;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
+use RuntimeException;
 
 class PlatformFunctionWrapper implements LoggerAwareInterface {
 
-	/** @var resource */
+	/** @var Connection|null */
 	private $linkID;
 
 	/**
@@ -81,12 +83,13 @@ class PlatformFunctionWrapper implements LoggerAwareInterface {
 	 * @param string|null $bindRDN [optional]
 	 * @param string|null $bindPassword [optional]
 	 * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
+	 * @throws RuntimeException
 	 * @since 4.0
 	 * @since 5.0
 	 */
 	public function bind( $bindRDN = null, $bindPassword = null ) {
 		if ( !$this->linkID ) {
-			throw new Exception( "Nothing to bind with!" );
+			throw new RuntimeException( 'Nothing to bind with!' );
 		}
 		$this->logger->debug( "ldap_bind( \$linkID, \$bindRDN = '$bindRDN', "
 			. "\$bindPassword = 'XXXX' );"
@@ -172,7 +175,7 @@ class PlatformFunctionWrapper implements LoggerAwareInterface {
 	 * handled during the search. It can be one of the following:
 	 * LDAP_DEREF_NEVER - (default) aliases are never
 	 * dereferenced.
-	 * @return resource|bool FALSE on error.
+	 * @return Result|array|bool FALSE on error.
 	 */
 	public function search(
 		$baseDN, $filter, ?array $attributes = null,
@@ -202,7 +205,7 @@ class PlatformFunctionWrapper implements LoggerAwareInterface {
 	/**
 	 * Get all result entries
 	 * @link http://php.net/manual/en/function.ldap-get-entries.php
-	 * @param resource $resultID result identifier?
+	 * @param Result|array $resultID result identifier?
 	 * @return array a complete result information in a
 	 * multi-dimensional array on success and FALSE on error.  The
 	 * structure of the array is as follows.  The attribute index is
@@ -235,7 +238,7 @@ class PlatformFunctionWrapper implements LoggerAwareInterface {
 	 * ldaps://hostname:port for SSL encryption.  Note that
 	 * hostname:port is not a supported LDAP URI as the schema is
 	 * missing.
-	 * @return resource a positive LDAP link identifier when the
+	 * @return Connection a positive LDAP link identifier when the
 	 * provided hostname/port combination or LDAP URI seems
 	 * plausible. It's a syntactic check of the provided parameters
 	 * but the server(s) will not be contacted! If the syntactic check
@@ -246,16 +249,17 @@ class PlatformFunctionWrapper implements LoggerAwareInterface {
 	 * ldap_* funcs, usually with <b>ldap_bind</b>.  </p> <p> If no
 	 * arguments are specified then the link identifier of the already
 	 * opened link will be returned.
+	 * @throws RuntimeException
 	 */
 	public function connect( $uri = null ) {
 		if ( $this->linkID ) {
-			throw new Exception( "already connected" );
+			throw new RuntimeException( 'already connected' );
 		}
 		$this->logger->debug( "ldap_connect( \$uri = '$uri' ); "
 		);
 		$this->linkID = \ldap_connect( $uri );
 		if ( $this->linkID === false ) {
-			throw new Exception( "$uri is not a valid LDAP URI" );
+			throw new RuntimeException( "$uri is not a valid LDAP URI" );
 		}
 		$this->logger->debug( "# __METHOD__ returns a link id" );
 		return $this->linkID;
@@ -295,7 +299,7 @@ class PlatformFunctionWrapper implements LoggerAwareInterface {
 	/**
 	 * Count the number of entries in a search.
 	 *
-	 * @param resource $result ldap result to count
+	 * @param Result|array $result ldap result to count
 	 * @return int
 	 */
 	public function count( $result ) {

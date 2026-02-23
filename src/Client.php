@@ -363,7 +363,7 @@ class Client {
 
 	/**
 	 * Gets the LDAPUsername if it is set by getUserDN with a searchattr
-	 * @return string
+	 * @return string|null
 	 */
 	public function getUsername() {
 		return $this->LDAPUsername;

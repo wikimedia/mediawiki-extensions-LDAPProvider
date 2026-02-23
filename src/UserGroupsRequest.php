@@ -54,6 +54,7 @@ abstract class UserGroupsRequest implements LoggerAwareInterface {
 	 * @return UserGroupsRequest
 	 */
 	public static function factory( $ldapClient, Config $config ) {
+		// @phan-suppress-next-line PhanTypeInstantiateAbstractStatic
 		$request = new static( $ldapClient, $config );
 		return $request;
 	}

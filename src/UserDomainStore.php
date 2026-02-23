@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\LDAPProvider;
 
-use MediaWiki\MediaWikiServices;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -25,12 +24,7 @@ class UserDomainStore {
 	 */
 	public function __construct( ILoadBalancer $loadbalancer, $config = null ) {
 		$this->loadbalancer = $loadbalancer;
-		$this->config = $config;
-		if ( $this->config === null ) {
-			$this->config = MediaWikiServices::getInstance()
-				->getConfigFactory()
-				->makeConfig( 'ldapprovider' );
-		}
+		$this->config = $config ?? Config::newInstance();
 	}
 
 	/**
@@ -53,7 +47,7 @@ class UserDomainStore {
 		}
 
 		$defaultDomain = $this->config->get( Config::DEFAULT_DOMAIN );
-		if ( !empty( $defaultDomain ) ) {
+		if ( $defaultDomain ) {
 			return strtolower( $defaultDomain );
 		}
 
