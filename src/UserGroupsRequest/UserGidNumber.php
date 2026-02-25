@@ -16,16 +16,28 @@ class UserGidNumber extends UserGroupsRequest {
 		$userInfo = $this->ldapClient->getUserInfo( $username );
 
 		if ( !isset( $userInfo['gidnumber'] ) ) {
+			$this->logger->debug(
+				__METHOD__ . ": no 'gidnumber' attribute found for {username}, returning empty group list.",
+				[ 'username' => $username ]
+			);
 			return new GroupList( [] );
 		}
 
 		$gid = $userInfo['gidnumber'];
 		$dn = 'dn';
 		$groupBaseDN = $this->config->get( ClientConfig::GROUP_BASE_DN );
+		if ( $groupBaseDN === '' ) {
+			$groupBaseDN = null;
+		}
+
+		$this->logger->debug(
+			__METHOD__ . ': searching primary group by gidNumber={gid} for {username} in {baseDN}.',
+			[ 'gid' => $gid, 'username' => $username, 'baseDN' => $groupBaseDN ?? 'null' ]
+		);
 
 		$groups = $this->ldapClient->search(
 			"(&(objectclass=posixGroup)(gidnumber=$gid))",
-			$this->$groupBaseDN, [ $dn ]
+			$groupBaseDN, [ $dn ]
 		);
 		$ret = [];
 		foreach ( $groups as $key => $value ) {
@@ -33,6 +45,12 @@ class UserGidNumber extends UserGroupsRequest {
 				$ret[] = $value[$dn];
 			}
 		}
+
+		$this->logger->debug(
+			__METHOD__ . ': found {count} group(s) for {username}.',
+			[ 'count' => count( $ret ), 'username' => $username ]
+		);
+
 		return new GroupList( $ret );
 	}
 }

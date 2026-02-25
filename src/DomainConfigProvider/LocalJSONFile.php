@@ -45,7 +45,7 @@ class LocalJSONFile implements IDomainConfigProvider {
 
 		$this->configArray = FormatJson::decode( file_get_contents( $jsonFilePath ), true );
 
-		if ( $this->configArray === false || count( $this->configArray ) === 0 ) {
+		if ( $this->configArray === null || count( $this->configArray ) === 0 ) {
 			throw new ConfigException( 'ldapprovider-domain-config-invalid', $jsonFilePath );
 		}
 

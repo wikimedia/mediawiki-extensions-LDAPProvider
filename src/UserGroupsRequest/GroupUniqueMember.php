@@ -21,6 +21,16 @@ class GroupUniqueMember extends UserGroupsRequest {
 		if ( $baseDN === '' ) {
 			$baseDN = null;
 		}
+
+		$this->logger->debug(
+			__METHOD__ . ': searching groups for {username} (userDN={userDN}, groupBaseDN={baseDN})',
+			[
+				'username' => $username,
+				'userDN' => (string)$userDN,
+				'baseDN' => $baseDN ?? 'null',
+			]
+		);
+
 		$groups = $this->ldapClient->search(
 			"(&(objectclass=groupOfUniqueNames)(uniqueMember=$userDN))",
 			$baseDN, [ $dn ]
@@ -31,6 +41,12 @@ class GroupUniqueMember extends UserGroupsRequest {
 				$ret[] = $value[$dn];
 			}
 		}
+
+		$this->logger->debug(
+			__METHOD__ . ': found {count} group(s) for {username}.',
+			[ 'count' => count( $ret ), 'username' => $username ]
+		);
+
 		return new GroupList( $ret );
 	}
 }

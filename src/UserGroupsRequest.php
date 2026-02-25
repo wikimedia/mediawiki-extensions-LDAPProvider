@@ -3,8 +3,11 @@
 namespace MediaWiki\Extension\LDAPProvider;
 
 use MediaWiki\Config\Config;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 
-abstract class UserGroupsRequest {
+abstract class UserGroupsRequest implements LoggerAwareInterface {
 
 	/**
 	 * @var Client
@@ -22,6 +25,11 @@ abstract class UserGroupsRequest {
 	protected $groupBaseDN = '';
 
 	/**
+	 * @var LoggerInterface
+	 */
+	protected $logger = null;
+
+	/**
 	 * @param Client $ldapClient to use
 	 * @param Config $config will be delivered here
 	 */
@@ -29,6 +37,15 @@ abstract class UserGroupsRequest {
 		$this->ldapClient = $ldapClient;
 		$this->config = $config;
 		$this->groupBaseDN = $config->get( ClientConfig::GROUP_BASE_DN );
+		$this->logger = new NullLogger();
+	}
+
+	/**
+	 * @param LoggerInterface $logger
+	 * @return void
+	 */
+	public function setLogger( LoggerInterface $logger ): void {
+		$this->logger = $logger;
 	}
 
 	/**

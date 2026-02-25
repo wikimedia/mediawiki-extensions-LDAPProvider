@@ -4,8 +4,11 @@ namespace MediaWiki\Extension\LDAPProvider;
 
 use LogicException;
 use MediaWiki\Config\Config;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 
-class UserInfoRequest {
+class UserInfoRequest implements LoggerAwareInterface {
 
 	/**
 	 * @var Client
@@ -33,6 +36,11 @@ class UserInfoRequest {
 	protected $userInfoAttributes = null;
 
 	/**
+	 * @var LoggerInterface
+	 */
+	protected $logger = null;
+
+	/**
 	 * @param Client $ldapClient to use
 	 * @param Config $config for retrieving config from
 	 */
@@ -44,6 +52,15 @@ class UserInfoRequest {
 			ClientConfig::USER_DN_SEARCH_ATTR
 		);
 		$this->userInfoAttributes = $config->get( ClientConfig::USER_INFO_ATTRIBUTES );
+		$this->logger = new NullLogger();
+	}
+
+	/**
+	 * @param LoggerInterface $logger
+	 * @return void
+	 */
+	public function setLogger( LoggerInterface $logger ): void {
+		$this->logger = $logger;
 	}
 
 	/**
@@ -70,10 +87,18 @@ class UserInfoRequest {
 
 		$count = $entry['count'];
 		if ( $count == 0 ) {
+			$this->logger->debug(
+				'No user found for filter {filter} in base {base}.',
+				[ 'filter' => $filter, 'base' => $this->userBaseDN ]
+			);
 			return [];
 		}
 
 		if ( $count > 1 ) {
+			$this->logger->debug(
+				'{count} users found for filter {filter} in base {base} — expected exactly one.',
+				[ 'count' => $count, 'filter' => $filter, 'base' => $this->userBaseDN ]
+			);
 			throw new LogicException(
 				wfMessage( "ldapprovider-more-than-one" )->params( $filter )->plain()
 			);

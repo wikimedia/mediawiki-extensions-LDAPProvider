@@ -120,6 +120,7 @@ class Client {
 	 */
 	protected function makeNewConnection() {
 		$servers = (string)( new Serverlist( $this->config ) );
+		$this->logger->debug( 'Initializing LDAP connection to: {servers}', [ 'servers' => $servers ] );
 		$this->connection = PlatformFunctionWrapper::getConnection( $servers );
 		$this->connection->setLogger( $this->logger );
 		if ( !$this->connection ) {
@@ -143,7 +144,7 @@ class Client {
 			);
 		}
 		foreach ( $options  as $key => $value ) {
-			$this->logger->debug( "Setting $key to $value" );
+			$this->logger->debug( 'Setting option {key} to {value}', [ 'key' => $key, 'value' => $value ] );
 			$ret = $this->connection->setOption( constant( $key ), $value );
 			if ( $ret === false ) {
 				$message = 'Cannot set option to LDAP connection!';
@@ -160,10 +161,12 @@ class Client {
 		if ( $this->config->has( ClientConfig::ENC_TYPE ) ) {
 			$encType = $this->config->get( ClientConfig::ENC_TYPE );
 			if ( $encType === EncType::TLS ) {
+				$this->logger->debug( 'Starting TLS on LDAP connection.' );
 				$ret = $this->connection->startTLS();
 				if ( $ret === false ) {
 					throw new RuntimeException( 'Could not start TLS!' );
 				}
+				$this->logger->debug( 'TLS started successfully.' );
 			}
 		}
 	}
@@ -188,6 +191,12 @@ class Client {
 		}
 		$this->adminUserProvided = ( $username != null );
 
+		if ( $username !== null ) {
+			$this->logger->debug( 'Binding as admin user {username}.', [ 'username' => $username ] );
+		} else {
+			$this->logger->debug( 'Binding anonymously.' );
+		}
+
 		$ret = $this->connection->bind( $username, $password );
 		if ( $ret === false ) {
 			$error = $this->connection->error();
@@ -196,6 +205,7 @@ class Client {
 				"Could not bind to LDAP: ($errno) $error"
 			);
 		}
+		$this->logger->debug( 'Admin bind successful.' );
 		$this->boundTo = self::BOUND_ADMIN;
 	}
 
@@ -234,7 +244,8 @@ class Client {
 
 		if ( !$res ) {
 			throw new RuntimeException(
-				"Error in LDAP search: " . $this->connection->error() );
+				"Error in LDAP search for '$match' in '$basedn': " . $this->connection->error()
+			);
 		}
 
 		$entry = $this->connection->getEntries( $res );
@@ -259,18 +270,24 @@ class Client {
 		if ( $userBaseDN === '' ) {
 			$userBaseDN = $this->config->get( ClientConfig::USER_BASE_DN );
 		}
-		return $this->cache->getWithSetCallback(
+		$cacheMiss = false;
+		$result = $this->cache->getWithSetCallback(
 			$this->cache->makeKey(
 				"ldap-provider", "user-info", $username, $userBaseDN
 			),
 			$this->cacheTime,
-			function () use ( $username ) {
-				$userInfoRequest = new UserInfoRequest(
-					$this, $this->config
-				);
+			function () use ( $username, &$cacheMiss ) {
+				$cacheMiss = true;
+				$userInfoRequest = new UserInfoRequest( $this, $this->config );
+				$userInfoRequest->setLogger( $this->logger );
 				return $userInfoRequest->getUserInfo( $username );
 			}
 		);
+		$this->logger->debug(
+			'getUserInfo for {username}: {source}',
+			[ 'username' => $username, 'source' => $cacheMiss ? 'fetched from LDAP.' : 'served from cache.' ]
+		);
+		return $result;
 	}
 
 	/**
@@ -366,11 +383,17 @@ class Client {
 		$this->init();
 		$username = $this->getSearchString( $username );
 		if ( $username === '' ) {
+			$this->logger->debug( 'User bind skipped: DN could not be resolved.' );
 			return false;
 		}
 		$res = $this->connection->bind( $username, $password );
 		if ( $res ) {
 			$this->boundTo = self::BOUND_USER;
+		} else {
+			$error = $this->connection->error();
+			$errno = $this->connection->errno();
+			$this->logger->debug( 'User bind failed for {username}: ({errno}) {error}',
+				[ 'username' => $username, 'errno' => $errno, 'error' => $error ] );
 		}
 		return $res;
 	}
@@ -387,12 +410,14 @@ class Client {
 		if ( $groupBaseDN === '' ) {
 			$groupBaseDN = $this->config->get( ClientConfig::GROUP_BASE_DN );
 		}
-		return $this->cache->getWithSetCallback(
+		$cacheMiss = false;
+		$result = $this->cache->getWithSetCallback(
 			$this->cache->makeKey(
 				"ldap-provider", "user-groups", $username, $groupBaseDN
 			),
 			$this->cacheTime,
-			function () use ( $username ) {
+			function () use ( $username, &$cacheMiss ) {
+				$cacheMiss = true;
 				$factoryCallback = $this->config->get( 'grouprequest' );
 				$request = $factoryCallback( $this, $this->config );
 
@@ -400,9 +425,15 @@ class Client {
 					throw new LogicException( "Configured GroupRequest not valid" );
 				}
 
+				$request->setLogger( $this->logger );
 				return $request->getUserGroups( $username );
 			}
 		);
+		$this->logger->debug(
+			'getUserGroups for {username}: {source}',
+			[ 'username' => $username, 'source' => $cacheMiss ? 'fetched from LDAP.' : 'served from cache.' ]
+		);
+		return $result;
 	}
 
 	/**
