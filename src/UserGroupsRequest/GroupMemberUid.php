@@ -22,7 +22,18 @@ class GroupMemberUid extends UserGroupsRequest {
 		if ( $baseDN === '' ) {
 			$baseDN = null;
 		}
-		if ( $this->config->get( ClientConfig::NESTED_GROUPS ) ) {
+
+		$nested = $this->config->get( ClientConfig::NESTED_GROUPS );
+		$this->logger->debug(
+			__METHOD__ . ': searching groups for uid={uid} (groupBaseDN={baseDN}, nestedGroups={nested})',
+			[
+				'uid' => $userUid,
+				'baseDN' => $baseDN ?? 'null',
+				'nested' => $nested ? 'true' : 'false',
+			]
+		);
+
+		if ( $nested ) {
 			$groups = $this->ldapClient->search(
 				"(memberUid:1.2.840.113556.1.4.1941:=$userUid)",
 				$baseDN, [ $dn ]
@@ -44,6 +55,10 @@ class GroupMemberUid extends UserGroupsRequest {
 		$userInfo = $this->ldapClient->getUserInfo( $userUid );
 		if ( array_key_exists( 'gidnumber', $userInfo ) ) {
 			$gidNumber = $userInfo['gidnumber'];
+			$this->logger->debug(
+				__METHOD__ . ': also searching primary group by gidNumber={gidNumber} for uid={uid}.',
+				[ 'gidNumber' => $gidNumber, 'uid' => $userUid ]
+			);
 			$gidGroup = $this->ldapClient->search(
 				"(&(objectclass=posixGroup)(gidnumber=$gidNumber))",
 				$baseDN, [ $dn ]
@@ -53,6 +68,11 @@ class GroupMemberUid extends UserGroupsRequest {
 				$ret[] = $gidGroup[0][$dn];
 			}
 		}
+
+		$this->logger->debug(
+			__METHOD__ . ': found {count} group(s) for uid={uid}.',
+			[ 'count' => count( $ret ), 'uid' => $userUid ]
+		);
 
 		return new GroupList( $ret );
 	}

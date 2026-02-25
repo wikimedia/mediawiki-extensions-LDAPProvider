@@ -73,8 +73,10 @@ class DomainConfigFactory {
 			$defaultSectionConf = $defaultConfig[$section];
 		}
 
+		$sectionConf = $this->config[$domain][$section] ?? [];
+
 		return new MultiConfig( [
-			new HashConfig( $this->config[$domain][$section] ),
+			new HashConfig( $sectionConf ),
 			new HashConfig( $defaultSectionConf )
 		] );
 	}
