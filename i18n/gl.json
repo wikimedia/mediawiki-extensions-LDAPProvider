@@ -10,5 +10,6 @@
 	"ldapprovider-domain-config-not-found": "Non se puido acceder ao ficheiro de configuración «$1»!\n\nConfigura un ficheiro de configuración de dominio para a extensión LDAPProvider.",
 	"ldapprovider-more-than-one": "Atopouse máis dun usuario para «$1»",
 	"ldapprovider-config-domainconfigprovider": "Especifica o mecanismo para obter a configuración do dominio",
-	"ldapprovider-config-defaultdomain": "Especifica que dominio escoller para un usuario, se non hai dispoñible ningunha correspondencia da base de datos"
+	"ldapprovider-config-defaultdomain": "Especifica que dominio escoller para un usuario, se non hai dispoñible ningunha correspondencia da base de datos",
+	"ldapprovider-domain-config-invalid": "O ficheiro de configuración «$1» ten unha sintaxe incorrecta!"
 }

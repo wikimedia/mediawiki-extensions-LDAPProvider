@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Mainframe98",
-			"McDutchie"
+			"McDutchie",
+			"Siebrand"
 		]
 	},
 	"ldapprovider-config-clientregistry": "Maakt registratie van aangepaste cliënten mogelijk",
@@ -11,5 +12,6 @@
 	"ldapprovider-more-than-one": "Meer dan één gebruiker gevonden voor '$1'",
 	"ldapprovider-config-domainconfigprovider": "Geeft het mechanisme aan voor het verkrijgen van de domeinconfiguratie",
 	"ldapprovider-config-defaultdomain": "Geeft aan welk domein voor een gebruiker moet worden gekozen als er geen toewijzing uit de database beschikbaar is",
-	"ldapprovider-desc": "Biedt een gemeenschappelijke infrastructuur om verbinding te maken met een LDAP-bron en er query’s op uit te voeren"
+	"ldapprovider-desc": "Biedt een gemeenschappelijke infrastructuur om verbinding te maken met een LDAP-bron en er query’s op uit te voeren",
+	"ldapprovider-domain-config-invalid": "Instellingenbestand '$1' heeft een onjuiste opmaak!"
 }

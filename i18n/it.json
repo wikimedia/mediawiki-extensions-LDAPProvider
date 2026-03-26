@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"FL2226"
 		]
 	},
-	"ldapprovider-config-clientregistry": "Permette la registrazione di clienti personalizzati"
+	"ldapprovider-config-clientregistry": "Permette la registrazione di clienti personalizzati",
+	"ldapprovider-domain-config-invalid": "Il file di configurazione '$1' ha una sintassi errata!"
 }

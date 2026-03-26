@@ -10,5 +10,6 @@
 	"ldapprovider-domain-config-not-found": "Не можев да дојдам до нагодната податотека „$1“!\n\nПоставете ваква податотека за додатокот „LDAPProvider“.",
 	"ldapprovider-more-than-one": "Пронајдов повеќе од еден корисник за „$1“",
 	"ldapprovider-config-domainconfigprovider": "Го укажува механизмот за добивање на доменската нагоденост",
-	"ldapprovider-config-defaultdomain": "Укажува кој домен да се избере за даден корисник, ако нема пресликување од базата."
+	"ldapprovider-config-defaultdomain": "Укажува кој домен да се избере за даден корисник, ако нема пресликување од базата.",
+	"ldapprovider-domain-config-invalid": "Податотеката со поставки „$1“ има неточна синтакса!"
 }
