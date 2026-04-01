@@ -10,5 +10,6 @@
 	"ldapprovider-domain-config-not-found": "Non poteva acceder al file de configuration '$1'!\n\nPer favor installa un file de configuration de dominio pro le extension LDAPProvider.",
 	"ldapprovider-more-than-one": "Plus de un usator trovate pro '$1'",
 	"ldapprovider-config-domainconfigprovider": "Specifica le mechanismo pro obtener le configuration del dominio",
-	"ldapprovider-config-defaultdomain": "Specifica qual dominio eliger pro un usator si nulle correspondentia del base de datos es disponibile"
+	"ldapprovider-config-defaultdomain": "Specifica qual dominio eliger pro un usator si nulle correspondentia del base de datos es disponibile",
+	"ldapprovider-domain-config-invalid": "Le file de configuration ‘$1’ ha un syntaxe incorrecte!"
 }
