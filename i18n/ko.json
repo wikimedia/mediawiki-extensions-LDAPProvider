@@ -9,5 +9,9 @@
 	"ldapprovider-config-clientregistry": "사용자 지정 클라이언트의 등록을 허용합니다",
 	"ldapprovider-domain-config-not-found": "구성 파일 '$1'에 접근하지 못했습니다!\n\nLDAPProvider 확장 기능을 위해 도메인 구성 파일을 설정해 주십시오.",
 	"ldapprovider-more-than-one": "'$1'에 대해 둘 이상의 사용자를 발견했습니다",
-	"ldapprovider-domain-config-invalid": "구성 파일 ' $1'의 구문이 잘못되었습니다!"
+	"ldapprovider-domain-config-invalid": "구성 파일 ' $1'의 구문이 잘못되었습니다!",
+	"ldapprovider-desc": "LDAP 리소스에 연결하고 해당 리소스에 대한 쿼리를 실행하기 위한 공통 인프라를 제공합니다",
+	"ldapprovider-config-domainconfigs": "도메인 별로 저장되는 구성",
+	"ldapprovider-config-domainconfigprovider": "도메인 구성을 얻는 메커니즘을 지정합니다",
+	"ldapprovider-config-defaultdomain": "데이터베이스에서 사용할 수 없는 매핑이 없는 경우에 사용자에게 사용할 도메인을 지정합니다."
 }
