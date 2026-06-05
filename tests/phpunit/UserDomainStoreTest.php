@@ -48,14 +48,11 @@ class UserDomainStoreTest extends MediaWikiIntegrationTestCase {
 		$store->setDomainForUser(
 			self::getTestUser()->getUser(), 'ANOTHERDOMAIN'
 		);
-		$this->assertSelect(
-			'ldap_domains',
-			[ 'domain' ],
-			[ 'user_id' => self::getTestUser()->getUser()->getId() ],
-			[
-				[ 'ANOTHERDOMAIN' ]
-			]
-		);
+		$this->newSelectQueryBuilder()
+			->select( 'domain' )
+			->from( 'ldap_domains' )
+			->where( [ 'user_id' => self::getTestUser()->getUser()->getId() ] )
+			->assertFieldValue( 'ANOTHERDOMAIN' );
 	}
 
 	/**
