@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Angrydog001",
+			"GuoPC",
 			"Peterxy",
 			"Peterxy12",
 			"大小李子"
@@ -13,5 +14,6 @@
 	"ldapprovider-domain-config-not-found": "无法访问配置文件“$1”！\n\n请为LDAPProvider扩展创建一个域配置文件。",
 	"ldapprovider-more-than-one": "有找出一个以上的'$1'用户",
 	"ldapprovider-config-domainconfigprovider": "指定获取域名设置的机制",
-	"ldapprovider-config-defaultdomain": "若没有可用的数据库对应，为用户指定所挑选的域名"
+	"ldapprovider-config-defaultdomain": "若没有可用的数据库对应，为用户指定所挑选的域名",
+	"ldapprovider-domain-config-invalid": "配置文件“$1”存在语法错误！"
 }
