@@ -178,6 +178,9 @@ abstract class UserLoadAfterLoadFromSession {
 		return true;
 	}
 
+	/**
+	 * @return bool
+	 */
 	abstract protected function doSync();
 
 	/**

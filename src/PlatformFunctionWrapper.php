@@ -7,10 +7,6 @@ use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
-/**
- * @SuppressWarnings(PHPMD.CamelCaseMethodName)
- */
-
 class PlatformFunctionWrapper implements LoggerAwareInterface {
 
 	/** @var resource */

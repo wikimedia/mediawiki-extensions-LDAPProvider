@@ -38,7 +38,6 @@ class CheckLogin extends Maintenance {
 
 	/**
 	 * Where the action happens
-	 * @SuppressWarnings(PHPMD.CamelCaseVariableName)
 	 */
 	public function execute() {
 		$username = $this->getOption( "username" );

@@ -7,7 +7,6 @@ use MediaWiki\Extension\LDAPProvider\TestClient;
 class TestClientTest extends \PHPUnit\Framework\TestCase {
 
 	/**
-	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
 	 * @covers MediaWiki\Extension\LDAPProvider\TestClient::__constructor
 	 */
 	public function testCallbacks() {

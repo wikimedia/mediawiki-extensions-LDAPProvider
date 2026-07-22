@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\LDAPProvider;
 class Setup {
 
 	/**
-	 * @SuppressWarnings( SuperGlobals )
 	 * @return void
 	 */
 	public static function init() {
