@@ -29,7 +29,6 @@ class CheckConnection extends Maintenance {
 
 	/**
 	 * Where the action happens
-	 * @SuppressWarnings(PHPMD.CamelCaseVariableName)
 	 */
 	public function execute() {
 		// phpcs:ignore MediaWiki.NamingConventions.ValidGlobalName.allowedPrefix

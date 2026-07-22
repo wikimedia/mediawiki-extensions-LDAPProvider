@@ -33,7 +33,6 @@ class DomainConfigFactoryTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @SuppressWarnings(PHPMD.UnusedLocalVariable)
 	 * @covers MediaWiki\Extension\LDAPProvider\DomainConfigFactory::factory
 	 */
 	public function testExceptionOnMissingDefault() {
@@ -44,7 +43,6 @@ class DomainConfigFactoryTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 *
 	 * @return DomainConfigFactory
 	 */
 	protected function makeDomainConfigFactory() {

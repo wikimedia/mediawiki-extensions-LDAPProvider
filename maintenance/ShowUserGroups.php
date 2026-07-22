@@ -38,7 +38,6 @@ class ShowUserGroups extends Maintenance {
 
 	/**
 	 * Where the action happens
-	 * @SuppressWarnings(PHPMD.CamelCaseVariableName)
 	 */
 	public function execute() {
 		$username = $this->getOption( "username" );
@@ -52,7 +51,6 @@ class ShowUserGroups extends Maintenance {
 	}
 
 	/**
-	 *
 	 * @param \MediaWiki\Extension\LDAPProvider\GroupList $groupList
 	 */
 	private function showValue( $groupList ) {

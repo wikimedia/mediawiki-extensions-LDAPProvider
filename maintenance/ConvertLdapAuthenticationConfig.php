@@ -78,7 +78,6 @@ class ConvertLdapAuthenticationConfig extends Maintenance {
 	 *
 	 * @param string $varName the global variable name to get
 	 * @param string $newSettingPath where the new storage place is
-	 * @SuppressWarnings(SuperGlobals)
 	 */
 	protected function addToNewConfig( $varName, $newSettingPath ) {
 		if ( !isset( $GLOBALS[$varName] ) ) {

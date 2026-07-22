@@ -17,37 +17,31 @@ class Client {
 	private const BOUND_USER  = 2;
 
 	/**
-	 *
 	 * @var PlatformFunctionWrapper
 	 */
 	protected $connection = null;
 
 	/**
-	 *
 	 * @var Config
 	 */
 	protected $config = null;
 
 	/**
-	 *
 	 * @var \Psr\Log\LoggerInterface
 	 */
 	protected $logger = null;
 
 	/**
-	 *
 	 * @var BagOStuff
 	 */
 	protected $cache = null;
 
 	/**
-	 *
 	 * @var int
 	 */
 	protected $cacheTime = null;
 
 	/**
-	 *
 	 * @var PreSearchUsernameModifierProcessor
 	 */
 	protected $preSearchUsernameModifierProcessor = null;
@@ -443,7 +437,6 @@ class Client {
 	}
 
 	/**
-	 *
 	 * @param string $username
 	 * @return string
 	 */

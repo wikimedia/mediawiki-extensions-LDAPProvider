@@ -11,19 +11,16 @@ use Psr\Log\NullLogger;
 class UserInfoRequest implements LoggerAwareInterface {
 
 	/**
-	 *
 	 * @var Client
 	 */
 	protected $ldapClient = null;
 
 	/**
-	 *
 	 * @var Config
 	 */
 	protected $config = null;
 
 	/**
-	 *
 	 * @var string
 	 */
 	protected $userBaseDN = '';

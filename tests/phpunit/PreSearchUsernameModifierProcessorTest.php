@@ -32,7 +32,6 @@ class PreSearchUsernameModifierProcessorTest extends TestCase {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	public function provideTestProcessData() {

@@ -8,10 +8,6 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use Wikimedia\AtEase\AtEase;
 
-/**
- * @SuppressWarnings(PHPMD.CamelCaseMethodName)
- */
-
 class PlatformFunctionWrapper implements LoggerAwareInterface {
 
 	/** @var resource */
@@ -269,7 +265,6 @@ class PlatformFunctionWrapper implements LoggerAwareInterface {
 	}
 
 	/**
-	 *
 	 * @param string|null $uri
 	 * @return PlatformFunctionWrapper
 	 */

@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\LDAPProvider;
 class TestClient extends Client {
 
 	/**
-	 *
 	 * @var callable[]
 	 */
 	protected $callbacks = [];

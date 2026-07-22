@@ -5,13 +5,11 @@ namespace MediaWiki\Extension\LDAPProvider;
 class GroupList {
 
 	/**
-	 *
 	 * @var array
 	 */
 	protected $shortNames = [];
 
 	/**
-	 *
 	 * @var array
 	 */
 	protected $fullDNs = [];

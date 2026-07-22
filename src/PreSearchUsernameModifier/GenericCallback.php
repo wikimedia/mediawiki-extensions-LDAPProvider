@@ -7,7 +7,6 @@ use MediaWiki\Extension\LDAPProvider\PreSearchUsernameModifier;
 class GenericCallback extends PreSearchUsernameModifier {
 
 	/**
-	 *
 	 * @var callable
 	 */
 	private $callback = null;
@@ -20,7 +19,6 @@ class GenericCallback extends PreSearchUsernameModifier {
 	}
 
 	/**
-	 *
 	 * @param string $username
 	 * @return string
 	 */

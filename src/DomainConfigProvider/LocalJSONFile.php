@@ -27,13 +27,11 @@ use MediaWiki\Json\FormatJson;
 class LocalJSONFile implements IDomainConfigProvider {
 
 	/**
-	 *
 	 * @var array
 	 */
 	private $configArray = [];
 
 	/**
-	 *
 	 * @param string $jsonFilePath The absolute path to the JSON file
 	 */
 	public function __construct( $jsonFilePath ) {
@@ -62,7 +60,6 @@ class LocalJSONFile implements IDomainConfigProvider {
 	}
 
 	/**
-	 *
 	 * @param Config $ldapConfig The config to be used
 	 * @return LocalJSONFile
 	 */

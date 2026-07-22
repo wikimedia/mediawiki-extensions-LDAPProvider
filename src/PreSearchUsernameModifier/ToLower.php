@@ -7,7 +7,6 @@ use MediaWiki\Extension\LDAPProvider\PreSearchUsernameModifier;
 class ToLower extends PreSearchUsernameModifier {
 
 	/**
-	 *
 	 * @param string $username
 	 * @return string
 	 */
