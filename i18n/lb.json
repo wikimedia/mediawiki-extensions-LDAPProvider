@@ -5,6 +5,6 @@
 			"Volvox"
 		]
 	},
-	"ldapprovider-more-than-one": "Méi wéi ee Benotzer fir '$1' fonnt",
+	"ldapprovider-more-than-one": "Méi wéi ee Benotzer fir „$1“ fonnt",
 	"ldapprovider-domain-config-invalid": "De Konfiguratiounsfichier „$1“ huet eng feelerhaft Syntax!"
 }
