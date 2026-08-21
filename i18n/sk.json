@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wizzard"
+		]
+	},
+	"ldapprovider-desc": "Poskytuje spoločnú infraštruktúru na pripojenie k zdroju LDAP a na vykonávanie dopytov voči nemu",
+	"ldapprovider-config-clientregistry": "Umožňuje registráciu vlastných klientov",
+	"ldapprovider-config-domainconfigs": "Uchováva konfigurácie pre jednotlivé domény",
+	"ldapprovider-domain-config-not-found": "Nepodarilo sa získať prístup ku konfiguračnému súboru „$1“!\n\nNastavte, prosím, konfiguračný súbor domén pre rozšírenie LDAPProvider.",
+	"ldapprovider-more-than-one": "Pre „$1“ sa našiel viac než jeden používateľ",
+	"ldapprovider-config-domainconfigprovider": "Určuje mechanizmus na získanie konfigurácie domény",
+	"ldapprovider-config-defaultdomain": "Určuje, ktorá doména sa má pre používateľa zvoliť, ak nie je v databáze dostupné žiadne priradenie",
+	"ldapprovider-domain-config-invalid": "Konfiguračný súbor „$1“ má nesprávnu syntax!"
+}
