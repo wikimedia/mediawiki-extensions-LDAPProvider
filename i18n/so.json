@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"AhmedG612"
+		]
+	},
+	"ldapprovider-desc": "Waxay bixisaa kaabayaal guud oo lagu xiro il LDAP ah laguna fuliyo weydiimo ka dhan ah",
+	"ldapprovider-config-clientregistry": "Waxay oggolaanaysaa diiwaangelinta macaamiil gaar ah",
+	"ldapprovider-config-domainconfigs": "Waxay kaydisaa habaynta xayndaab kasta",
+	"ldapprovider-domain-config-not-found": "Lama geli karin faylka habaynta '$1'!\n\nFadlan u samee faylka habaynta domain-ka ee kordhinta LDAPProvider.",
+	"ldapprovider-more-than-one": "In ka badan hal isticmaale ayaa loo helay '$1'",
+	"ldapprovider-config-domainconfigprovider": "Waxay qeexaysaa habka lagu heli karo habaynta domain-ka",
+	"ldapprovider-config-defaultdomain": "Waxay qeexaysaa domain-ka loo dooranayo isticmaale, haddii aanay jirin khariidadayn laga heli karo kaydka xogta",
+	"ldapprovider-domain-config-invalid": "Faylka habaynta '$1' wuxuu leeyahay qaab qoris khaldan!"
+}
