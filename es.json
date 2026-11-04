@@ -1,0 +1,15 @@
+{
+        "@metadata": {
+                "authors": [
+                        "Ajuntament de Benicarló - correu.informatica@benicarlo.org"
+                ]
+        },
+        "ldapprovider-desc": "Proporciona una infraestructura común para conectarse a un recurso LDAP y ejecutar consultas",
+        "ldapprovider-config-clientregistry": "Permite el registro de clientes personalizados",
+        "ldapprovider-config-domainconfigs": "Almacena las configuraciones por dominio",
+        "ldapprovider-domain-config-not-found": "¡No se ha podido acceder al archivo de configuración '$1'!\n\nPor favor, configure un archivo de configuración de dominio para la extensión LDAPProvider.",
+        "ldapprovider-more-than-one": "Se ha encontrado más de un usuario para '$1'",
+        "ldapprovider-config-domainconfigprovider": "Especifica el mecanismo para obtener la configuración del dominio",
+        "ldapprovider-config-defaultdomain": "Especifica qué dominio elegir para un usuario, si no hay ningún mapeo disponible en la base de datos",
+        "ldapprovider-domain-config-invalid": "¡El archivo de configuración '$1' tiene errores de sintaxis!"
+}
